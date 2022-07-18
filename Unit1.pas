@@ -34,8 +34,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
-    procedure tb_usuariosBeforePost(DataSet: TDataSet);
     procedure tb_usuariosBeforeInsert(DataSet: TDataSet);
+    procedure tb_usuariosBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -61,9 +61,9 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  FDConnection1.params.database := getcurrentdir+'/Assets/DBs/SEXTODB.FDB';
+  FDConnection1.params.database := getcurrentdir+'/Assets/DBs/PRIMEIRODB.FDB';
   FDConnection1.Connected := true;
-  tb_usuarios.TableName := 'USUARIOS';
+  tb_usuarios.TableName := 'USUARIOS_2';
   tb_usuarios.active := true;
 end;
 
@@ -73,12 +73,12 @@ begin
   edit_sobrenome.Enabled := true;
   edit_permissao.Enabled := true;
   edit_idade.Enabled := true;
+
 end;
 
 procedure TForm1.tb_usuariosBeforePost(DataSet: TDataSet);
 begin
   tb_usuarios.FieldByName('NOME').Value := edit_nome.Text;
-  SHOWMESSAGE(tb_usuarios.FieldByName('NOME').Value);
   tb_usuarios.FieldByName('SOBRENOME').Value := edit_sobrenome.Text;
   tb_usuarios.FieldByName('IDADE').Value := edit_idade.Text;
   tb_usuarios.FieldByName('PERMISSAO').Value := edit_permissao.Text;

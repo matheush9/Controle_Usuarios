@@ -147,19 +147,17 @@ object Form1: TForm1
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Conceito\Documents\Embarcadero\Studio\Projects' +
-        '\Nova pasta\Win32\Debug\Assets\DBs\SEXTODB.FDB'
-      'User_Name=SYSDBA'
-      'Password=masterkey'
-      'DriverID=FB')
+      'DriverID=FB'
+      'User_Name=sysdba'
+      'Password=masterkey')
     UpdateOptions.AssignedValues = [uvCheckRequired]
-    UpdateOptions.CheckRequired = False
+    LoginPrompt = False
     Left = 400
     Top = 72
   end
   object tb_usuarios: TFDTable
     BeforeInsert = tb_usuariosBeforeInsert
+    BeforePost = tb_usuariosBeforePost
     Connection = FDConnection1
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False

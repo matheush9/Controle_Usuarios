@@ -1,31 +1,49 @@
 ﻿[]
-Coordinates=144,77,91,36
+Coordinates=373,70,82,33
 Visible=True
 
 [edit_nome]
-Coordinates=10,80,74,58
+Coordinates=10,80,65,51
 
 [edit_sobrenome]
-Coordinates=10,150,107,58
+Coordinates=10,150,93,51
 
 [edit_permissao]
-Coordinates=10,220,102,58
+Coordinates=10,220,89,51
 
 [edit_idade]
-Coordinates=10,290,74,58
+Coordinates=10,290,65,51
 
 [FDConnection1]
-Coordinates=144,77,104,36
+Coordinates=144,77,90,33
 
 [label_nome]
-Coordinates=0,0,53,58
+Coordinates=10,0,71,51
 
 [label_sobrenome]
-Coordinates=72,1,53,58
+Coordinates=110,0,99,51
 
 [label_permissao]
-Coordinates=140,0,53,58
+Coordinates=240,0,95,51
 
 [label_idade]
-Coordinates=210,0,53,58
+Coordinates=370,0,70,51
+
+[tb_usuarios]
+Coordinates=220,150,72,51
+
+[btn_novo]
+Coordinates=130,80,60,51
+
+[btn_salvar]
+Coordinates=220,80,65,51
+
+[btn_excluir]
+Coordinates=130,220,69,51
+
+[btn_editar]
+Coordinates=130,150,64,51
+
+[btn_cancelar]
+Coordinates=130,290,77,51
 
