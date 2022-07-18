@@ -27,9 +27,8 @@ type
     FDConnection1: TFDConnection;
     tb_usuarios: TFDTable;
     btn_novo: TButton;
-    btn_editar: TButton;
     btn_salvar: TButton;
-    btn_excluir: TButton;
+    btn_limpar: TButton;
     btn_cancelar: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);

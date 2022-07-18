@@ -1,5 +1,5 @@
 ﻿[]
-Coordinates=373,70,82,33
+Coordinates=130,150,64,51
 Visible=True
 
 [edit_nome]
@@ -38,12 +38,9 @@ Coordinates=130,80,60,51
 [btn_salvar]
 Coordinates=220,80,65,51
 
-[btn_excluir]
-Coordinates=130,220,69,51
-
-[btn_editar]
-Coordinates=130,150,64,51
-
 [btn_cancelar]
 Coordinates=130,290,77,51
+
+[btn_limpar]
+Coordinates=130,220,69,51
 
