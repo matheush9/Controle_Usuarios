@@ -34,10 +34,15 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
-    procedure tb_usuariosBeforeInsert(DataSet: TDataSet);
     procedure tb_usuariosBeforePost(DataSet: TDataSet);
+    procedure btn_limparClick(Sender: TObject);
+    procedure btn_cancelarClick(Sender: TObject);
   private
     { Private declarations }
+    procedure LimparCampos;
+    procedure BloquearCampos;
+    procedure LiberarCampos;
+
   public
     { Public declarations }
   end;
@@ -49,15 +54,58 @@ implementation
 
 {$R *.dfm}
 
+// procedures funcionais
+
+procedure TForm1.LimparCampos;
+begin
+  edit_nome.Text := EmptyStr;
+  edit_sobrenome.Text := EmptyStr;
+  edit_idade.Text := EmptyStr;
+  edit_permissao.Text := EmptyStr;
+end;
+
+procedure TForm1.BloquearCampos;
+begin
+  edit_nome.Enabled := false;
+  edit_sobrenome.Enabled := false;
+  edit_permissao.Enabled := false;
+  edit_idade.Enabled := false;
+end;
+
+procedure TForm1.LiberarCampos;
+begin
+  edit_nome.Enabled := true;
+  edit_sobrenome.Enabled := true;
+  edit_permissao.Enabled := true;
+  edit_idade.Enabled := true;
+end;
+
+// botões
+procedure TForm1.btn_cancelarClick(Sender: TObject);
+begin
+  abort();
+end;
+
+procedure TForm1.btn_limparClick(Sender: TObject);
+begin
+  LimparCampos;
+end;
+
 procedure TForm1.btn_novoClick(Sender: TObject);
 begin
+  LiberarCampos;
   tb_usuarios.Insert;
 end;
 
 procedure TForm1.btn_salvarClick(Sender: TObject);
 begin
   tb_usuarios.Post;
+  LimparCampos;
+  BloquearCampos;
+  ShowMessage('Usuário Cadastrado com sucesso!');
 end;
+
+//
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -65,15 +113,6 @@ begin
   FDConnection1.Connected := true;
   tb_usuarios.TableName := 'USUARIOS_2';
   tb_usuarios.active := true;
-end;
-
-procedure TForm1.tb_usuariosBeforeInsert(DataSet: TDataSet);
-begin
-  edit_nome.Enabled := true;
-  edit_sobrenome.Enabled := true;
-  edit_permissao.Enabled := true;
-  edit_idade.Enabled := true;
-
 end;
 
 procedure TForm1.tb_usuariosBeforePost(DataSet: TDataSet);
