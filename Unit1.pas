@@ -36,6 +36,7 @@ type
     procedure tb_usuariosBeforePost(DataSet: TDataSet);
     procedure btn_limparClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure LimparCampos;
@@ -105,6 +106,11 @@ begin
 end;
 
 //
+
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Form1 := nil;
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

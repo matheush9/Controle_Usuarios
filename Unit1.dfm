@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Cadastro de Clientes'
-  ClientHeight = 355
-  ClientWidth = 538
+  ClientHeight = 326
+  ClientWidth = 463
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,10 +12,11 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
-    538
-    355)
+    463
+    326)
   PixelsPerInch = 96
   TextHeight = 13
   object label_nome: TLabel
