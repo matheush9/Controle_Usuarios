@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Cadastro de Clientes'
-  ClientHeight = 326
-  ClientWidth = 463
+  ClientHeight = 266
+  ClientWidth = 407
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object Form1: TForm1
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
-    463
-    326)
+    407
+    266)
   PixelsPerInch = 96
   TextHeight = 13
   object label_nome: TLabel
@@ -75,7 +75,7 @@ object Form1: TForm1
   object edit_nome: TEdit
     Left = 112
     Top = 29
-    Width = 230
+    Width = 238
     Height = 21
     Enabled = False
     TabOrder = 0
@@ -83,7 +83,7 @@ object Form1: TForm1
   object edit_sobrenome: TEdit
     Left = 112
     Top = 72
-    Width = 230
+    Width = 238
     Height = 21
     Enabled = False
     TabOrder = 1
@@ -91,7 +91,7 @@ object Form1: TForm1
   object edit_permissao: TEdit
     Left = 112
     Top = 113
-    Width = 230
+    Width = 238
     Height = 21
     Enabled = False
     TabOrder = 2
@@ -99,46 +99,37 @@ object Form1: TForm1
   object edit_idade: TEdit
     Left = 112
     Top = 156
-    Width = 230
+    Width = 238
     Height = 21
     Enabled = False
     TabOrder = 3
   end
   object btn_novo: TButton
-    Left = 24
-    Top = 216
-    Width = 75
-    Height = 25
+    Left = 28
+    Top = 208
+    Width = 89
+    Height = 33
     Caption = 'Novo Usu'#225'rio'
     TabOrder = 4
     OnClick = btn_novoClick
   end
   object btn_salvar: TButton
-    Left = 105
-    Top = 216
-    Width = 75
-    Height = 25
+    Left = 144
+    Top = 208
+    Width = 89
+    Height = 33
     Caption = 'Salvar'
     TabOrder = 5
     OnClick = btn_salvarClick
   end
   object btn_limpar: TButton
-    Left = 186
-    Top = 216
-    Width = 75
-    Height = 25
+    Left = 261
+    Top = 208
+    Width = 89
+    Height = 33
     Caption = 'Limpar'
     TabOrder = 6
     OnClick = btn_limparClick
-  end
-  object btn_cancelar: TButton
-    Left = 267
-    Top = 216
-    Width = 75
-    Height = 25
-    Caption = 'Cancelar'
-    TabOrder = 7
-    OnClick = btn_cancelarClick
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -147,15 +138,15 @@ object Form1: TForm1
       'Password=masterkey')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     LoginPrompt = False
-    Left = 112
-    Top = 256
+    Left = 352
+    Top = 24
   end
   object tb_usuarios: TFDTable
     BeforePost = tb_usuariosBeforePost
     Connection = FDConnection1
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
-    Left = 24
-    Top = 256
+    Left = 352
+    Top = 104
   end
 end

@@ -29,7 +29,6 @@ type
     btn_novo: TButton;
     btn_salvar: TButton;
     btn_limpar: TButton;
-    btn_cancelar: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
