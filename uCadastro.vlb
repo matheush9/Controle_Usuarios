@@ -1,5 +1,5 @@
 ﻿[]
-Coordinates=130,290,77,51
+Coordinates=220,150,72,51
 Visible=True
 
 [edit_nome]
@@ -14,9 +14,6 @@ Coordinates=10,220,89,51
 [edit_idade]
 Coordinates=10,290,65,51
 
-[FDConnection1]
-Coordinates=144,77,90,33
-
 [label_nome]
 Coordinates=10,0,71,51
 
@@ -28,9 +25,6 @@ Coordinates=240,0,95,51
 
 [label_idade]
 Coordinates=370,0,70,51
-
-[tb_usuarios]
-Coordinates=220,150,72,51
 
 [btn_novo]
 Coordinates=130,80,60,51

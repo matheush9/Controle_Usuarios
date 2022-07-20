@@ -24,12 +24,9 @@ type
     label_sobrenome: TLabel;
     label_permissao: TLabel;
     label_idade: TLabel;
-    FDConnection1: TFDConnection;
-    tb_usuarios: TFDTable;
     btn_novo: TButton;
     btn_salvar: TButton;
     btn_limpar: TButton;
-    procedure FormCreate(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure tb_usuariosBeforePost(DataSet: TDataSet);
@@ -52,6 +49,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses uPrincipal;
 
 // procedures funcionais
 
@@ -93,12 +92,18 @@ end;
 procedure TfrmCadastro.btn_novoClick(Sender: TObject);
 begin
   LiberarCampos;
-  tb_usuarios.Insert;
+  with frmPrincipal do
+  begin
+   tb_usuarios.Insert;
+  end;
 end;
 
 procedure TfrmCadastro.btn_salvarClick(Sender: TObject);
 begin
+  with frmPrincipal do
+  begin
   tb_usuarios.Post;
+  end;
   LimparCampos;
   BloquearCampos;
   ShowMessage('Usuário Cadastrado com sucesso!');
@@ -111,20 +116,15 @@ begin
   frmCadastro := nil;
 end;
 
-procedure TfrmCadastro.FormCreate(Sender: TObject);
-begin
-  FDConnection1.params.database := getcurrentdir+'/Assets/DBs/PRIMEIRODB.FDB';
-  FDConnection1.Connected := true;
-  tb_usuarios.TableName := 'USUARIOS_2';
-  tb_usuarios.active := true;
-end;
-
 procedure TfrmCadastro.tb_usuariosBeforePost(DataSet: TDataSet);
 begin
+  with frmPrincipal do
+  begin
   tb_usuarios.FieldByName('NOME').Value := edit_nome.Text;
   tb_usuarios.FieldByName('SOBRENOME').Value := edit_sobrenome.Text;
   tb_usuarios.FieldByName('IDADE').Value := edit_idade.Text;
   tb_usuarios.FieldByName('PERMISSAO').Value := edit_permissao.Text;
+  end;
 end;
 
 end.

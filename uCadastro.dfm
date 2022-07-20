@@ -13,7 +13,6 @@ object frmCadastro: TfrmCadastro
   OldCreateOrder = False
   Position = poDesktopCenter
   OnClose = FormClose
-  OnCreate = FormCreate
   DesignSize = (
     407
     266)
@@ -130,23 +129,5 @@ object frmCadastro: TfrmCadastro
     Caption = 'Limpar'
     TabOrder = 6
     OnClick = btn_limparClick
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'DriverID=FB'
-      'User_Name=sysdba'
-      'Password=masterkey')
-    UpdateOptions.AssignedValues = [uvCheckRequired]
-    LoginPrompt = False
-    Left = 360
-    Top = 24
-  end
-  object tb_usuarios: TFDTable
-    BeforePost = tb_usuariosBeforePost
-    Connection = FDConnection1
-    UpdateOptions.AssignedValues = [uvCheckRequired]
-    UpdateOptions.CheckRequired = False
-    Left = 360
-    Top = 104
   end
 end

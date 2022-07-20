@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   DesignSize = (
     552
     187)
@@ -26,7 +27,6 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Listar Usu'#225'rios'
     TabOrder = 0
     OnClick = btn_listarClick
-    ExplicitTop = 86
   end
   object btn_gerir: TButton
     Left = 392
@@ -36,7 +36,6 @@ object frmPrincipal: TfrmPrincipal
     Anchors = [akLeft, akRight]
     Caption = 'Gerir Usu'#225'rios'
     TabOrder = 1
-    ExplicitTop = 86
   end
   object btn_cadastrar: TButton
     Left = 40
@@ -47,6 +46,18 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Cadastrar Usu'#225'rios'
     TabOrder = 2
     OnClick = btn_cadastrarClick
-    ExplicitTop = 86
+  end
+  object FDConnection1: TFDConnection
+    Left = 32
+    Top = 8
+  end
+  object tb_usuarios: TFDTable
+    Connection = FDConnection1
+    Left = 104
+    Top = 8
+  end
+  object DataSource1: TDataSource
+    Left = 168
+    Top = 8
   end
 end
