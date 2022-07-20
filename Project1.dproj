@@ -100,12 +100,16 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Unit1.pas">
-            <Form>Form1</Form>
+        <DCCReference Include="uCadastro.pas">
+            <Form>frmCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uPrincipal.pas">
-            <Form>Form2</Form>
+            <Form>frmPrincipal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uListar.pas">
+            <Form>frmListar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

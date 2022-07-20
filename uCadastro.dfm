@@ -1,4 +1,4 @@
-object Form1: TForm1
+object frmCadastro: TfrmCadastro
   Left = 0
   Top = 0
   Caption = 'Cadastro de Clientes'
@@ -138,7 +138,7 @@ object Form1: TForm1
       'Password=masterkey')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     LoginPrompt = False
-    Left = 352
+    Left = 360
     Top = 24
   end
   object tb_usuarios: TFDTable
@@ -146,7 +146,7 @@ object Form1: TForm1
     Connection = FDConnection1
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
-    Left = 352
+    Left = 360
     Top = 104
   end
 end

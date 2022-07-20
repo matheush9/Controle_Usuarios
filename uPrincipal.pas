@@ -7,11 +7,12 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
 
 type
-  TForm2 = class(TForm)
+  TfrmPrincipal = class(TForm)
     btn_listar: TButton;
     btn_gerir: TButton;
     btn_cadastrar: TButton;
     procedure btn_cadastrarClick(Sender: TObject);
+    procedure btn_listarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -19,20 +20,30 @@ type
   end;
 
 var
-  Form2: TForm2;
+  frmPrincipal: TfrmPrincipal;
 
 implementation
 
 {$R *.dfm}
 
-uses Unit1;
+uses uCadastro, uListar;
 
-procedure TForm2.btn_cadastrarClick(Sender: TObject);
+procedure TfrmPrincipal.btn_cadastrarClick(Sender: TObject);
 begin
-  if Form1 = nil then
+  if frmCadastro = nil then
   begin
-    Form1 := TForm1.Create(Self);
-    Form1.ShowModal;
+    frmCadastro := TfrmCadastro.Create(Self);
+    frmCadastro.ShowModal;
+  end;
+
+end;
+
+procedure TfrmPrincipal.btn_listarClick(Sender: TObject);
+begin
+  if frmListar = nil then
+  begin
+    frmListar := TfrmListar.Create(Self);
+    frmListar.ShowModal;
   end;
 
 end;

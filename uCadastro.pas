@@ -1,4 +1,4 @@
-unit Unit1;
+unit uCadastro;
 
 interface
 
@@ -15,7 +15,7 @@ uses
   Vcl.Bind.Navigator, Vcl.DBCtrls;
 
 type
-  TForm1 = class(TForm)
+  TfrmCadastro = class(TForm)
     edit_nome: TEdit;
     edit_sobrenome: TEdit;
     edit_permissao: TEdit;
@@ -47,7 +47,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmCadastro: TfrmCadastro;
 
 implementation
 
@@ -55,7 +55,7 @@ implementation
 
 // procedures funcionais
 
-procedure TForm1.LimparCampos;
+procedure TfrmCadastro.LimparCampos;
 begin
   edit_nome.Text := EmptyStr;
   edit_sobrenome.Text := EmptyStr;
@@ -63,7 +63,7 @@ begin
   edit_permissao.Text := EmptyStr;
 end;
 
-procedure TForm1.BloquearCampos;
+procedure TfrmCadastro.BloquearCampos;
 begin
   edit_nome.Enabled := false;
   edit_sobrenome.Enabled := false;
@@ -71,7 +71,7 @@ begin
   edit_idade.Enabled := false;
 end;
 
-procedure TForm1.LiberarCampos;
+procedure TfrmCadastro.LiberarCampos;
 begin
   edit_nome.Enabled := true;
   edit_sobrenome.Enabled := true;
@@ -80,23 +80,23 @@ begin
 end;
 
 // botões
-procedure TForm1.btn_cancelarClick(Sender: TObject);
+procedure TfrmCadastro.btn_cancelarClick(Sender: TObject);
 begin
   abort();
 end;
 
-procedure TForm1.btn_limparClick(Sender: TObject);
+procedure TfrmCadastro.btn_limparClick(Sender: TObject);
 begin
   LimparCampos;
 end;
 
-procedure TForm1.btn_novoClick(Sender: TObject);
+procedure TfrmCadastro.btn_novoClick(Sender: TObject);
 begin
   LiberarCampos;
   tb_usuarios.Insert;
 end;
 
-procedure TForm1.btn_salvarClick(Sender: TObject);
+procedure TfrmCadastro.btn_salvarClick(Sender: TObject);
 begin
   tb_usuarios.Post;
   LimparCampos;
@@ -106,12 +106,12 @@ end;
 
 //
 
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmCadastro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Form1 := nil;
+  frmCadastro := nil;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TfrmCadastro.FormCreate(Sender: TObject);
 begin
   FDConnection1.params.database := getcurrentdir+'/Assets/DBs/PRIMEIRODB.FDB';
   FDConnection1.Connected := true;
@@ -119,7 +119,7 @@ begin
   tb_usuarios.active := true;
 end;
 
-procedure TForm1.tb_usuariosBeforePost(DataSet: TDataSet);
+procedure TfrmCadastro.tb_usuariosBeforePost(DataSet: TDataSet);
 begin
   tb_usuarios.FieldByName('NOME').Value := edit_nome.Text;
   tb_usuarios.FieldByName('SOBRENOME').Value := edit_sobrenome.Text;
