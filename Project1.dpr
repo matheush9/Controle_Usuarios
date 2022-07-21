@@ -5,9 +5,9 @@ uses
   uCadastro in 'uCadastro.pas' {frmCadastro},
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   uListar in 'uListar.pas' {frmListar},
-  uDmConnexao in 'uDmConnexao.pas' {DMConexao: TDataModule},
+  uDmConexao in 'uDmConexao.pas' {DMConexao: TDataModule},
   uDmUsuarios in 'uDmUsuarios.pas' {DmUsuarios: TDataModule},
-  uDmProdutos in 'uDmProdutos.pas' {DataModule3: TDataModule};
+  uDmProdutos in 'uDmProdutos.pas' {DmProdutos: TDataModule};
 
 {$R *.res}
 
@@ -17,6 +17,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMConexao, DMConexao);
   Application.CreateForm(TDmUsuarios, DmUsuarios);
-  Application.CreateForm(TDataModule3, DataModule3);
+  Application.CreateForm(TDmProdutos, DmProdutos);
   Application.Run;
 end.

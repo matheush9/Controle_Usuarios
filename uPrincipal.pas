@@ -49,6 +49,7 @@ begin
   begin
     frmListar := TfrmListar.Create(Self);
     frmListar.ShowModal;
+    frmCadastro.Free;
   end;
 
 end;

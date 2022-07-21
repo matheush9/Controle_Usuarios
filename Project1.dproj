@@ -112,7 +112,7 @@
             <Form>frmListar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uDmConnexao.pas">
+        <DCCReference Include="uDmConexao.pas">
             <Form>DMConexao</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
@@ -123,7 +123,7 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="uDmProdutos.pas">
-            <Form>DataModule3</Form>
+            <Form>DmProdutos</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
