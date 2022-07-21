@@ -112,6 +112,21 @@
             <Form>frmListar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uDmConnexao.pas">
+            <Form>DMConexao</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uDmUsuarios.pas">
+            <Form>DmUsuarios</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uDmProdutos.pas">
+            <Form>DataModule3</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

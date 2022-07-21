@@ -12,7 +12,7 @@ uses
   Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
   Vcl.Bind.Editors, Data.Bind.Components, Vcl.StdCtrls, FireDAC.Comp.DataSet,
   Data.Bind.DBScope, Data.Bind.Controls, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.Bind.Navigator, Vcl.DBCtrls;
+  Vcl.Bind.Navigator, Vcl.DBCtrls, Vcl.Mask;
 
 type
   TfrmCadastro = class(TForm)
@@ -50,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses uPrincipal;
+uses uDmUsuarios;
 
 // procedures funcionais
 
@@ -92,7 +92,7 @@ end;
 procedure TfrmCadastro.btn_novoClick(Sender: TObject);
 begin
   LiberarCampos;
-  with frmPrincipal do
+  with DmUsuarios do
   begin
    tb_usuarios.Insert;
   end;
@@ -100,7 +100,7 @@ end;
 
 procedure TfrmCadastro.btn_salvarClick(Sender: TObject);
 begin
-  with frmPrincipal do
+  with DmUsuarios do
   begin
   tb_usuarios.Post;
   end;
@@ -113,12 +113,13 @@ end;
 
 procedure TfrmCadastro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  Action := caFree;
   frmCadastro := nil;
 end;
 
 procedure TfrmCadastro.tb_usuariosBeforePost(DataSet: TDataSet);
 begin
-  with frmPrincipal do
+  with DmUsuarios do
   begin
   tb_usuarios.FieldByName('NOME').Value := edit_nome.Text;
   tb_usuarios.FieldByName('SOBRENOME').Value := edit_sobrenome.Text;

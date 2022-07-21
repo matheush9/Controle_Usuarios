@@ -10,8 +10,8 @@ uses
 type
   TfrmListar = class(TForm)
     DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,20 +25,12 @@ implementation
 
 {$R *.dfm}
 
-uses uPrincipal;
+uses uDmUsuarios;
 
 
 procedure TfrmListar.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   frmListar := nil;
-end;
-
-procedure TfrmListar.FormCreate(Sender: TObject);
-begin
-  with frmPrincipal do
-  begin
-    DBGrid1.DataSource := DataSource1;
-  end;
 end;
 
 end.

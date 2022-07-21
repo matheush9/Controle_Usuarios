@@ -12,7 +12,6 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
   DesignSize = (
     552
     187)
@@ -46,18 +45,5 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Cadastrar Usu'#225'rios'
     TabOrder = 2
     OnClick = btn_cadastrarClick
-  end
-  object FDConnection1: TFDConnection
-    Left = 32
-    Top = 8
-  end
-  object tb_usuarios: TFDTable
-    Connection = FDConnection1
-    Left = 104
-    Top = 8
-  end
-  object DataSource1: TDataSource
-    Left = 168
-    Top = 8
   end
 end
