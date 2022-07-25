@@ -32,21 +32,45 @@ object frmListar: TfrmListar
       item
         Expanded = False
         FieldName = 'ID'
+        Width = 34
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME'
+        Width = 130
         Visible = True
       end
       item
         Expanded = False
+        FieldName = 'SOBRENOME'
+        Width = 300
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PERMISSAO'
+        Width = 120
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'IDADE'
+        Width = 34
         Visible = True
       end>
   end
   object DataSource1: TDataSource
-    DataSet = DmUsuarios.tb_usuarios
-    Left = 160
-    Top = 88
+    DataSet = FDQuery1
+    Left = 192
+    Top = 96
+  end
+  object FDQuery1: TFDQuery
+    Active = True
+    Connection = DMConexao.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM USUARIOS_2;')
+    Left = 248
+    Top = 96
   end
 end

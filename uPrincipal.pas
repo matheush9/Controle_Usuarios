@@ -38,7 +38,6 @@ begin
   begin
     frmCadastro := TfrmCadastro.Create(Self);
     frmCadastro.ShowModal;
-    frmCadastro.Free;
   end;
 
 end;
@@ -49,7 +48,6 @@ begin
   begin
     frmListar := TfrmListar.Create(Self);
     frmListar.ShowModal;
-    frmCadastro.Free;
   end;
 
 end;

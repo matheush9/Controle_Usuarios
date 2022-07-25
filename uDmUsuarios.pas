@@ -11,6 +11,11 @@ uses
 type
   TDmUsuarios = class(TDataModule)
     tb_usuarios: TFDTable;
+    tb_usuariosNOME: TStringField;
+    tb_usuariosSOBRENOME: TStringField;
+    tb_usuariosIDADE: TIntegerField;
+    tb_usuariosPERMISSAO: TStringField;
+    tb_usuariosID: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -25,7 +30,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses uDmConnexao;
+uses uDmConexao;
 
 {$R *.dfm}
 
