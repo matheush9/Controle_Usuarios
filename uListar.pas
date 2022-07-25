@@ -14,6 +14,11 @@ type
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
     FDQuery1: TFDQuery;
+    FDQuery1NOME: TStringField;
+    FDQuery1SOBRENOME: TStringField;
+    FDQuery1IDADE: TIntegerField;
+    FDQuery1PERMISSAO: TStringField;
+    FDQuery1ID: TIntegerField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }

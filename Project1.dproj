@@ -112,24 +112,16 @@
             <Form>frmListar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uDmConnexao.pas">
-            <Form>DMConexao</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="uDmUsuarios.pas">
             <Form>DmUsuarios</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-<<<<<<< HEAD
-=======
-        <DCCReference Include="uDmProdutos.pas">
-            <Form>DataModule3</Form>
+        <DCCReference Include="uDmConexao.pas">
+            <Form>DmConexao</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
->>>>>>> parent of b5c0a71 (feat: use dataModules for better use of connection between db components)
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

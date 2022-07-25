@@ -1,20 +1,20 @@
-object DMConexao: TDMConexao
+object DmConexao: TDmConexao
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
   Height = 150
   Width = 215
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'User_Name=sysdba'
-      'Password=masterkey'
       
-        'Database=C:\Users\Matheus\Documents\Embarcadero\Studio\Projects\' +
-        'Controle_Usuarios\Win32\Debug\Assets\DBs\PRIMEIRODB.FDB'
+        'Database=C:\Users\Conceito\Downloads\Nova pasta\Win32\Debug\Asse' +
+        'ts\DBs\PRIMEIRODB.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
     Connected = True
     LoginPrompt = False
-    Left = 81
+    Left = 96
     Top = 40
   end
 end

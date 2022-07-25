@@ -32,31 +32,31 @@ object frmListar: TfrmListar
       item
         Expanded = False
         FieldName = 'ID'
-        Width = 34
+        Width = 25
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME'
-        Width = 130
+        Width = 200
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'SOBRENOME'
-        Width = 300
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'PERMISSAO'
-        Width = 120
+        Width = 250
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'IDADE'
-        Width = 34
+        Width = 35
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PERMISSAO'
+        Width = 150
         Visible = True
       end>
   end
@@ -67,10 +67,35 @@ object frmListar: TfrmListar
   end
   object FDQuery1: TFDQuery
     Active = True
-    Connection = DMConexao.FDConnection1
+    Connection = DmConexao.FDConnection1
     SQL.Strings = (
       'SELECT * FROM USUARIOS_2;')
     Left = 248
     Top = 96
+    object FDQuery1ID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQuery1NOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 50
+    end
+    object FDQuery1SOBRENOME: TStringField
+      FieldName = 'SOBRENOME'
+      Origin = 'SOBRENOME'
+      Size = 100
+    end
+    object FDQuery1IDADE: TIntegerField
+      FieldName = 'IDADE'
+      Origin = 'IDADE'
+    end
+    object FDQuery1PERMISSAO: TStringField
+      FieldName = 'PERMISSAO'
+      Origin = 'PERMISSAO'
+      Size = 50
+    end
   end
 end

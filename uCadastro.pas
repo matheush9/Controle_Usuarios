@@ -50,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmUsuarios;
+uses uDmUsuarios, uDmConexao;
 
 // Procedures funcionais
 
@@ -90,7 +90,7 @@ begin
   LiberarCampos();
   with DmUsuarios do
   begin
-    tb_usuarios.insert;
+    FDTable1.insert;
   end;
 end;
 
@@ -98,7 +98,7 @@ procedure TfrmCadastro.btn_salvarClick(Sender: TObject);
 begin
   with DmUsuarios do
   begin
-    tb_usuarios.post;
+    FDTable1.post;
     LimparCampos();
   end;
 end;

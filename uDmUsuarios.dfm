@@ -1,44 +1,21 @@
 object DmUsuarios: TDmUsuarios
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
-  Height = 150
-  Width = 215
-  object tb_usuarios: TFDTable
+  Height = 220
+  Width = 298
+  object FDQuery1: TFDQuery
+    Active = True
+    Connection = DmConexao.FDConnection1
+    SQL.Strings = (
+      'select * from USUARIOS_2;')
+    Left = 144
+    Top = 32
+  end
+  object FDTable1: TFDTable
     Active = True
     IndexFieldNames = 'ID'
-    Connection = DMConexao.FDConnection1
-    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
+    Connection = DmConexao.FDConnection1
     TableName = 'USUARIOS_2'
-    Left = 88
-    Top = 32
-    object tb_usuariosID: TIntegerField
-      AutoGenerateValue = arAutoInc
-      FieldName = 'ID'
-      Origin = 'ID'
-    end
-    object tb_usuariosNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 50
-    end
-    object tb_usuariosPERMISSAO: TStringField
-      FieldName = 'PERMISSAO'
-      Origin = 'PERMISSAO'
-      Required = True
-      Size = 50
-    end
-    object tb_usuariosSOBRENOME: TStringField
-      FieldName = 'SOBRENOME'
-      Origin = 'SOBRENOME'
-      Required = True
-      Size = 100
-    end
-    object tb_usuariosIDADE: TIntegerField
-      FieldName = 'IDADE'
-      Origin = 'IDADE'
-      Required = True
-    end
+    Left = 48
+    Top = 64
   end
 end

@@ -10,13 +10,8 @@ uses
 
 type
   TDmUsuarios = class(TDataModule)
-    tb_usuarios: TFDTable;
-    tb_usuariosNOME: TStringField;
-    tb_usuariosSOBRENOME: TStringField;
-    tb_usuariosIDADE: TIntegerField;
-    tb_usuariosPERMISSAO: TStringField;
-    tb_usuariosID: TIntegerField;
-    procedure DataModuleCreate(Sender: TObject);
+    FDQuery1: TFDQuery;
+    FDTable1: TFDTable;
   private
     { Private declarations }
   public
@@ -33,10 +28,5 @@ implementation
 uses uDmConexao;
 
 {$R *.dfm}
-
-procedure TDmUsuarios.DataModuleCreate(Sender: TObject);
-begin
-  tb_usuarios.active := true;
-end;
 
 end.

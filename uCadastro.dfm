@@ -136,8 +136,8 @@ object frmCadastro: TfrmCadastro
     TabOrder = 3
   end
   object DataSource1: TDataSource
-    DataSet = DmUsuarios.tb_usuarios
-    Left = 24
-    Top = 256
+    DataSet = DmUsuarios.FDTable1
+    Left = 16
+    Top = 264
   end
 end
