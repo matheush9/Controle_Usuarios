@@ -8,10 +8,11 @@ object DMConexao: TDMConexao
       'User_Name=sysdba'
       'Password=masterkey'
       
-        'database= C:\Users\Conceito\Documents\Embarcadero\Studio\Project' +
-        's\Sistema Controle de Usu'#225'rios\Win32\Debug\Assets\DBs\PRIMEIRODB' +
-        '.FDB'
+        'Database=C:\Users\Matheus\Documents\Embarcadero\Studio\Projects\' +
+        'Controle_Usuarios\Win32\Debug\Assets\DBs\PRIMEIRODB.FDB'
       'DriverID=FB')
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    Connected = True
     LoginPrompt = False
     Left = 81
     Top = 40

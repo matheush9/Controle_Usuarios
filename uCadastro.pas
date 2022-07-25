@@ -3,7 +3,8 @@ unit uCadastro;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
@@ -16,29 +17,28 @@ uses
 
 type
   TfrmCadastro = class(TForm)
-    edit_nome: TEdit;
-    edit_sobrenome: TEdit;
-    edit_permissao: TEdit;
-    edit_idade: TEdit;
-    label_nome: TLabel;
-    label_sobrenome: TLabel;
-    label_permissao: TLabel;
-    label_idade: TLabel;
     btn_novo: TButton;
     btn_salvar: TButton;
     btn_limpar: TButton;
+    lb_nome: TLabel;
+    dbEdit_nome: TDBEdit;
+    DataSource1: TDataSource;
+    lb_permissao: TLabel;
+    dbEdit_permissao: TDBEdit;
+    lb_sobrenome: TLabel;
+    dbEdit_sobrenome: TDBEdit;
+    lb_idade: TLabel;
+    dbEdit_idade: TDBEdit;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
-    procedure tb_usuariosBeforePost(DataSet: TDataSet);
     procedure btn_limparClick(Sender: TObject);
-    procedure btn_cancelarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure LimparCampos;
     procedure BloquearCampos;
     procedure LiberarCampos;
-
   public
     { Public declarations }
   end;
@@ -52,49 +52,45 @@ implementation
 
 uses uDmUsuarios;
 
-// procedures funcionais
+// Procedures funcionais
 
 procedure TfrmCadastro.LimparCampos;
 begin
-  edit_nome.Text := EmptyStr;
-  edit_sobrenome.Text := EmptyStr;
-  edit_idade.Text := EmptyStr;
-  edit_permissao.Text := EmptyStr;
+  dbEdit_nome.Text := EmptyStr;
+  dbEdit_sobrenome.Text := EmptyStr;
+  dbEdit_permissao.Text := EmptyStr;
+  dbEdit_idade.Text := EmptyStr;
 end;
 
 procedure TfrmCadastro.BloquearCampos;
 begin
-  edit_nome.Enabled := false;
-  edit_sobrenome.Enabled := false;
-  edit_permissao.Enabled := false;
-  edit_idade.Enabled := false;
+  dbEdit_nome.enabled := false;
+  dbEdit_sobrenome.enabled := false;
+  dbEdit_permissao.enabled := false;
+  dbEdit_idade.enabled := false;
 end;
 
 procedure TfrmCadastro.LiberarCampos;
 begin
-  edit_nome.Enabled := true;
-  edit_sobrenome.Enabled := true;
-  edit_permissao.Enabled := true;
-  edit_idade.Enabled := true;
+  dbEdit_nome.enabled := true;
+  dbEdit_sobrenome.enabled := true;
+  dbEdit_permissao.enabled := true;
+  dbEdit_idade.enabled := true;
 end;
 
-// botões
-procedure TfrmCadastro.btn_cancelarClick(Sender: TObject);
-begin
-  abort();
-end;
+//
 
 procedure TfrmCadastro.btn_limparClick(Sender: TObject);
 begin
-  LimparCampos;
+  LimparCampos();
 end;
 
 procedure TfrmCadastro.btn_novoClick(Sender: TObject);
 begin
-  LiberarCampos;
+  LiberarCampos();
   with DmUsuarios do
   begin
-   tb_usuarios.Insert;
+    tb_usuarios.insert;
   end;
 end;
 
@@ -102,30 +98,19 @@ procedure TfrmCadastro.btn_salvarClick(Sender: TObject);
 begin
   with DmUsuarios do
   begin
-  tb_usuarios.Post;
+    tb_usuarios.post;
+    LimparCampos();
   end;
-  LimparCampos;
-  BloquearCampos;
-  ShowMessage('Usuário Cadastrado com sucesso!');
 end;
-
-//
 
 procedure TfrmCadastro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action := caFree;
   frmCadastro := nil;
 end;
 
-procedure TfrmCadastro.tb_usuariosBeforePost(DataSet: TDataSet);
+procedure TfrmCadastro.FormCreate(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-  tb_usuarios.FieldByName('NOME').Value := edit_nome.Text;
-  tb_usuarios.FieldByName('SOBRENOME').Value := edit_sobrenome.Text;
-  tb_usuarios.FieldByName('IDADE').Value := edit_idade.Text;
-  tb_usuarios.FieldByName('PERMISSAO').Value := edit_permissao.Text;
-  end;
+  BloquearCampos();
 end;
 
 end.
