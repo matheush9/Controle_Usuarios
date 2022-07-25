@@ -1,0 +1,13 @@
+﻿[]
+Coordinates=370,0,70,51
+Visible=True
+
+[btn_novo]
+Coordinates=130,80,60,51
+
+[btn_salvar]
+Coordinates=220,80,65,51
+
+[btn_limpar]
+Coordinates=130,220,69,51
+
