@@ -41,6 +41,11 @@ type
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_excluirClick(Sender: TObject);
+    procedure btn_voltarClick(Sender: TObject);
+    procedure btn_avançarClick(Sender: TObject);
+    procedure btn_cancelarClick(Sender: TObject);
+    procedure btn_editarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -59,12 +64,41 @@ uses uDmConexao, uDmUsuarios;
 
 //
 
+procedure TfrmCrud.btn_avançarClick(Sender: TObject);
+begin
+  FDQuery1.Next;
+end;
+
+procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
+begin
+  with DmUsuarios do
+  begin
+    FDQuery1.Cancel;
+  end;
+end;
+
+procedure TfrmCrud.btn_editarClick(Sender: TObject);
+begin
+  FDQuery1.Insert;
+end;
+
+procedure TfrmCrud.btn_excluirClick(Sender: TObject);
+begin
+  with DmUsuarios do
+  begin
+    Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
+    begin
+      FDQuery1.Delete;
+    end;
+  end;
+end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
   with DmUsuarios do
   begin
-    FDTable1.post;
+    FDQuery1.post;
+    Showmessage('Registro Gravado com sucesso!');
   end;
 end;
 
@@ -72,8 +106,13 @@ procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
   with DmUsuarios do
   begin
-    FDTable1.insert;
+    FDQuery1.Append;
   end;
+end;
+
+procedure TfrmCrud.btn_voltarClick(Sender: TObject);
+begin
+  FDQuery1.Prior;
 end;
 
 procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);

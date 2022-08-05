@@ -419,6 +419,7 @@
           Layout = blGlyphBottom
           Margin = 4
           Spacing = 2
+          OnClick = btn_editarClick
           ExplicitLeft = 47
           ExplicitTop = 3
           ExplicitHeight = 48
@@ -544,9 +545,8 @@
           Layout = blGlyphBottom
           Margin = 4
           Spacing = 2
-          ExplicitLeft = 135
+          OnClick = btn_cancelarClick
           ExplicitTop = 3
-          ExplicitHeight = 48
         end
         object btn_excluir: TSpeedButton
           AlignWithMargins = True
@@ -669,6 +669,7 @@
           Layout = blGlyphBottom
           Margin = 4
           Spacing = 2
+          OnClick = btn_excluirClick
           ExplicitLeft = 179
           ExplicitTop = 3
           ExplicitHeight = 48
@@ -794,6 +795,7 @@
           Layout = blGlyphBottom
           Margin = 4
           Spacing = 2
+          OnClick = btn_voltarClick
           ExplicitLeft = 223
           ExplicitTop = 3
           ExplicitHeight = 48
@@ -919,6 +921,7 @@
           Layout = blGlyphBottom
           Margin = 4
           Spacing = 2
+          OnClick = btn_avançarClick
           ExplicitLeft = 267
           ExplicitTop = 3
           ExplicitHeight = 48
@@ -947,10 +950,11 @@
   object DataSource1: TDataSource
     AutoEdit = False
     DataSet = FDQuery1
-    Left = 344
+    Left = 336
     Top = 344
   end
   object FDQuery1: TFDQuery
+    Active = True
     Connection = DmConexao.FDConnection1
     SQL.Strings = (
       'select * from USUARIOS_2;')

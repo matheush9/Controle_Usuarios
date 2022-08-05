@@ -7,8 +7,8 @@ object DmConexao: TDmConexao
       'User_Name=sysdba'
       'Password=masterkey'
       
-        'Database=C:\Users\Conceito\Downloads\Sistema Controle\Win32\Debu' +
-        'g\Assets\DBs\PRIMEIRODB.FDB'
+        'Database=C:\Users\Conceito\Desktop\Sistema Controle\Win32\Debug\' +
+        'Assets\DBs\PRIMEIRODB.FDB'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
