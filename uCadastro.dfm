@@ -8,14 +8,16 @@
   inherited PageControl1: TPageControl
     Width = 566
     Height = 512
+    ExplicitWidth = 566
+    ExplicitHeight = 512
     inherited TabSheet1: TTabSheet
       ExplicitWidth = 558
       ExplicitHeight = 484
-      inherited Panel1: TPanel
+      inherited MainPanel: TPanel
         Width = 558
         Height = 429
-        ExplicitLeft = -16
-        ExplicitTop = 52
+        ExplicitWidth = 558
+        ExplicitHeight = 429
         object lb_nome: TLabel
           Left = 8
           Top = 24
@@ -76,7 +78,7 @@
           Left = 8
           Top = 44
           Width = 350
-          Height = 25
+          Height = 21
           DataField = 'NOME'
           DataSource = DataSource1
           TabOrder = 0
@@ -85,7 +87,7 @@
           Left = 8
           Top = 93
           Width = 350
-          Height = 25
+          Height = 21
           DataField = 'SOBRENOME'
           DataSource = DataSource1
           TabOrder = 1
@@ -94,7 +96,7 @@
           Left = 8
           Top = 142
           Width = 350
-          Height = 25
+          Height = 21
           DataField = 'IDADE'
           DataSource = DataSource1
           TabOrder = 2
@@ -103,13 +105,13 @@
           Left = 8
           Top = 191
           Width = 350
-          Height = 25
+          Height = 21
           DataField = 'PERMISSAO'
           DataSource = DataSource1
           TabOrder = 3
         end
       end
-      inherited Panel2: TPanel
+      inherited CrudBarPanel: TPanel
         Width = 558
         inherited btn_avançar: TSpeedButton
           ExplicitLeft = 268
