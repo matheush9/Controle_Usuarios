@@ -24,12 +24,6 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     DBGrid1: TDBGrid;
-    FDQuery1: TFDQuery;
-    FDQuery1NOME: TStringField;
-    FDQuery1SOBRENOME: TStringField;
-    FDQuery1IDADE: TIntegerField;
-    FDQuery1PERMISSAO: TStringField;
-    FDQuery1ID: TIntegerField;
     CrudBarPanel: TPanel;
     btn_incluir: TSpeedButton;
     btn_gravar: TSpeedButton;
@@ -66,7 +60,10 @@ uses uDmConexao, uDmUsuarios;
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
-  FDQuery1.Next;
+  with DmUsuarios do
+  begin
+    FDQuery1.Next;
+  end;
 end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
@@ -79,14 +76,18 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
-  FDQuery1.Insert;
+  with DmUsuarios do
+  begin
+    FDQuery1.Insert;
+  end;
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
 begin
   with DmUsuarios do
   begin
-    Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
+    Application.MessageBox('Você realmente deseja excluir esse registro?',
+      'Exclusão de registro', MB_YESNO);
     begin
       FDQuery1.Delete;
     end;
@@ -112,12 +113,15 @@ end;
 
 procedure TfrmCrud.btn_voltarClick(Sender: TObject);
 begin
-  FDQuery1.Prior;
+  with DmUsuarios do
+  begin
+    FDQuery1.Prior;
+  end;
 end;
 
 procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   frmCrud := nil;
+  frmCrud := nil;
 end;
 
 end.

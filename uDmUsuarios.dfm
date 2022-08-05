@@ -10,4 +10,12 @@ object DmUsuarios: TDmUsuarios
     Left = 88
     Top = 32
   end
+  object FDQuery1: TFDQuery
+    Active = True
+    Connection = DmConexao.FDConnection1
+    SQL.Strings = (
+      'select * from USUARIOS_2;')
+    Left = 144
+    Top = 32
+  end
 end

@@ -17,9 +17,10 @@
         Top = 57
         Width = 558
         Height = 427
+        ExplicitTop = 57
         ExplicitWidth = 558
-        ExplicitHeight = 429
-        object lb_nome: TLabel [0]
+        ExplicitHeight = 427
+        object lb_nome: TLabel
           Left = 8
           Top = 24
           Width = 35
@@ -33,7 +34,7 @@
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_sobrenome: TLabel [1]
+        object lb_sobrenome: TLabel
           Left = 8
           Top = 75
           Width = 76
@@ -47,7 +48,7 @@
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_idade: TLabel [2]
+        object lb_idade: TLabel
           Left = 8
           Top = 124
           Width = 40
@@ -61,7 +62,7 @@
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_permissao: TLabel [3]
+        object lb_permissao: TLabel
           Left = 8
           Top = 173
           Width = 75
@@ -75,7 +76,7 @@
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object dbEdit_nome: TDBEdit [4]
+        object dbEdit_nome: TDBEdit
           Left = 8
           Top = 44
           Width = 350
@@ -84,7 +85,7 @@
           DataSource = DataSource1
           TabOrder = 0
         end
-        object dbEdit_sobrenome: TDBEdit [5]
+        object dbEdit_sobrenome: TDBEdit
           Left = 8
           Top = 93
           Width = 350
@@ -93,7 +94,7 @@
           DataSource = DataSource1
           TabOrder = 1
         end
-        object dbEdit_idade: TDBEdit [6]
+        object dbEdit_idade: TDBEdit
           Left = 8
           Top = 142
           Width = 350
@@ -102,7 +103,7 @@
           DataSource = DataSource1
           TabOrder = 2
         end
-        object dbEdit_permissao: TDBEdit [7]
+        object dbEdit_permissao: TDBEdit
           Left = 8
           Top = 191
           Width = 350
@@ -110,14 +111,6 @@
           DataField = 'PERMISSAO'
           DataSource = DataSource1
           TabOrder = 3
-        end
-        inherited DBNavigator1: TDBNavigator
-          Left = 8
-          Top = 312
-          Hints.Strings = ()
-          TabOrder = 4
-          ExplicitLeft = 8
-          ExplicitTop = 312
         end
       end
       inherited CrudBarPanel: TPanel
@@ -127,21 +120,27 @@
         ExplicitHeight = 57
         inherited btn_incluir: TSpeedButton
           Height = 49
+          ExplicitHeight = 49
         end
         inherited btn_gravar: TSpeedButton
           Height = 49
+          ExplicitHeight = 49
         end
         inherited btn_editar: TSpeedButton
           Height = 49
+          ExplicitHeight = 49
         end
         inherited btn_cancelar: TSpeedButton
           Height = 49
+          ExplicitHeight = 49
         end
         inherited btn_excluir: TSpeedButton
           Height = 49
+          ExplicitHeight = 49
         end
         inherited btn_voltar: TSpeedButton
           Height = 49
+          ExplicitHeight = 49
         end
         inherited btn_avançar: TSpeedButton
           Height = 49

@@ -944,46 +944,43 @@
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Width = 150
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'SOBRENOME'
+            Width = 200
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'IDADE'
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PERMISSAO'
+            Width = 150
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID'
+            Visible = True
+          end>
       end
     end
   end
   object DataSource1: TDataSource
     AutoEdit = False
-    DataSet = FDQuery1
-    Left = 336
-    Top = 344
-  end
-  object FDQuery1: TFDQuery
-    Active = True
-    Connection = DmConexao.FDConnection1
-    SQL.Strings = (
-      'select * from USUARIOS_2;')
-    Left = 396
-    Top = 344
-    object FDQuery1NOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Size = 50
-    end
-    object FDQuery1SOBRENOME: TStringField
-      FieldName = 'SOBRENOME'
-      Origin = 'SOBRENOME'
-      Size = 100
-    end
-    object FDQuery1IDADE: TIntegerField
-      FieldName = 'IDADE'
-      Origin = 'IDADE'
-    end
-    object FDQuery1PERMISSAO: TStringField
-      FieldName = 'PERMISSAO'
-      Origin = 'PERMISSAO'
-      Size = 50
-    end
-    object FDQuery1ID: TIntegerField
-      FieldName = 'ID'
-      Origin = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
+    DataSet = DmUsuarios.FDQuery1
+    Left = 496
+    Top = 88
   end
 end

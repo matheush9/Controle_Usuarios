@@ -11,6 +11,7 @@ uses
 type
   TDmUsuarios = class(TDataModule)
     FDTable1: TFDTable;
+    FDQuery1: TFDQuery;
   private
     { Private declarations }
   public
