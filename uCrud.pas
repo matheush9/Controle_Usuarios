@@ -43,6 +43,8 @@ type
 
   private
     { Private declarations }
+    procedure BloquearCampos;
+    procedure LiberarCampos;
   public
     { Public declarations }
   end;
@@ -55,6 +57,26 @@ implementation
 {$R *.dfm}
 
 uses uDmConexao, uDmUsuarios;
+
+// Procedures Auxiliares
+
+procedure TfrmCrud.BloquearCampos;
+begin
+  btn_editar.Enabled := false;
+  btn_incluir.Enabled := false;
+  btn_avançar.Enabled := false;
+  btn_voltar.Enabled := false;
+  btn_excluir.Enabled := false;
+end;
+
+procedure TfrmCrud.LiberarCampos;
+begin
+  btn_editar.Enabled := true;
+  btn_incluir.Enabled := true;
+  btn_avançar.Enabled := true;
+  btn_voltar.Enabled := true;
+  btn_excluir.Enabled := true;
+end;
 
 //
 
@@ -72,6 +94,7 @@ begin
   begin
     FDQuery1.Cancel;
   end;
+  LiberarCampos;
 end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
@@ -80,6 +103,7 @@ begin
   begin
     FDQuery1.Insert;
   end;
+  BloquearCampos;
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
@@ -99,8 +123,9 @@ begin
   with DmUsuarios do
   begin
     FDQuery1.post;
-    Showmessage('Registro Gravado com sucesso!');
   end;
+  Showmessage('Registro Gravado com sucesso!');
+  LiberarCampos;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
@@ -109,6 +134,7 @@ begin
   begin
     FDQuery1.Append;
   end;
+  BloquearCampos;
 end;
 
 procedure TfrmCrud.btn_voltarClick(Sender: TObject);
