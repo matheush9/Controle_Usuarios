@@ -4,11 +4,11 @@ object DmConexao: TDmConexao
   Width = 215
   object FDConnection1: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Conceito\Downloads\Nova pasta\Win32\Debug\Asse' +
-        'ts\DBs\PRIMEIRODB.FDB'
-      'User_Name=SYSDBA'
+      'User_Name=sysdba'
       'Password=masterkey'
+      
+        'Database=C:\Users\Matheus\Documents\Embarcadero\Studio\Projects\' +
+        'Sistema Controle\Win32\Debug\Assets\DBs\PRIMEIRODB.FDB'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False

@@ -104,14 +104,6 @@
             <Form>frmCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uPrincipal.pas">
-            <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="uListar.pas">
-            <Form>frmListar</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="uDmUsuarios.pas">
             <Form>DmUsuarios</Form>
             <FormType>dfm</FormType>

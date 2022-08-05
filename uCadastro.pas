@@ -13,27 +13,44 @@ uses
   Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
   Vcl.Bind.Editors, Data.Bind.Components, Vcl.StdCtrls, FireDAC.Comp.DataSet,
   Data.Bind.DBScope, Data.Bind.Controls, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.Bind.Navigator, Vcl.DBCtrls, Vcl.Mask;
+  Vcl.Bind.Navigator, Vcl.DBCtrls, Vcl.Mask, Vcl.ToolWin, Vcl.ActnMan,
+  Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids;
 
 type
   TfrmCadastro = class(TForm)
-    btn_novo: TButton;
-    btn_salvar: TButton;
-    btn_limpar: TButton;
-    lb_nome: TLabel;
-    dbEdit_nome: TDBEdit;
+    Panel1: TPanel;
     DataSource1: TDataSource;
-    lb_permissao: TLabel;
+    dbEdit_idade: TDBEdit;
+    dbEdit_nome: TDBEdit;
     dbEdit_permissao: TDBEdit;
-    lb_sobrenome: TLabel;
     dbEdit_sobrenome: TDBEdit;
     lb_idade: TLabel;
-    dbEdit_idade: TDBEdit;
+    lb_nome: TLabel;
+    lb_permissao: TLabel;
+    lb_sobrenome: TLabel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    DBGrid1: TDBGrid;
+    FDQuery1: TFDQuery;
+    FDQuery1NOME: TStringField;
+    FDQuery1SOBRENOME: TStringField;
+    FDQuery1IDADE: TIntegerField;
+    FDQuery1PERMISSAO: TStringField;
+    FDQuery1ID: TIntegerField;
+    ToolBar1: TToolBar;
+    btn_avançar: TSpeedButton;
+    btn_cancelar: TSpeedButton;
+    btn_editar: TSpeedButton;
+    btn_excluir: TSpeedButton;
+    btn_gravar: TSpeedButton;
+    btn_incluir: TSpeedButton;
+    btn_voltar: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure btn_novoClick(Sender: TObject);
-    procedure btn_salvarClick(Sender: TObject);
-    procedure btn_limparClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btn_incluirClick(Sender: TObject);
+    procedure btn_gravarClick(Sender: TObject);
+
   private
     { Private declarations }
     procedure LimparCampos;
@@ -79,27 +96,21 @@ begin
 end;
 
 //
-
-procedure TfrmCadastro.btn_limparClick(Sender: TObject);
-begin
-  LimparCampos();
-end;
-
-procedure TfrmCadastro.btn_novoClick(Sender: TObject);
-begin
-  LiberarCampos();
-  with DmUsuarios do
-  begin
-    FDTable1.insert;
-  end;
-end;
-
-procedure TfrmCadastro.btn_salvarClick(Sender: TObject);
+procedure TfrmCadastro.btn_gravarClick(Sender: TObject);
 begin
   with DmUsuarios do
   begin
     FDTable1.post;
     LimparCampos();
+  end;
+end;
+
+procedure TfrmCadastro.btn_incluirClick(Sender: TObject);
+begin
+  LiberarCampos();
+  with DmUsuarios do
+  begin
+    FDTable1.insert;
   end;
 end;
 
