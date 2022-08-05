@@ -100,10 +100,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uCadastro.pas">
-            <Form>frmCadastro</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="uDmUsuarios.pas">
             <Form>DmUsuarios</Form>
             <FormType>dfm</FormType>
@@ -113,6 +109,14 @@
             <Form>DmConexao</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uCrud.pas">
+            <Form>frmCrud</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uCadastro.pas">
+            <Form>frmCadastro</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

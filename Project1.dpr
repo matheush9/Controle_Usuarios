@@ -1,9 +1,10 @@
 program Project1;
 uses
   Vcl.Forms,
-  uCadastro in 'uCadastro.pas' {frmCadastro},
   uDmUsuarios in 'uDmUsuarios.pas' {DmUsuarios: TDataModule},
-  uDmConexao in 'uDmConexao.pas' {DmConexao: TDataModule};
+  uDmConexao in 'uDmConexao.pas' {DmConexao: TDataModule},
+  uCrud in 'uCrud.pas' {frmCrud},
+  uCadastro in 'uCadastro.pas' {frmCadastro};
 
 {$R *.res}
 begin
