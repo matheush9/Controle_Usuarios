@@ -13,18 +13,21 @@ uses
 type
   TfrmCadastro = class(TfrmCrud)
     lb_nome: TLabel;
-    dbEdit_nome: TDBEdit;
-    lb_sobrenome: TLabel;
-    dbEdit_sobrenome: TDBEdit;
-    lb_idade: TLabel;
-    dbEdit_idade: TDBEdit;
+    lb_telefone: TLabel;
+    dbEdit_telefone: TDBEdit;
+    lb_endereco: TLabel;
+    dbEdit_endereco: TDBEdit;
+    lb_uf: TLabel;
+    dbEdit_uf: TDBEdit;
+    lb_cidade: TLabel;
+    dbEdit_cidade: TDBEdit;
+    lb_cargo: TLabel;
+    dbEdit_cargo: TDBEdit;
     lb_permissao: TLabel;
     dbEdit_permissao: TDBEdit;
+    dbEdit_nome: TDBEdit;
   private
     { Private declarations }
-    procedure LimparCampos;
-    procedure BloquearCampos;
-    procedure LiberarCampos;
   public
     { Public declarations }
   end;
@@ -39,30 +42,6 @@ implementation
 uses uDmUsuarios, uDmConexao;
 
 // Procedures funcionais
-
-procedure TfrmCadastro.LimparCampos;
-begin
-  dbEdit_nome.Text := EmptyStr;
-  dbEdit_sobrenome.Text := EmptyStr;
-  dbEdit_permissao.Text := EmptyStr;
-  dbEdit_idade.Text := EmptyStr;
-end;
-
-procedure TfrmCadastro.BloquearCampos;
-begin
-  dbEdit_nome.enabled := false;
-  dbEdit_sobrenome.enabled := false;
-  dbEdit_permissao.enabled := false;
-  dbEdit_idade.enabled := false;
-end;
-
-procedure TfrmCadastro.LiberarCampos;
-begin
-  dbEdit_nome.enabled := true;
-  dbEdit_sobrenome.enabled := true;
-  dbEdit_permissao.enabled := true;
-  dbEdit_idade.enabled := true;
-end;
 
 //
 

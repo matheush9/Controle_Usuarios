@@ -8,7 +8,7 @@ object DmConexao: TDmConexao
       'Password=masterkey'
       
         'Database=C:\Users\Conceito\Desktop\Sistema Controle\Win32\Debug\' +
-        'Assets\DBs\PRIMEIRODB.FDB'
+        'Assets\DBs\PESSOASDB.FDB'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
