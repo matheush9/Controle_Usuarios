@@ -4,7 +4,7 @@
         <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -118,14 +118,14 @@
             <Form>frmControleUsuarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uControleParceiros.pas">
-            <Form>frmControleParceiros</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="uDmParceiros.pas">
             <Form>DmParceiros</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uControleParceiros.pas">
+            <Form>frmControleParceiros</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

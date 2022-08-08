@@ -21,7 +21,7 @@
     Top = 0
     Width = 555
     Height = 498
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -937,7 +937,7 @@
         Width = 547
         Height = 470
         Align = alClient
-        DataSource = DataSource1
+        DataSource = DataSourceCRUD
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -977,10 +977,10 @@
       end
     end
   end
-  object DataSource1: TDataSource
+  object DataSourceCRUD: TDataSource
     AutoEdit = False
     DataSet = DmUsuarios.FDQuery1
-    Left = 496
-    Top = 88
+    Left = 448
+    Top = 152
   end
 end

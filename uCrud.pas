@@ -19,7 +19,7 @@ uses
 type
   TfrmCrud = class(TForm)
     MainPanel: TPanel;
-    DataSource1: TDataSource;
+    DataSourceCRUD: TDataSource;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
@@ -56,8 +56,6 @@ implementation
 
 {$R *.dfm}
 
-uses uDmConexao, uDmUsuarios;
-
 // Procedures Auxiliares
 
 procedure TfrmCrud.BloquearCampos;
@@ -82,67 +80,43 @@ end;
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    FDQuery1.Next;
-  end;
+  DataSourceCRUD.DataSet.Next;
 end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    FDQuery1.Cancel;
-  end;
+  DataSourceCRUD.DataSet.Cancel;
   LiberarCampos;
 end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    FDQuery1.Insert;
-  end;
+  DataSourceCRUD.DataSet.Insert;
   BloquearCampos;
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    Application.MessageBox('Você realmente deseja excluir esse registro?',
-      'Exclusão de registro', MB_YESNO);
-    begin
-      FDQuery1.Delete;
-    end;
-  end;
+  Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
+   DataSourceCRUD.DataSet.Delete;
 end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    FDQuery1.post;
-  end;
+  DataSourceCRUD.DataSet.post;
   Showmessage('Registro Gravado com sucesso!');
   LiberarCampos;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    FDQuery1.Append;
-  end;
+  DataSourceCRUD.DataSet.Append;
   BloquearCampos;
 end;
 
 procedure TfrmCrud.btn_voltarClick(Sender: TObject);
 begin
-  with DmUsuarios do
-  begin
-    FDQuery1.Prior;
-  end;
+  DataSourceCRUD.DataSet.prior;
 end;
 
 procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -5,8 +5,8 @@ uses
   uDmConexao in 'uDmConexao.pas' {DmConexao: TDataModule},
   uCrud in 'uCrud.pas' {frmCrud},
   uControleUsuarios in 'uControleUsuarios.pas' {frmControleUsuarios},
-  uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros},
-  uDmParceiros in 'uDmParceiros.pas' {DmParceiros: TDataModule};
+  uDmParceiros in 'uDmParceiros.pas' {DmParceiros: TDataModule},
+  uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros};
 
 {$R *.res}
 begin

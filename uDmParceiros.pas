@@ -10,23 +10,14 @@ uses
 
 type
   TDmParceiros = class(TDataModule)
-    FDTable1: TFDTable;
     FDQuery1: TFDQuery;
-    FDTable1NOME: TStringField;
-    FDTable1TELEFONE: TIntegerField;
-    FDTable1ENDERECO: TStringField;
-    FDTable1UF: TStringField;
-    FDTable1CIDADE: TStringField;
-    FDTable1CPF: TIntegerField;
-    FDTable1IDADE: TIntegerField;
-    FDTable1PARCEIROS_ID: TIntegerField;
+    FDTable1: TFDTable;
     FDQuery1NOME: TStringField;
     FDQuery1TELEFONE: TIntegerField;
-    FDQuery1ENDERECO: TStringField;
-    FDQuery1UF: TStringField;
     FDQuery1CIDADE: TStringField;
+    FDQuery1UF: TStringField;
+    FDQuery1ENDERECO: TStringField;
     FDQuery1CPF: TIntegerField;
-    FDQuery1IDADE: TIntegerField;
     FDQuery1PARCEIROS_ID: TIntegerField;
   private
     { Private declarations }
