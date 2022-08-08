@@ -1,4 +1,4 @@
-unit uCadastro;
+unit uControleUsuarios;
 
 interface
 
@@ -11,7 +11,7 @@ uses
   Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
-  TfrmCadastro = class(TfrmCrud)
+  TfrmControleUsuarios = class(TfrmCrud)
     lb_nome: TLabel;
     lb_telefone: TLabel;
     dbEdit_telefone: TDBEdit;
@@ -33,7 +33,7 @@ type
   end;
 
 var
-  frmCadastro: TfrmCadastro;
+  frmControleUsuarios: TfrmControleUsuarios;
 
 implementation
 

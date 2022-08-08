@@ -4,7 +4,9 @@ uses
   uDmUsuarios in 'uDmUsuarios.pas' {DmUsuarios: TDataModule},
   uDmConexao in 'uDmConexao.pas' {DmConexao: TDataModule},
   uCrud in 'uCrud.pas' {frmCrud},
-  uCadastro in 'uCadastro.pas' {frmCadastro};
+  uControleUsuarios in 'uControleUsuarios.pas' {frmControleUsuarios},
+  uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros},
+  uDmParceiros in 'uDmParceiros.pas' {DmParceiros: TDataModule};
 
 {$R *.res}
 begin
@@ -12,6 +14,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmConexao, DmConexao);
   Application.CreateForm(TDmUsuarios, DmUsuarios);
-  Application.CreateForm(TfrmCadastro, frmCadastro);
+  Application.CreateForm(TfrmControleUsuarios, frmControleUsuarios);
   Application.Run;
 end.

@@ -114,9 +114,18 @@
             <Form>frmCrud</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uCadastro.pas">
-            <Form>frmCadastro</Form>
+        <DCCReference Include="uControleUsuarios.pas">
+            <Form>frmControleUsuarios</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uControleParceiros.pas">
+            <Form>frmControleParceiros</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uDmParceiros.pas">
+            <Form>DmParceiros</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
