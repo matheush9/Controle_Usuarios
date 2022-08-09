@@ -184,31 +184,37 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           item
             Expanded = False
             FieldName = 'ENDERECO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'UF'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CIDADE'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CARGO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PERMISSAO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'USUARIOS_ID'
+            Width = 64
             Visible = True
           end>
       end

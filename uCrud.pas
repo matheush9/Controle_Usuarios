@@ -50,6 +50,7 @@ type
     procedure btn_editarClick(Sender: TObject);
     procedure CadastrodeParceirosClick(Sender: TObject);
     procedure CadastrodeUsuariosClick(Sender: TObject);
+    procedure btn_consultarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -102,6 +103,11 @@ begin
   LiberarCampos;
 end;
 
+procedure TfrmCrud.btn_consultarClick(Sender: TObject);
+begin
+//
+end;
+
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.Insert;
@@ -111,7 +117,7 @@ end;
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
 begin
   Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
-   DataSourceCRUD.DataSet.Delete;
+  DataSourceCRUD.DataSet.Delete;
 end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
@@ -123,6 +129,7 @@ end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
+  DataSourceCRUD.DataSet.Open;
   DataSourceCRUD.DataSet.Append;
   BloquearCampos;
 end;
@@ -131,6 +138,8 @@ procedure TfrmCrud.btn_voltarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.prior;
 end;
+
+//
 
 procedure TfrmCrud.CadastrodeParceirosClick(Sender: TObject);
 begin

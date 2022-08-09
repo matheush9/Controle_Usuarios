@@ -38,6 +38,7 @@ implementation
 
 uses uDmParceiros;
 
+
 procedure TfrmControleParceiros.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin

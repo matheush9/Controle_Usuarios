@@ -25,6 +25,7 @@ type
     lb_permissao: TLabel;
     dbEdit_permissao: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_consultarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +38,15 @@ var
 implementation
 
 {$R *.dfm}
+
+uses uDmUsuarios;
+
+procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
+begin
+  inherited;
+  DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
+  DmUsuarios.FDQuery1.open;
+end;
 
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;
   var Action: TCloseAction);

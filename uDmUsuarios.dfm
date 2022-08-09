@@ -11,10 +11,9 @@ object DmUsuarios: TDmUsuarios
     Top = 32
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = DmConexao.FDConnection1
     SQL.Strings = (
-      'SELECT * FROM USUARIOS;')
+      'SELECT * FROM USUARIOS WHERE USUARIOS_ID = 0;')
     Left = 152
     Top = 32
     object FDQuery1NOME: TStringField

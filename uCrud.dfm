@@ -979,6 +979,7 @@
       Layout = blGlyphBottom
       Margin = 4
       Spacing = 2
+      OnClick = btn_consultarClick
       ExplicitTop = 3
     end
     object btn_avançar: TSpeedButton
