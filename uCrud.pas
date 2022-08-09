@@ -26,8 +26,8 @@ type
     DBGrid1: TDBGrid;
     MainMenu1: TMainMenu;
     Cadastro1: TMenuItem;
-    CadastrodeParceiros1: TMenuItem;
-    CadastrodeParceiros2: TMenuItem;
+    CadastrodeParceiros: TMenuItem;
+    CadastrodeUsuarios: TMenuItem;
     Sistema1: TMenuItem;
     Ajuda1: TMenuItem;
     Sobre1: TMenuItem;
@@ -38,6 +38,7 @@ type
     btn_cancelar: TSpeedButton;
     btn_excluir: TSpeedButton;
     btn_voltar: TSpeedButton;
+    btn_consultar: TSpeedButton;
     btn_avançar: TSpeedButton;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
@@ -47,6 +48,8 @@ type
     procedure btn_avançarClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
     procedure btn_editarClick(Sender: TObject);
+    procedure CadastrodeParceirosClick(Sender: TObject);
+    procedure CadastrodeUsuariosClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -62,6 +65,9 @@ var
 implementation
 
 {$R *.dfm}
+
+uses uControleParceiros, uControleUsuarios;
+
 
 // Procedures Auxiliares
 
@@ -124,6 +130,24 @@ end;
 procedure TfrmCrud.btn_voltarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.prior;
+end;
+
+procedure TfrmCrud.CadastrodeParceirosClick(Sender: TObject);
+begin
+  if frmControleParceiros = nil then
+  begin
+    frmControleParceiros := TfrmControleParceiros.Create(Self);
+    frmControleParceiros.Show;
+  end;
+end;
+
+procedure TfrmCrud.CadastrodeUsuariosClick(Sender: TObject);
+begin
+  if frmControleUsuarios = nil then
+  begin
+    frmControleUsuarios := TfrmControleUsuarios.Create(Self);
+    frmControleUsuarios.Show;
+  end;
 end;
 
 procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);
