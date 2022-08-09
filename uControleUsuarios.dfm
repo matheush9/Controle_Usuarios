@@ -3,7 +3,6 @@ inherited frmControleUsuarios: TfrmControleUsuarios
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = TabSheet1
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
         object Label1: TLabel
@@ -108,7 +107,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 9
           Top = 34
           Width = 400
-          Height = 25
+          Height = 21
           DataField = 'NOME'
           DataSource = DataSourceCRUD
           TabOrder = 0
@@ -117,7 +116,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 9
           Top = 87
           Width = 134
-          Height = 25
+          Height = 21
           DataField = 'TELEFONE'
           DataSource = DataSourceCRUD
           TabOrder = 1
@@ -126,7 +125,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 9
           Top = 140
           Width = 400
-          Height = 25
+          Height = 21
           DataField = 'ENDERECO'
           DataSource = DataSourceCRUD
           TabOrder = 2
@@ -135,7 +134,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 164
           Top = 87
           Width = 30
-          Height = 25
+          Height = 21
           DataField = 'UF'
           DataSource = DataSourceCRUD
           TabOrder = 3
@@ -144,7 +143,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 9
           Top = 193
           Width = 200
-          Height = 25
+          Height = 21
           DataField = 'CIDADE'
           DataSource = DataSourceCRUD
           TabOrder = 4
@@ -153,7 +152,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 9
           Top = 246
           Width = 200
-          Height = 25
+          Height = 21
           DataField = 'CARGO'
           DataSource = DataSourceCRUD
           TabOrder = 5
@@ -162,7 +161,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           Left = 9
           Top = 299
           Width = 150
-          Height = 25
+          Height = 21
           DataField = 'PERMISSAO'
           DataSource = DataSourceCRUD
           TabOrder = 6

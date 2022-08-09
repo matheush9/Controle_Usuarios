@@ -14,7 +14,7 @@ uses
   Vcl.Bind.Editors, Data.Bind.Components, Vcl.StdCtrls, FireDAC.Comp.DataSet,
   Data.Bind.DBScope, Data.Bind.Controls, Vcl.ExtCtrls, Vcl.Buttons,
   Vcl.Bind.Navigator, Vcl.DBCtrls, Vcl.Mask, Vcl.ToolWin, Vcl.ActnMan,
-  Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids;
+  Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Menus;
 
 type
   TfrmCrud = class(TForm)
@@ -24,6 +24,13 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     DBGrid1: TDBGrid;
+    MainMenu1: TMainMenu;
+    Cadastro1: TMenuItem;
+    CadastrodeParceiros1: TMenuItem;
+    CadastrodeParceiros2: TMenuItem;
+    Sistema1: TMenuItem;
+    Ajuda1: TMenuItem;
+    Sobre1: TMenuItem;
     CrudBarPanel_Dados: TPanel;
     btn_incluir: TSpeedButton;
     btn_gravar: TSpeedButton;
@@ -32,14 +39,6 @@ type
     btn_excluir: TSpeedButton;
     btn_voltar: TSpeedButton;
     btn_avançar: TSpeedButton;
-    CrudBarPanel_Consulta: TPanel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -99,7 +98,6 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
-  TabSheet1.show;
   DataSourceCRUD.DataSet.Insert;
   BloquearCampos;
 end;
@@ -119,7 +117,6 @@ end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
-  TabSheet1.show;
   DataSourceCRUD.DataSet.Append;
   BloquearCampos;
 end;
