@@ -24,7 +24,7 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     DBGrid1: TDBGrid;
-    CrudBarPanel: TPanel;
+    CrudBarPanel_Dados: TPanel;
     btn_incluir: TSpeedButton;
     btn_gravar: TSpeedButton;
     btn_editar: TSpeedButton;
@@ -32,6 +32,14 @@ type
     btn_excluir: TSpeedButton;
     btn_voltar: TSpeedButton;
     btn_avançar: TSpeedButton;
+    CrudBarPanel_Consulta: TPanel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -91,6 +99,7 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
+  TabSheet1.show;
   DataSourceCRUD.DataSet.Insert;
   BloquearCampos;
 end;
@@ -110,6 +119,7 @@ end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
+  TabSheet1.show;
   DataSourceCRUD.DataSet.Append;
   BloquearCampos;
 end;
