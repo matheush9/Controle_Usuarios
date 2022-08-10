@@ -50,6 +50,7 @@ type
     procedure CadastrodeParceirosClick(Sender: TObject);
     procedure CadastrodeUsuariosClick(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
 
   private
     { Private declarations }
@@ -61,6 +62,7 @@ type
 
 var
   frmCrud: TfrmCrud;
+  MainCaption: string = 'UNL Inteligente - ';
 
 implementation
 
@@ -158,6 +160,11 @@ begin
     frmControleUsuarios := TfrmControleUsuarios.Create(Self);
     frmControleUsuarios.Show;
   end;
+end;
+
+procedure TfrmCrud.FormCreate(Sender: TObject);
+begin
+  Caption := MainCaption + Caption;
 end;
 
 end.

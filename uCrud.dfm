@@ -1,7 +1,7 @@
 ﻿object frmCrud: TfrmCrud
   Left = 0
   Top = 0
-  Caption = 'Cadastro de Clientes'
+  Caption = 'UNL Inteligente'
   ClientHeight = 498
   ClientWidth = 555
   Color = clBtnFace
@@ -1553,6 +1553,7 @@
   Position = poDesktopCenter
   Visible = True
   WindowState = wsMaximized
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
