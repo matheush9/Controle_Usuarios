@@ -3,9 +3,10 @@ object DmUsuarios: TDmUsuarios
   Height = 220
   Width = 298
   object FDTable1: TFDTable
-    Active = True
     IndexFieldNames = 'USUARIOS_ID'
     Connection = DmConexao.FDConnection1
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
     TableName = 'USUARIOS'
     Left = 80
     Top = 32

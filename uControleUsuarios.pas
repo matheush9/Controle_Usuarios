@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCrud, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.Menus;
+  Vcl.Menus, Datasnap.Provider, Datasnap.DBClient;
 
 type
   TfrmControleUsuarios = class(TfrmCrud)
@@ -43,9 +43,9 @@ uses uDmUsuarios;
 
 procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
 begin
-  inherited;
   DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
   DmUsuarios.FDQuery1.Open;
+  inherited;
 end;
 
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;

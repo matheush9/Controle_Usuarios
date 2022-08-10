@@ -14,7 +14,8 @@ uses
   Vcl.Bind.Editors, Data.Bind.Components, Vcl.StdCtrls, FireDAC.Comp.DataSet,
   Data.Bind.DBScope, Data.Bind.Controls, Vcl.ExtCtrls, Vcl.Buttons,
   Vcl.Bind.Navigator, Vcl.DBCtrls, Vcl.Mask, Vcl.ToolWin, Vcl.ActnMan,
-  Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Menus;
+  Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Menus,
+  Datasnap.Provider, Datasnap.DBClient;
 
 type
   TfrmCrud = class(TForm)
@@ -40,6 +41,9 @@ type
     btn_gravar: TSpeedButton;
     btn_incluir: TSpeedButton;
     btn_voltar: TSpeedButton;
+    ClientDataSet1: TClientDataSet;
+    DataSetProvider1: TDataSetProvider;
+    DataSource1: TDataSource;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_excluirClick(Sender: TObject);
@@ -51,6 +55,9 @@ type
     procedure CadastrodeUsuariosClick(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure DataSourceCRUDUpdateData(Sender: TObject);
+    procedure DataSourceCRUDStateChange(Sender: TObject);
+    procedure ClientDataSet1AfterScroll(DataSet: TDataSet);
 
   private
     { Private declarations }
@@ -70,7 +77,7 @@ implementation
 
 {$R *.dfm}
 
-uses uControleParceiros, uControleUsuarios;
+uses uControleParceiros, uControleUsuarios, uDmUsuarios;
 
 
 // Procedures Auxiliares
@@ -87,6 +94,15 @@ begin
   btn_incluir.Enabled := true;
   btn_editar.Enabled := true;
   btn_consultar.Enabled := true;
+
+  VarrerCampos;
+
+//  if DataSourceCRUD.DataSet.RecordCount > 1 then
+//  begin
+//    btn_avançar.Enabled := true;
+//    btn_voltar.Enabled := true;
+//    btn_excluir.enabled := true;
+//  end;
 end;
 
 procedure TfrmCrud.CrudBarEnabled_Insert;
@@ -141,7 +157,6 @@ end;
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.Cancel;
-  CrudBarEnabled_Read;
 end;
 
 procedure TfrmCrud.btn_consultarClick(Sender: TObject);
@@ -153,21 +168,21 @@ procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
   TabSheet1.Show;
   DataSourceCRUD.DataSet.Edit;
-  CrudBarEnabled_Insert;
-  LiberarCampos;
+  //CrudBarEnabled_Insert;
+  //LiberarCampos;
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
 begin
   Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
   DataSourceCRUD.DataSet.Delete;
+  DataSourceCRUD.DataSet.Refresh;
 end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.post;
   Showmessage('Registro Gravado com sucesso!');
-  CrudBarEnabled_Read;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
@@ -175,8 +190,8 @@ begin
   TabSheet1.Show;
   DataSourceCRUD.DataSet.Open;
   DataSourceCRUD.DataSet.Append;
-  LiberarCampos;
-  CrudBarEnabled_Insert;
+  //LiberarCampos;
+  //CrudBarEnabled_Insert;
 
 end;
 
@@ -202,17 +217,40 @@ begin
   end;
 end;
 
+procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
+begin
+  if ClientDataSet1.Eof = true then
+  begin
+    btn_avançar.Enabled := false;
+    btn_voltar.Enabled := true;
+  end
+
+  else
+  begin
+    btn_avançar.Enabled := true;
+    btn_voltar.Enabled := false;
+  end;
+end;
+
 //
 
 // Ao inicializar
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
   Caption := MainCaption + Caption;
-  CrudBarEnabled_Read;
-  VarrerCampos;
+  //CrudBarEnabled_Read;
+  //VarrerCampos;
 end;
 //
 
+procedure TfrmCrud.DataSourceCRUDStateChange(Sender: TObject);
+begin
+  //CrudBarEnabled_Read;
+end;
 
+procedure TfrmCrud.DataSourceCRUDUpdateData(Sender: TObject);
+begin
+  //CrudBarEnabled_Read;
+end;
 
 end.

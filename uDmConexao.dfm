@@ -12,6 +12,7 @@ object DmConexao: TDmConexao
       'Password=masterkey'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
     Connected = True
     LoginPrompt = False
     Left = 96

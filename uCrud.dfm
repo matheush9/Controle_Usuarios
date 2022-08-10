@@ -2619,11 +2619,13 @@
   object DataSourceCRUD: TDataSource
     AutoEdit = False
     DataSet = DmUsuarios.FDQuery1
+    OnStateChange = DataSourceCRUDStateChange
+    OnUpdateData = DataSourceCRUDUpdateData
     Left = 464
     Top = 400
   end
   object MainMenu1: TMainMenu
-    Left = 364
+    Left = 356
     Top = 399
     object Cadastro1: TMenuItem
       Caption = 'Pessoas'
@@ -2645,5 +2647,23 @@
         Caption = 'Sobre'
       end
     end
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider1'
+    AfterScroll = ClientDataSet1AfterScroll
+    Left = 460
+    Top = 333
+  end
+  object DataSetProvider1: TDataSetProvider
+    DataSet = DmUsuarios.FDQuery1
+    Left = 356
+    Top = 333
+  end
+  object DataSource1: TDataSource
+    DataSet = ClientDataSet1
+    Left = 356
+    Top = 277
   end
 end

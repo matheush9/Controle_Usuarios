@@ -190,5 +190,6 @@ inherited frmControleParceiros: TfrmControleParceiros
   inherited DataSourceCRUD: TDataSource
     DataSet = DmParceiros.FDQuery1
     Left = 448
+    Top = 392
   end
 end
