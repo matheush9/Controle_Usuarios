@@ -1,5 +1,6 @@
 inherited frmControleUsuarios: TfrmControleUsuarios
   Caption = 'Controle de Usu'#225'rios'
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl

@@ -42,7 +42,6 @@ type
     btn_avançar: TSpeedButton;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_excluirClick(Sender: TObject);
     procedure btn_voltarClick(Sender: TObject);
     procedure btn_avançarClick(Sender: TObject);
@@ -146,7 +145,7 @@ begin
   if frmControleParceiros = nil then
   begin
     frmControleParceiros := TfrmControleParceiros.Create(Self);
-    frmControleParceiros.Show;
+    frmcontroleparceiros.Show;
   end;
 end;
 
@@ -157,11 +156,6 @@ begin
     frmControleUsuarios := TfrmControleUsuarios.Create(Self);
     frmControleUsuarios.Show;
   end;
-end;
-
-procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  frmCrud := nil;
 end;
 
 end.

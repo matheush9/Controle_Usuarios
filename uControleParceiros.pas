@@ -23,6 +23,7 @@ type
     lb_cpf: TLabel;
     dbEdit_cpf: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_consultarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,10 +40,18 @@ implementation
 uses uDmParceiros;
 
 
+procedure TfrmControleParceiros.btn_consultarClick(Sender: TObject);
+begin
+  inherited;
+  DmParceiros.FDQuery1.SQL.Text := 'SELECT * FROM PARCEIROS';
+  DmParceiros.FDQuery1.Open;
+end;
+
 procedure TfrmControleParceiros.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   //inherited;
+  Action := caFree;
   frmControleParceiros := nil;
 end;
 

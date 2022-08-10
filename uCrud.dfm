@@ -15,7 +15,6 @@
   Position = poDesktopCenter
   Visible = True
   WindowState = wsMaximized
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl

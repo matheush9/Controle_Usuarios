@@ -1,11 +1,12 @@
 inherited frmControleParceiros: TfrmControleParceiros
   Caption = 'Controle de Parceiros'
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
-        ExplicitLeft = 3
         object lb_nome: TLabel
           Left = 15
           Top = 16

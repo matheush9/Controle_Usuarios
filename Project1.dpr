@@ -6,7 +6,8 @@ uses
   uCrud in 'uCrud.pas' {frmCrud},
   uControleUsuarios in 'uControleUsuarios.pas' {frmControleUsuarios},
   uDmParceiros in 'uDmParceiros.pas' {DmParceiros: TDataModule},
-  uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros};
+  uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros},
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal};
 
 {$R *.res}
 begin
@@ -14,6 +15,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmConexao, DmConexao);
   Application.CreateForm(TDmUsuarios, DmUsuarios);
-  Application.CreateForm(TfrmControleUsuarios, frmControleUsuarios);
+  Application.CreateForm(TDmParceiros, DmParceiros);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.

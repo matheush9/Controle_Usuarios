@@ -45,13 +45,14 @@ procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
 begin
   inherited;
   DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
-  DmUsuarios.FDQuery1.open;
+  DmUsuarios.FDQuery1.Open;
 end;
 
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   //inherited;
+    Action := caFree;
     frmControleUsuarios := nil;
 end;
 

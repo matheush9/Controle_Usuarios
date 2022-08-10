@@ -3,10 +3,9 @@ object DmParceiros: TDmParceiros
   Height = 212
   Width = 279
   object FDQuery1: TFDQuery
-    Active = True
     Connection = DmConexao.FDConnection1
     SQL.Strings = (
-      'select * from PARCEIROS;')
+      'SELECT * FROM PARCEIROS WHERE PARCEIROS_ID = 0;')
     Left = 88
     Top = 72
     object FDQuery1NOME: TStringField
@@ -21,7 +20,6 @@ object DmParceiros: TDmParceiros
     object FDQuery1CIDADE: TStringField
       FieldName = 'CIDADE'
       Origin = 'CIDADE'
-      Size = 30
     end
     object FDQuery1UF: TStringField
       FieldName = 'UF'
@@ -31,7 +29,7 @@ object DmParceiros: TDmParceiros
     object FDQuery1ENDERECO: TStringField
       FieldName = 'ENDERECO'
       Origin = 'ENDERECO'
-      Size = 150
+      Size = 100
     end
     object FDQuery1CPF: TIntegerField
       FieldName = 'CPF'
@@ -41,7 +39,6 @@ object DmParceiros: TDmParceiros
       FieldName = 'PARCEIROS_ID'
       Origin = 'PARCEIROS_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
     end
   end
   object FDTable1: TFDTable
