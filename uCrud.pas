@@ -110,7 +110,7 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
-  DataSourceCRUD.DataSet.Insert;
+  DataSourceCRUD.DataSet.Edit;
   BloquearCampos;
 end;
 

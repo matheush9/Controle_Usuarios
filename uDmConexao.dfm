@@ -4,14 +4,14 @@ object DmConexao: TDmConexao
   Width = 215
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'User_Name=sysdba'
-      'Password=masterkey'
+      'Pooled='
       
-        'Database=C:\Users\Conceito\Desktop\Sistema Controle\Win32\Debug\' +
-        'Assets\DBs\PESSOASDB.FDB'
+        'Database=C:\Users\Conceito\Desktop\Sistema controle git\Win32\De' +
+        'bug\Assets\DBs\PESSOASDB.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
-    UpdateOptions.CheckRequired = False
     Connected = True
     LoginPrompt = False
     Left = 96
