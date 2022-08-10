@@ -11,6 +11,7 @@ type
   TfrmPrincipal = class(TfrmCrud)
     Panel1: TPanel;
     Label1: TLabel;
+    Image1: TImage;
   private
     { Private declarations }
   public
