@@ -54,7 +54,9 @@ type
 
   private
     { Private declarations }
-    procedure BloquearCampos;
+    procedure VarrerCampos;
+    procedure CrudBarEnabled_Insert;
+    procedure CrudBarEnabled_Read;
     procedure LiberarCampos;
   public
     { Public declarations }
@@ -73,35 +75,73 @@ uses uControleParceiros, uControleUsuarios;
 
 // Procedures Auxiliares
 
-procedure TfrmCrud.BloquearCampos;
+procedure TfrmCrud.CrudBarEnabled_Read;
+var
+  I: Integer;
 begin
-  btn_editar.Enabled := false;
-  btn_incluir.Enabled := false;
-  btn_avançar.Enabled := false;
-  btn_voltar.Enabled := false;
-  btn_excluir.Enabled := false;
+  for I := 0 to ComponentCount -1  do
+    begin
+      if Components[i] is TSpeedButton then
+      (Components[i] as TSpeedButton).enabled := false;
+    end;
+  btn_incluir.Enabled := true;
+  btn_editar.Enabled := true;
+  btn_consultar.Enabled := true;
+end;
+
+procedure TfrmCrud.CrudBarEnabled_Insert;
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount -1  do
+    begin
+      if Components[i] is TSpeedButton then
+      (Components[i] as TSpeedButton).enabled := false;
+    end;
+  btn_gravar.Enabled := true;
+  btn_cancelar.Enabled := true;
+end;
+
+procedure TfrmCrud.VarrerCampos;
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount -1  do
+    begin
+      if Components[i] is TDBEdit then
+      (Components[i] as TDBEdit).enabled := false;
+    end;
 end;
 
 procedure TfrmCrud.LiberarCampos;
+var
+  I: Integer;
 begin
-  btn_editar.Enabled := true;
-  btn_incluir.Enabled := true;
-  btn_avançar.Enabled := true;
-  btn_voltar.Enabled := true;
-  btn_excluir.Enabled := true;
+  for I := 0 to ComponentCount -1  do
+    begin
+      if Components[i] is TDBEdit then
+      (Components[i] as TDBEdit).enabled := true;
+    end;
 end;
 
 //
+
+// Botões da TopBar
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.Next;
 end;
 
+procedure TfrmCrud.btn_voltarClick(Sender: TObject);
+begin
+  DataSourceCRUD.DataSet.prior;
+end;
+
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.Cancel;
-  LiberarCampos;
+  CrudBarEnabled_Read;
 end;
 
 procedure TfrmCrud.btn_consultarClick(Sender: TObject);
@@ -113,7 +153,8 @@ procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
   TabSheet1.Show;
   DataSourceCRUD.DataSet.Edit;
-  BloquearCampos;
+  CrudBarEnabled_Insert;
+  LiberarCampos;
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
@@ -126,7 +167,7 @@ procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.post;
   Showmessage('Registro Gravado com sucesso!');
-  LiberarCampos;
+  CrudBarEnabled_Read;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
@@ -134,15 +175,14 @@ begin
   TabSheet1.Show;
   DataSourceCRUD.DataSet.Open;
   DataSourceCRUD.DataSet.Append;
-  BloquearCampos;
-end;
+  LiberarCampos;
+  CrudBarEnabled_Insert;
 
-procedure TfrmCrud.btn_voltarClick(Sender: TObject);
-begin
-  DataSourceCRUD.DataSet.prior;
 end;
 
 //
+
+// Controle de Form
 
 procedure TfrmCrud.CadastrodeParceirosClick(Sender: TObject);
 begin
@@ -162,9 +202,17 @@ begin
   end;
 end;
 
+//
+
+// Ao inicializar
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
   Caption := MainCaption + Caption;
+  CrudBarEnabled_Read;
+  VarrerCampos;
 end;
+//
+
+
 
 end.

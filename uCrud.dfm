@@ -1564,8 +1564,6 @@
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 232
-    ExplicitHeight = 266
     object TabSheet1: TTabSheet
       Caption = 'Dados'
       object MainPanel: TPanel
@@ -1577,8 +1575,6 @@
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = 288
-        ExplicitHeight = 125
       end
     end
     object TabSheet2: TTabSheet
@@ -1731,9 +1727,7 @@
       Margin = 6
       Spacing = 2
       OnClick = btn_avançarClick
-      ExplicitLeft = 287
-      ExplicitTop = 1
-      ExplicitHeight = 53
+      ExplicitTop = 3
     end
     object btn_cancelar: TSpeedButton
       AlignWithMargins = True
@@ -2369,9 +2363,7 @@
       Margin = 6
       Spacing = 2
       OnClick = btn_gravarClick
-      ExplicitLeft = 91
-      ExplicitTop = 1
-      ExplicitHeight = 53
+      ExplicitTop = 3
     end
     object btn_incluir: TSpeedButton
       AlignWithMargins = True
@@ -2621,9 +2613,7 @@
       Margin = 6
       Spacing = 2
       OnClick = btn_voltarClick
-      ExplicitLeft = 267
-      ExplicitTop = 1
-      ExplicitHeight = 53
+      ExplicitTop = 3
     end
   end
   object DataSourceCRUD: TDataSource

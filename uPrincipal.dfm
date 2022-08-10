@@ -1,5 +1,4 @@
 inherited frmPrincipal: TfrmPrincipal
-  Caption = 'UNL Inteligente'
   ClientHeight = 485
   ExplicitHeight = 544
   PixelsPerInch = 96
@@ -7,10 +6,12 @@ inherited frmPrincipal: TfrmPrincipal
   inherited PageControl1: TPageControl
     Height = 432
     Visible = False
+    ExplicitHeight = 432
     inherited TabSheet1: TTabSheet
       ExplicitHeight = 404
       inherited MainPanel: TPanel
         Height = 404
+        ExplicitHeight = 404
       end
     end
     inherited TabSheet2: TTabSheet
@@ -32,16 +33,14 @@ inherited frmPrincipal: TfrmPrincipal
     Color = clGradientActiveCaption
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 24
-    ExplicitTop = 59
     DesignSize = (
       555
       432)
     object Label1: TLabel
       Left = 92
-      Top = 136
-      Width = 389
-      Height = 88
+      Top = 123
+      Width = 363
+      Height = 85
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight, akBottom]
       Caption = 'Um nome legal'
@@ -53,10 +52,10 @@ inherited frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Image1: TImage
-      Left = 161
+      Left = 145
       Top = 214
-      Width = 264
-      Height = 265
+      Width = 256
+      Height = 256
       Anchors = [akLeft, akTop, akRight, akBottom]
       Center = True
       Picture.Data = {
