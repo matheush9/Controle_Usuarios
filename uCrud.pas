@@ -31,15 +31,15 @@ type
     Sistema1: TMenuItem;
     Ajuda1: TMenuItem;
     Sobre1: TMenuItem;
-    CrudBarPanel_Dados: TPanel;
-    btn_incluir: TSpeedButton;
-    btn_gravar: TSpeedButton;
-    btn_editar: TSpeedButton;
-    btn_cancelar: TSpeedButton;
-    btn_excluir: TSpeedButton;
-    btn_voltar: TSpeedButton;
-    btn_consultar: TSpeedButton;
+    CrudBarPanel: TPanel;
     btn_avançar: TSpeedButton;
+    btn_cancelar: TSpeedButton;
+    btn_consultar: TSpeedButton;
+    btn_editar: TSpeedButton;
+    btn_excluir: TSpeedButton;
+    btn_gravar: TSpeedButton;
+    btn_incluir: TSpeedButton;
+    btn_voltar: TSpeedButton;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_excluirClick(Sender: TObject);
@@ -109,6 +109,7 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
+  TabSheet1.Show;
   DataSourceCRUD.DataSet.Edit;
   BloquearCampos;
 end;
@@ -128,6 +129,7 @@ end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
+  TabSheet1.Show;
   DataSourceCRUD.DataSet.Open;
   DataSourceCRUD.DataSet.Append;
   BloquearCampos;

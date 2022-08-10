@@ -4,7 +4,6 @@ inherited frmControleParceiros: TfrmControleParceiros
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
         object lb_nome: TLabel
