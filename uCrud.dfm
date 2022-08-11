@@ -2618,9 +2618,7 @@
   end
   object DataSourceCRUD: TDataSource
     AutoEdit = False
-    DataSet = DmUsuarios.FDQuery1
-    OnStateChange = DataSourceCRUDStateChange
-    OnUpdateData = DataSourceCRUDUpdateData
+    DataSet = ClientDataSet1
     Left = 464
     Top = 400
   end
@@ -2652,7 +2650,12 @@
     Aggregates = <>
     Params = <>
     ProviderName = 'DataSetProvider1'
+    BeforeInsert = ClientDataSet1BeforeInsert
+    BeforeEdit = ClientDataSet1BeforeEdit
+    BeforePost = ClientDataSet1BeforePost
+    BeforeDelete = ClientDataSet1BeforeDelete
     AfterScroll = ClientDataSet1AfterScroll
+    BeforeRefresh = ClientDataSet1BeforeRefresh
     Left = 460
     Top = 333
   end
@@ -2660,10 +2663,5 @@
     DataSet = DmUsuarios.FDQuery1
     Left = 356
     Top = 333
-  end
-  object DataSource1: TDataSource
-    DataSet = ClientDataSet1
-    Left = 356
-    Top = 277
   end
 end

@@ -43,7 +43,6 @@ type
     btn_voltar: TSpeedButton;
     ClientDataSet1: TClientDataSet;
     DataSetProvider1: TDataSetProvider;
-    DataSource1: TDataSource;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_excluirClick(Sender: TObject);
@@ -55,16 +54,22 @@ type
     procedure CadastrodeUsuariosClick(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure DataSourceCRUDUpdateData(Sender: TObject);
-    procedure DataSourceCRUDStateChange(Sender: TObject);
     procedure ClientDataSet1AfterScroll(DataSet: TDataSet);
+    procedure ClientDataSet1BeforeDelete(DataSet: TDataSet);
+    procedure ClientDataSet1BeforeEdit(DataSet: TDataSet);
+    procedure ClientDataSet1BeforeInsert(DataSet: TDataSet);
+    procedure ClientDataSet1BeforePost(DataSet: TDataSet);
+    procedure ClientDataSet1BeforeRefresh(DataSet: TDataSet);
 
   private
     { Private declarations }
+    procedure VarrerBtns;
     procedure VarrerCampos;
     procedure CrudBarEnabled_Insert;
     procedure CrudBarEnabled_Read;
     procedure LiberarCampos;
+    procedure AbrirConexao;
+    procedure FecharConexao;
   public
     { Public declarations }
   end;
@@ -82,38 +87,43 @@ uses uControleParceiros, uControleUsuarios, uDmUsuarios;
 
 // Procedures Auxiliares
 
-procedure TfrmCrud.CrudBarEnabled_Read;
+procedure TfrmCrud.AbrirConexao;
+begin
+  ClientDataSet1.Active := true;
+  ClientDataSet1.Open;
+  DataSetProvider1.DataSet.Open;
+end;
+
+procedure TfrmCrud.FecharConexao;
+begin
+//  ClientDataSet1.Active := false;
+//  ClientDataSet1.Close;
+//  DataSetProvider1.DataSet.Close;
+end;
+
+procedure tfrmcrud.VarrerBtns;
 var
   I: Integer;
 begin
   for I := 0 to ComponentCount -1  do
     begin
-      if Components[i] is TSpeedButton then
+      if (Components[i] is TSpeedButton) then
       (Components[i] as TSpeedButton).enabled := false;
     end;
+end;
+
+procedure TfrmCrud.CrudBarEnabled_Read;
+begin
+  VarrerBtns;
   btn_incluir.Enabled := true;
   btn_editar.Enabled := true;
   btn_consultar.Enabled := true;
-
   VarrerCampos;
-
-//  if DataSourceCRUD.DataSet.RecordCount > 1 then
-//  begin
-//    btn_avançar.Enabled := true;
-//    btn_voltar.Enabled := true;
-//    btn_excluir.enabled := true;
-//  end;
 end;
 
 procedure TfrmCrud.CrudBarEnabled_Insert;
-var
-  I: Integer;
 begin
-  for I := 0 to ComponentCount -1  do
-    begin
-      if Components[i] is TSpeedButton then
-      (Components[i] as TSpeedButton).enabled := false;
-    end;
+  VarrerBtns;
   btn_gravar.Enabled := true;
   btn_cancelar.Enabled := true;
 end;
@@ -157,42 +167,47 @@ end;
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.Cancel;
+  CrudBarEnabled_Read;
 end;
 
 procedure TfrmCrud.btn_consultarClick(Sender: TObject);
 begin
-//
+AbrirConexao;
 end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
   TabSheet1.Show;
+  AbrirConexao;
   DataSourceCRUD.DataSet.Edit;
-  //CrudBarEnabled_Insert;
-  //LiberarCampos;
+  LiberarCampos;
+  CrudBarEnabled_Insert;
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
 begin
   Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
   DataSourceCRUD.DataSet.Delete;
-  DataSourceCRUD.DataSet.Refresh;
+  ClientDataSet1.ApplyUpdates(-1);
+  FecharConexao;
 end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
-  DataSourceCRUD.DataSet.post;
+  ClientDataSet1.Post;
   Showmessage('Registro Gravado com sucesso!');
+  ClientDataSet1.ApplyUpdates(-1);
+  CrudBarEnabled_Read;
+  FecharConexao;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
   TabSheet1.Show;
-  DataSourceCRUD.DataSet.Open;
+  AbrirConexao;
   DataSourceCRUD.DataSet.Append;
-  //LiberarCampos;
-  //CrudBarEnabled_Insert;
-
+  LiberarCampos;
+  CrudBarEnabled_Insert;
 end;
 
 //
@@ -217,6 +232,35 @@ begin
   end;
 end;
 
+// Before Connection
+
+procedure TfrmCrud.ClientDataSet1BeforeDelete(DataSet: TDataSet);
+begin
+AbrirConexao;
+end;
+
+procedure TfrmCrud.ClientDataSet1BeforeEdit(DataSet: TDataSet);
+begin
+AbrirConexao;
+end;
+
+procedure TfrmCrud.ClientDataSet1BeforeInsert(DataSet: TDataSet);
+begin
+AbrirConexao;
+end;
+
+procedure TfrmCrud.ClientDataSet1BeforePost(DataSet: TDataSet);
+begin
+AbrirConexao;
+end;
+
+procedure TfrmCrud.ClientDataSet1BeforeRefresh(DataSet: TDataSet);
+begin
+AbrirConexao;
+end;
+
+//
+
 procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
 begin
   if ClientDataSet1.Eof = true then
@@ -225,11 +269,30 @@ begin
     btn_voltar.Enabled := true;
   end
 
-  else
+  else if ClientDataSet1.Bof = true then
   begin
     btn_avançar.Enabled := true;
     btn_voltar.Enabled := false;
+  end
+
+  else
+  begin
+    btn_avançar.Enabled := true;
+    btn_voltar.Enabled := True;
   end;
+
+  //
+
+  if ClientDataSet1.RecordCount > 1 then
+  begin
+    btn_excluir.Enabled := true;
+  end
+
+  else
+  begin
+    btn_excluir.Enabled := false;
+  end;
+
 end;
 
 //
@@ -238,19 +301,10 @@ end;
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
   Caption := MainCaption + Caption;
-  //CrudBarEnabled_Read;
-  //VarrerCampos;
+  CrudBarEnabled_Read;
+  VarrerCampos;
+  CrudBarEnabled_Read;
 end;
 //
-
-procedure TfrmCrud.DataSourceCRUDStateChange(Sender: TObject);
-begin
-  //CrudBarEnabled_Read;
-end;
-
-procedure TfrmCrud.DataSourceCRUDUpdateData(Sender: TObject);
-begin
-  //CrudBarEnabled_Read;
-end;
 
 end.

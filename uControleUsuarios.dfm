@@ -4,6 +4,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
         object lb_nome: TLabel
@@ -185,37 +186,31 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           item
             Expanded = False
             FieldName = 'ENDERECO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'UF'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CIDADE'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CARGO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PERMISSAO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'USUARIOS_ID'
-            Width = 64
             Visible = True
           end>
       end

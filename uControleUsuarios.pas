@@ -3,7 +3,8 @@ unit uControleUsuarios;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCrud, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
   Vcl.Menus, Datasnap.Provider, Datasnap.DBClient;
@@ -26,8 +27,11 @@ type
     dbEdit_permissao: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_consultarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure AbrirConexao;
+    procedure FecharConexao;
   public
     { Public declarations }
   end;
@@ -41,19 +45,47 @@ implementation
 
 uses uDmUsuarios;
 
+procedure TfrmControleUsuarios.AbrirConexao;
+begin
+  DmUsuarios.FDTable1.Active := true;
+  DmUsuarios.FDQuery1.Active := true;
+  DmUsuarios.FDQuery1.Open;
+  Showmessage('abriu');
+end;
+
+procedure TfrmControleUsuarios.FecharConexao;
+begin
+  DmUsuarios.FDTable1.Active := false;
+  DmUsuarios.FDQuery1.Active := false;
+end;
+
 procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
 begin
-  DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
-  DmUsuarios.FDQuery1.Open;
   inherited;
+  AbrirConexao;
+  DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
+  ClientDataSet1.refresh;
+  ClientDataSet1.First;
 end;
 
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  //inherited;
-    Action := caFree;
-    frmControleUsuarios := nil;
+  // inherited;
+  FecharConexao;
+  FreeAndNil(DmUsuarios);
+  FreeAndNil(frmControleUsuarios);
+end;
+
+procedure TfrmControleUsuarios.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  if DmUsuarios = nil then
+  begin
+    DmUsuarios := TDmUsuarios.Create(Self);
+    AbrirConexao;
+  end;
 end;
 
 end.
