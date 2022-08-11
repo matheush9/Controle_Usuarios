@@ -11,20 +11,20 @@ uses
 
 type
   TfrmControleUsuarios = class(TfrmCrud)
-    lb_nome: TLabel;
-    dbEdit_nome: TDBEdit;
-    lb_telefone: TLabel;
-    dbEdit_telefone: TDBEdit;
-    lb_endereco: TLabel;
-    dbEdit_endereco: TDBEdit;
-    lb_uf: TLabel;
-    dbEdit_uf: TDBEdit;
-    lb_cidade: TLabel;
-    dbEdit_cidade: TDBEdit;
-    lb_cargo: TLabel;
-    dbEdit_cargo: TDBEdit;
-    lb_permissao: TLabel;
-    dbEdit_permissao: TDBEdit;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    Label5: TLabel;
+    DBEdit5: TDBEdit;
+    Label6: TLabel;
+    DBEdit6: TDBEdit;
+    Label7: TLabel;
+    DBEdit7: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -49,6 +49,7 @@ procedure TfrmControleUsuarios.AbrirConexao;
 begin
   DmUsuarios.FDTable1.Active := true;
   DmUsuarios.FDQuery1.Active := true;
+  DmUsuarios.FDTable1.Open;
   DmUsuarios.FDQuery1.Open;
   Showmessage('abriu');
 end;

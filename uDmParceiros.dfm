@@ -17,28 +17,33 @@ object DmParceiros: TDmParceiros
       FieldName = 'TELEFONE'
       Origin = 'TELEFONE'
     end
-    object FDQuery1CIDADE: TStringField
-      FieldName = 'CIDADE'
-      Origin = 'CIDADE'
+    object FDQuery1ENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
     end
     object FDQuery1UF: TStringField
       FieldName = 'UF'
       Origin = 'UF'
       Size = 2
     end
-    object FDQuery1ENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Origin = 'ENDERECO'
-      Size = 100
+    object FDQuery1CIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
     end
     object FDQuery1CPF: TIntegerField
       FieldName = 'CPF'
       Origin = 'CPF'
     end
+    object FDQuery1IDADE: TIntegerField
+      FieldName = 'IDADE'
+      Origin = 'IDADE'
+    end
     object FDQuery1PARCEIROS_ID: TIntegerField
       FieldName = 'PARCEIROS_ID'
       Origin = 'PARCEIROS_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
   end
   object FDTable1: TFDTable

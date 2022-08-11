@@ -4,166 +4,165 @@ inherited frmControleUsuarios: TfrmControleUsuarios
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = TabSheet2
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
-        object lb_nome: TLabel
-          Left = 9
-          Top = 12
+        object Label1: TLabel
+          Left = 5
+          Top = 20
           Width = 35
-          Height = 16
+          Height = 14
           Caption = 'NOME'
-          FocusControl = dbEdit_nome
+          FocusControl = DBEdit1
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_telefone: TLabel
-          Left = 9
-          Top = 65
+        object Label2: TLabel
+          Left = 5
+          Top = 71
           Width = 58
-          Height = 16
+          Height = 14
           Caption = 'TELEFONE'
-          FocusControl = dbEdit_telefone
+          FocusControl = DBEdit2
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_endereco: TLabel
-          Left = 9
-          Top = 118
+        object Label3: TLabel
+          Left = 5
+          Top = 122
           Width = 64
-          Height = 16
+          Height = 14
           Caption = 'ENDERECO'
-          FocusControl = dbEdit_endereco
+          FocusControl = DBEdit3
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_uf: TLabel
-          Left = 164
-          Top = 65
+        object Label4: TLabel
+          Left = 5
+          Top = 173
           Width = 14
-          Height = 16
+          Height = 14
           Caption = 'UF'
-          FocusControl = dbEdit_uf
+          FocusControl = DBEdit4
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_cidade: TLabel
-          Left = 9
-          Top = 171
-          Width = 48
-          Height = 16
+        object Label5: TLabel
+          Left = 71
+          Top = 173
+          Width = 47
+          Height = 14
           Caption = 'CIDADE'
-          FocusControl = dbEdit_cidade
+          FocusControl = DBEdit5
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_cargo: TLabel
-          Left = 9
+        object Label6: TLabel
+          Left = 5
           Top = 224
-          Width = 44
-          Height = 16
+          Width = 43
+          Height = 14
           Caption = 'CARGO'
-          FocusControl = dbEdit_cargo
+          FocusControl = DBEdit6
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lb_permissao: TLabel
-          Left = 9
-          Top = 277
-          Width = 75
-          Height = 16
+        object Label7: TLabel
+          Left = 5
+          Top = 275
+          Width = 74
+          Height = 14
           Caption = 'PERMISSAO'
-          FocusControl = dbEdit_permissao
+          FocusControl = DBEdit7
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object dbEdit_nome: TDBEdit
-          Left = 9
-          Top = 34
-          Width = 400
-          Height = 21
+        object DBEdit1: TDBEdit
+          Left = 5
+          Top = 40
+          Width = 350
+          Height = 25
           DataField = 'NOME'
           DataSource = DataSourceCRUD
           TabOrder = 0
         end
-        object dbEdit_telefone: TDBEdit
-          Left = 9
-          Top = 87
-          Width = 134
-          Height = 21
+        object DBEdit2: TDBEdit
+          Left = 5
+          Top = 91
+          Width = 150
+          Height = 25
           DataField = 'TELEFONE'
           DataSource = DataSourceCRUD
           TabOrder = 1
         end
-        object dbEdit_endereco: TDBEdit
-          Left = 9
-          Top = 140
-          Width = 400
-          Height = 21
+        object DBEdit3: TDBEdit
+          Left = 5
+          Top = 142
+          Width = 350
+          Height = 25
           DataField = 'ENDERECO'
           DataSource = DataSourceCRUD
           TabOrder = 2
         end
-        object dbEdit_uf: TDBEdit
-          Left = 164
-          Top = 87
-          Width = 30
-          Height = 21
+        object DBEdit4: TDBEdit
+          Left = 5
+          Top = 193
+          Width = 45
+          Height = 25
           DataField = 'UF'
           DataSource = DataSourceCRUD
           TabOrder = 3
         end
-        object dbEdit_cidade: TDBEdit
-          Left = 9
+        object DBEdit5: TDBEdit
+          Left = 71
           Top = 193
           Width = 200
-          Height = 21
+          Height = 25
           DataField = 'CIDADE'
           DataSource = DataSourceCRUD
           TabOrder = 4
         end
-        object dbEdit_cargo: TDBEdit
-          Left = 9
-          Top = 246
-          Width = 200
-          Height = 21
+        object DBEdit6: TDBEdit
+          Left = 5
+          Top = 244
+          Width = 150
+          Height = 25
           DataField = 'CARGO'
           DataSource = DataSourceCRUD
           TabOrder = 5
         end
-        object dbEdit_permissao: TDBEdit
-          Left = 9
-          Top = 299
+        object DBEdit7: TDBEdit
+          Left = 5
+          Top = 295
           Width = 150
-          Height = 21
+          Height = 25
           DataField = 'PERMISSAO'
           DataSource = DataSourceCRUD
           TabOrder = 6

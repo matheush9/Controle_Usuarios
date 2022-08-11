@@ -14,10 +14,11 @@ type
     FDTable1: TFDTable;
     FDQuery1NOME: TStringField;
     FDQuery1TELEFONE: TIntegerField;
-    FDQuery1CIDADE: TStringField;
-    FDQuery1UF: TStringField;
     FDQuery1ENDERECO: TStringField;
+    FDQuery1UF: TStringField;
+    FDQuery1CIDADE: TStringField;
     FDQuery1CPF: TIntegerField;
+    FDQuery1IDADE: TIntegerField;
     FDQuery1PARCEIROS_ID: TIntegerField;
   private
     { Private declarations }
