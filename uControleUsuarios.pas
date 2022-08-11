@@ -68,7 +68,6 @@ begin
   DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
   ClientDataSet1.refresh;
   ClientDataSet1.First;
-  FecharConexao;
 end;
 
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;

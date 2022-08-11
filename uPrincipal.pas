@@ -13,6 +13,8 @@ type
     Panel1: TPanel;
     Label1: TLabel;
     Image1: TImage;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -25,5 +27,17 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  //inherited;
+
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  //inherited;
+
+end;
 
 end.

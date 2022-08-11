@@ -68,7 +68,6 @@ begin
   DmParceiros.FDQuery1.SQL.Text := 'SELECT * FROM PARCEIROS';
   ClientDataSet1.refresh;
   ClientDataSet1.First;
-  FecharConexao;
 end;
 
 procedure TfrmControleParceiros.FormClose(Sender: TObject;

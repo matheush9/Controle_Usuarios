@@ -1601,5 +1601,6 @@ inherited frmPrincipal: TfrmPrincipal
   end
   inherited DataSourceCRUD: TDataSource
     Enabled = False
+    Left = 472
   end
 end

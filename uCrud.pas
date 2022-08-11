@@ -55,6 +55,7 @@ type
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ClientDataSet1AfterScroll(DataSet: TDataSet);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -64,8 +65,6 @@ type
     procedure CrudBarEnabled_Read;
     procedure LiberarCampos;
     procedure ControlarBTNeDEL;
-  protected
-    { Protected declarations }
     procedure AbrirConexao;
     procedure FecharConexao;
   public
@@ -265,8 +264,10 @@ begin
 end;
 
 // Ao inicializar
+
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
+  AbrirConexao;
   Caption := MainCaption + Caption;
   CrudBarEnabled_Read;
   VarrerCampos;
@@ -275,6 +276,14 @@ end;
 //
 
 //
+
+procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FecharConexao;
+  ClientDataSet1.Active := false;
+  ClientDataSet1.Close;
+  DataSetProvider1.DataSet.Close;
+end;
 
 procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
 begin

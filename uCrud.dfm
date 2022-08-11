@@ -1553,6 +1553,7 @@
   Position = poDesktopCenter
   Visible = True
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -1561,7 +1562,7 @@
     Top = 53
     Width = 555
     Height = 445
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
