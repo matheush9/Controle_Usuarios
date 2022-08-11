@@ -48,21 +48,27 @@ procedure TfrmControleParceiros.AbrirConexaoDM;
 begin
   DmParceiros.FDTable1.Active := true;
   DmParceiros.FDQuery1.Active := true;
+  DmParceiros.FDTable1.Open;
+  DmParceiros.FDQuery1.Open;
 end;
 
 procedure TfrmControleParceiros.FecharConexaoDM;
 begin
   DmParceiros.FDTable1.active := false;
   DmParceiros.FDQuery1.active := false;
+  DmParceiros.FDTable1.Close;
+  DmParceiros.FDQuery1.Close;
 end;
 
 
 procedure TfrmControleParceiros.btn_consultarClick(Sender: TObject);
 begin
+  inherited;
   AbrirConexaoDM;
   DmParceiros.FDQuery1.SQL.Text := 'SELECT * FROM PARCEIROS';
   ClientDataSet1.refresh;
   ClientDataSet1.First;
+  FecharConexao;
 end;
 
 procedure TfrmControleParceiros.FormClose(Sender: TObject;

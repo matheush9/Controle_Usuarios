@@ -2655,7 +2655,6 @@
     Top = 333
   end
   object DataSetProvider1: TDataSetProvider
-    DataSet = DmUsuarios.FDQuery1
     Left = 356
     Top = 333
   end

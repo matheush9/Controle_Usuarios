@@ -57,6 +57,8 @@ procedure TfrmControleUsuarios.FecharConexaoDM;
 begin
   DmUsuarios.FDTable1.Active := false;
   DmUsuarios.FDQuery1.Active := false;
+  DmUsuarios.FDTable1.Close;
+  DmUsuarios.FDQuery1.Close;
 end;
 
 procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
@@ -66,6 +68,7 @@ begin
   DmUsuarios.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
   ClientDataSet1.refresh;
   ClientDataSet1.First;
+  FecharConexao;
 end;
 
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;

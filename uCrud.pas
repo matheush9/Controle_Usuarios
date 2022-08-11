@@ -63,6 +63,9 @@ type
     procedure CrudBarEnabled_Insert;
     procedure CrudBarEnabled_Read;
     procedure LiberarCampos;
+    procedure ControlarBTNeDEL;
+  protected
+    { Protected declarations }
     procedure AbrirConexao;
     procedure FecharConexao;
   public
@@ -81,6 +84,39 @@ uses uControleParceiros, uControleUsuarios, uDmUsuarios;
 
 
 // Procedures Auxiliares
+
+procedure TfrmCrud.ControlarBTNeDEL;
+begin
+  if ClientDataSet1.Eof = true then
+  begin
+    btn_avançar.Enabled := false;
+    btn_voltar.Enabled := true;
+  end
+
+  else if ClientDataSet1.Bof = true then
+  begin
+    btn_avançar.Enabled := true;
+    btn_voltar.Enabled := false;
+  end
+
+  else
+  begin
+    btn_avançar.Enabled := true;
+    btn_voltar.Enabled := True;
+  end;
+
+  //
+
+  if ClientDataSet1.RecordCount > 1 then
+  begin
+    btn_excluir.Enabled := true;
+  end
+
+  else
+  begin
+    btn_excluir.Enabled := false;
+  end;
+end;
 
 procedure TfrmCrud.AbrirConexao;
 begin
@@ -163,6 +199,7 @@ procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
   DataSourceCRUD.DataSet.Cancel;
   CrudBarEnabled_Read;
+  ControlarBTNeDEL;
 end;
 
 procedure TfrmCrud.btn_consultarClick(Sender: TObject);
@@ -227,42 +264,6 @@ begin
   end;
 end;
 
-procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
-begin
-  if ClientDataSet1.Eof = true then
-  begin
-    btn_avançar.Enabled := false;
-    btn_voltar.Enabled := true;
-  end
-
-  else if ClientDataSet1.Bof = true then
-  begin
-    btn_avançar.Enabled := true;
-    btn_voltar.Enabled := false;
-  end
-
-  else
-  begin
-    btn_avançar.Enabled := true;
-    btn_voltar.Enabled := True;
-  end;
-
-  //
-
-  if ClientDataSet1.RecordCount > 1 then
-  begin
-    btn_excluir.Enabled := true;
-  end
-
-  else
-  begin
-    btn_excluir.Enabled := false;
-  end;
-
-end;
-
-//
-
 // Ao inicializar
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
@@ -272,5 +273,12 @@ begin
   CrudBarEnabled_Read;
 end;
 //
+
+//
+
+procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
+begin
+  ControlarBTNeDEL;
+end;
 
 end.

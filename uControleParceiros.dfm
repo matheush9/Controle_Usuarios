@@ -108,7 +108,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 5
           Top = 40
           Width = 350
-          Height = 25
+          Height = 21
           DataField = 'NOME'
           DataSource = DataSourceCRUD
           TabOrder = 0
@@ -117,7 +117,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 5
           Top = 91
           Width = 150
-          Height = 25
+          Height = 21
           DataField = 'TELEFONE'
           DataSource = DataSourceCRUD
           TabOrder = 1
@@ -126,7 +126,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 5
           Top = 142
           Width = 350
-          Height = 25
+          Height = 21
           DataField = 'ENDERECO'
           DataSource = DataSourceCRUD
           TabOrder = 2
@@ -135,7 +135,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 5
           Top = 193
           Width = 45
-          Height = 25
+          Height = 21
           DataField = 'UF'
           DataSource = DataSourceCRUD
           TabOrder = 3
@@ -144,7 +144,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 65
           Top = 193
           Width = 200
-          Height = 25
+          Height = 21
           DataField = 'CIDADE'
           DataSource = DataSourceCRUD
           TabOrder = 4
@@ -153,7 +153,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 67
           Top = 244
           Width = 150
-          Height = 25
+          Height = 21
           DataField = 'CPF'
           DataSource = DataSourceCRUD
           TabOrder = 5
@@ -162,7 +162,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Left = 5
           Top = 244
           Width = 45
-          Height = 25
+          Height = 21
           DataField = 'IDADE'
           DataSource = DataSourceCRUD
           TabOrder = 6
