@@ -29,8 +29,8 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    procedure AbrirConexao;
-    procedure FecharConexao;
+    procedure AbrirConexaoDM;
+    procedure FecharConexaoDM;
   public
     { Public declarations }
   end;
@@ -44,14 +44,13 @@ implementation
 
 uses uDmParceiros;
 
-procedure TfrmControleParceiros.AbrirConexao;
+procedure TfrmControleParceiros.AbrirConexaoDM;
 begin
   DmParceiros.FDTable1.Active := true;
   DmParceiros.FDQuery1.Active := true;
-  showmessage('abriu')
 end;
 
-procedure TfrmControleParceiros.FecharConexao;
+procedure TfrmControleParceiros.FecharConexaoDM;
 begin
   DmParceiros.FDTable1.active := false;
   DmParceiros.FDQuery1.active := false;
@@ -60,8 +59,8 @@ end;
 
 procedure TfrmControleParceiros.btn_consultarClick(Sender: TObject);
 begin
-  AbrirConexao;
-  DmParceiros.FDQuery1.SQL.Text := 'SELECT * FROM USUARIOS';
+  AbrirConexaoDM;
+  DmParceiros.FDQuery1.SQL.Text := 'SELECT * FROM PARCEIROS';
   ClientDataSet1.refresh;
   ClientDataSet1.First;
 end;
@@ -70,7 +69,7 @@ procedure TfrmControleParceiros.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   //inherited;
-  FecharConexao;
+  FecharConexaoDM;
   Freeandnil(DmParceiros);
   FreeAndNil(frmControleParceiros);
 end;
@@ -82,7 +81,7 @@ begin
   if DmParceiros = nil then
   begin
     DmParceiros := TDmParceiros.Create(Self);
-    AbrirConexao;
+    AbrirConexaoDM;
   end;
 end;
 

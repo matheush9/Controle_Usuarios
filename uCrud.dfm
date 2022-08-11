@@ -2650,12 +2650,7 @@
     Aggregates = <>
     Params = <>
     ProviderName = 'DataSetProvider1'
-    BeforeInsert = ClientDataSet1BeforeInsert
-    BeforeEdit = ClientDataSet1BeforeEdit
-    BeforePost = ClientDataSet1BeforePost
-    BeforeDelete = ClientDataSet1BeforeDelete
     AfterScroll = ClientDataSet1AfterScroll
-    BeforeRefresh = ClientDataSet1BeforeRefresh
     Left = 460
     Top = 333
   end

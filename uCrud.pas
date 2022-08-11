@@ -55,11 +55,6 @@ type
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ClientDataSet1AfterScroll(DataSet: TDataSet);
-    procedure ClientDataSet1BeforeDelete(DataSet: TDataSet);
-    procedure ClientDataSet1BeforeEdit(DataSet: TDataSet);
-    procedure ClientDataSet1BeforeInsert(DataSet: TDataSet);
-    procedure ClientDataSet1BeforePost(DataSet: TDataSet);
-    procedure ClientDataSet1BeforeRefresh(DataSet: TDataSet);
 
   private
     { Private declarations }
@@ -96,9 +91,9 @@ end;
 
 procedure TfrmCrud.FecharConexao;
 begin
-//  ClientDataSet1.Active := false;
-//  ClientDataSet1.Close;
-//  DataSetProvider1.DataSet.Close;
+  ClientDataSet1.Active := false;
+  ClientDataSet1.Close;
+  DataSetProvider1.DataSet.Close;
 end;
 
 procedure tfrmcrud.VarrerBtns;
@@ -172,7 +167,7 @@ end;
 
 procedure TfrmCrud.btn_consultarClick(Sender: TObject);
 begin
-AbrirConexao;
+  AbrirConexao;
 end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
@@ -231,35 +226,6 @@ begin
     frmControleUsuarios.Show;
   end;
 end;
-
-// Before Connection
-
-procedure TfrmCrud.ClientDataSet1BeforeDelete(DataSet: TDataSet);
-begin
-AbrirConexao;
-end;
-
-procedure TfrmCrud.ClientDataSet1BeforeEdit(DataSet: TDataSet);
-begin
-AbrirConexao;
-end;
-
-procedure TfrmCrud.ClientDataSet1BeforeInsert(DataSet: TDataSet);
-begin
-AbrirConexao;
-end;
-
-procedure TfrmCrud.ClientDataSet1BeforePost(DataSet: TDataSet);
-begin
-AbrirConexao;
-end;
-
-procedure TfrmCrud.ClientDataSet1BeforeRefresh(DataSet: TDataSet);
-begin
-AbrirConexao;
-end;
-
-//
 
 procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
 begin

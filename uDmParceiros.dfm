@@ -43,7 +43,6 @@ object DmParceiros: TDmParceiros
       FieldName = 'PARCEIROS_ID'
       Origin = 'PARCEIROS_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
     end
   end
   object FDTable1: TFDTable
