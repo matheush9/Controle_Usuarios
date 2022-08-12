@@ -20,6 +20,7 @@ object DmParceiros: TDmParceiros
     object FDQuery1ENDERECO: TStringField
       FieldName = 'ENDERECO'
       Origin = 'ENDERECO'
+      Required = True
       Size = 100
     end
     object FDQuery1UF: TStringField
@@ -34,6 +35,7 @@ object DmParceiros: TDmParceiros
     object FDQuery1CPF: TIntegerField
       FieldName = 'CPF'
       Origin = 'CPF'
+      Required = True
     end
     object FDQuery1IDADE: TIntegerField
       FieldName = 'IDADE'

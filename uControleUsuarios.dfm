@@ -91,7 +91,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           ParentFont = False
         end
         object lb_uf: TLabel
-          Left = 220
+          Left = 277
           Top = 161
           Width = 14
           Height = 14
@@ -107,7 +107,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
         object dbEdit_cargo: TDBEdit
           Left = 5
           Top = 275
-          Width = 150
+          Width = 200
           Height = 21
           DataField = 'CARGO'
           DataSource = DataSourceCRUD
@@ -116,7 +116,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
         object dbEdit_cidade: TDBEdit
           Left = 5
           Top = 181
-          Width = 200
+          Width = 250
           Height = 21
           DataField = 'CIDADE'
           DataSource = DataSourceCRUD
@@ -125,7 +125,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
         object dbEdit_endereco: TDBEdit
           Left = 5
           Top = 134
-          Width = 350
+          Width = 450
           Height = 21
           DataField = 'ENDERECO'
           DataSource = DataSourceCRUD
@@ -135,7 +135,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
           AlignWithMargins = True
           Left = 5
           Top = 39
-          Width = 350
+          Width = 450
           Height = 21
           DataField = 'NOME'
           DataSource = DataSourceCRUD
@@ -153,16 +153,16 @@ inherited frmControleUsuarios: TfrmControleUsuarios
         object dbEdit_telefone: TDBEdit
           Left = 5
           Top = 86
-          Width = 150
+          Width = 200
           Height = 21
           DataField = 'TELEFONE'
           DataSource = DataSourceCRUD
           TabOrder = 5
         end
         object dbEdit_uf: TDBEdit
-          Left = 220
+          Left = 277
           Top = 181
-          Width = 45
+          Width = 50
           Height = 21
           DataField = 'UF'
           DataSource = DataSourceCRUD

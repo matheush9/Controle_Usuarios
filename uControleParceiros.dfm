@@ -106,7 +106,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_nome: TDBEdit
           Left = 5
           Top = 40
-          Width = 350
+          Width = 450
           Height = 21
           DataField = 'NOME'
           DataSource = DataSourceCRUD
@@ -115,7 +115,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_telefone: TDBEdit
           Left = 5
           Top = 91
-          Width = 150
+          Width = 200
           Height = 21
           DataField = 'TELEFONE'
           DataSource = DataSourceCRUD
@@ -124,7 +124,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_endereco: TDBEdit
           Left = 5
           Top = 142
-          Width = 350
+          Width = 450
           Height = 21
           DataField = 'ENDERECO'
           DataSource = DataSourceCRUD
@@ -133,7 +133,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_uf: TDBEdit
           Left = 5
           Top = 193
-          Width = 45
+          Width = 50
           Height = 21
           DataField = 'UF'
           DataSource = DataSourceCRUD
@@ -142,7 +142,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_cidade: TDBEdit
           Left = 65
           Top = 193
-          Width = 200
+          Width = 250
           Height = 21
           DataField = 'CIDADE'
           DataSource = DataSourceCRUD
@@ -151,7 +151,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_cpf: TDBEdit
           Left = 67
           Top = 244
-          Width = 150
+          Width = 250
           Height = 21
           DataField = 'CPF'
           DataSource = DataSourceCRUD
@@ -160,7 +160,7 @@ inherited frmControleParceiros: TfrmControleParceiros
         object dbEdit_idade: TDBEdit
           Left = 5
           Top = 244
-          Width = 45
+          Width = 50
           Height = 21
           DataField = 'IDADE'
           DataSource = DataSourceCRUD

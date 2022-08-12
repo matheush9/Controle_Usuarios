@@ -214,6 +214,8 @@ end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
+  Application.MessageBox('Você realmente deseja cancelar esse registro?',
+  'Cancelar', MB_YESNO);
   DataSourceCRUD.DataSet.Cancel;
   CrudBarEnabled_Read;
   ControlarBTNeDEL;
@@ -226,6 +228,13 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
+  if ClientDataSet1.RecordCount < 1 then
+  begin
+    Application.Title := 'Aviso!';
+    ShowMessage('Não há registro para ser editado');
+    abort;
+  end;
+
   TabSheet1.Show;
   AbrirConexao;
   DataSourceCRUD.DataSet.Edit;
@@ -245,6 +254,7 @@ end;
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
   ClientDataSet1.Post;
+  Application.Title := 'Aviso!';
   Showmessage('Registro Gravado com sucesso!');
   ClientDataSet1.ApplyUpdates(-1);
   CrudBarEnabled_Read;
