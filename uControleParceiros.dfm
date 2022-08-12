@@ -1,18 +1,17 @@
 inherited frmControleParceiros: TfrmControleParceiros
   Caption = 'Controle de Parceiros'
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
-        object Label1: TLabel
+        object lb_nome: TLabel
           Left = 5
           Top = 20
           Width = 35
           Height = 14
           Caption = 'NOME'
-          FocusControl = DBEdit1
+          FocusControl = dbEdit_nome
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -20,13 +19,13 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label2: TLabel
+        object lb_telefone: TLabel
           Left = 5
           Top = 71
           Width = 58
           Height = 14
           Caption = 'TELEFONE'
-          FocusControl = DBEdit2
+          FocusControl = dbEdit_telefone
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -34,13 +33,13 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label3: TLabel
+        object lb_endereco: TLabel
           Left = 5
           Top = 122
           Width = 64
           Height = 14
           Caption = 'ENDERECO'
-          FocusControl = DBEdit3
+          FocusControl = dbEdit_endereco
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -48,13 +47,13 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label4: TLabel
+        object lb_uf: TLabel
           Left = 5
           Top = 173
           Width = 14
           Height = 14
           Caption = 'UF'
-          FocusControl = DBEdit4
+          FocusControl = dbEdit_uf
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -62,13 +61,13 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label5: TLabel
+        object lb_cidade: TLabel
           Left = 65
           Top = 173
           Width = 47
           Height = 14
           Caption = 'CIDADE'
-          FocusControl = DBEdit5
+          FocusControl = dbEdit_cidade
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -76,13 +75,13 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label6: TLabel
+        object lb_cpf: TLabel
           Left = 67
           Top = 224
           Width = 22
           Height = 14
           Caption = 'CPF'
-          FocusControl = DBEdit6
+          FocusControl = dbEdit_cpf
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -90,13 +89,13 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label7: TLabel
+        object lb_idade: TLabel
           Left = 5
           Top = 224
           Width = 39
           Height = 14
           Caption = 'IDADE'
-          FocusControl = DBEdit7
+          FocusControl = dbEdit_idade
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -104,7 +103,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object DBEdit1: TDBEdit
+        object dbEdit_nome: TDBEdit
           Left = 5
           Top = 40
           Width = 350
@@ -113,7 +112,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           DataSource = DataSourceCRUD
           TabOrder = 0
         end
-        object DBEdit2: TDBEdit
+        object dbEdit_telefone: TDBEdit
           Left = 5
           Top = 91
           Width = 150
@@ -122,7 +121,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           DataSource = DataSourceCRUD
           TabOrder = 1
         end
-        object DBEdit3: TDBEdit
+        object dbEdit_endereco: TDBEdit
           Left = 5
           Top = 142
           Width = 350
@@ -131,7 +130,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           DataSource = DataSourceCRUD
           TabOrder = 2
         end
-        object DBEdit4: TDBEdit
+        object dbEdit_uf: TDBEdit
           Left = 5
           Top = 193
           Width = 45
@@ -140,7 +139,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           DataSource = DataSourceCRUD
           TabOrder = 3
         end
-        object DBEdit5: TDBEdit
+        object dbEdit_cidade: TDBEdit
           Left = 65
           Top = 193
           Width = 200
@@ -149,7 +148,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           DataSource = DataSourceCRUD
           TabOrder = 4
         end
-        object DBEdit6: TDBEdit
+        object dbEdit_cpf: TDBEdit
           Left = 67
           Top = 244
           Width = 150
@@ -158,7 +157,7 @@ inherited frmControleParceiros: TfrmControleParceiros
           DataSource = DataSourceCRUD
           TabOrder = 5
         end
-        object DBEdit7: TDBEdit
+        object dbEdit_idade: TDBEdit
           Left = 5
           Top = 244
           Width = 45

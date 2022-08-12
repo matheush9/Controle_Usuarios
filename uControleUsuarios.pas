@@ -11,20 +11,20 @@ uses
 
 type
   TfrmControleUsuarios = class(TfrmCrud)
-    Label1: TLabel;
-    DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
-    Label3: TLabel;
-    DBEdit3: TDBEdit;
-    Label4: TLabel;
-    DBEdit4: TDBEdit;
-    Label5: TLabel;
-    DBEdit5: TDBEdit;
-    Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBEdit7: TDBEdit;
+    dbEdit_cargo: TDBEdit;
+    dbEdit_cidade: TDBEdit;
+    dbEdit_endereco: TDBEdit;
+    dbEdit_nome: TDBEdit;
+    dbEdit_permissao: TDBEdit;
+    dbEdit_telefone: TDBEdit;
+    dbEdit_uf: TDBEdit;
+    lb_cargo: TLabel;
+    lb_cidade: TLabel;
+    lb_endereco: TLabel;
+    lb_nome: TLabel;
+    lb_permissao: TLabel;
+    lb_telefone: TLabel;
+    lb_uf: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -73,7 +73,7 @@ end;
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  // inherited;
+  inherited;
   FecharConexaoDM;
   FreeAndNil(DmUsuarios);
   FreeAndNil(frmControleUsuarios);
@@ -81,13 +81,12 @@ end;
 
 procedure TfrmControleUsuarios.FormCreate(Sender: TObject);
 begin
-  inherited;
-
   if DmUsuarios = nil then
   begin
     DmUsuarios := TDmUsuarios.Create(Self);
     AbrirConexaoDM;
   end;
+  inherited;
 end;
 
 end.

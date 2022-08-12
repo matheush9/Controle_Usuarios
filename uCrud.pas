@@ -82,65 +82,27 @@ implementation
 uses uControleParceiros, uControleUsuarios, uDmUsuarios;
 
 
-// Procedures Auxiliares
+// --  Procedures Auxiliares --
 
-procedure TfrmCrud.ControlarBTNeDEL;
-begin
-  if ClientDataSet1.Eof = true then
-  begin
-    btn_avançar.Enabled := false;
-    btn_voltar.Enabled := true;
-  end
-
-  else if ClientDataSet1.Bof = true then
-  begin
-    btn_avançar.Enabled := true;
-    btn_voltar.Enabled := false;
-  end
-
-  else
-  begin
-    btn_avançar.Enabled := true;
-    btn_voltar.Enabled := True;
-  end;
-
-  //
-
-  if ClientDataSet1.RecordCount > 1 then
-  begin
-    btn_excluir.Enabled := true;
-  end
-
-  else
-  begin
-    btn_excluir.Enabled := false;
-  end;
-end;
+// Fecha e abre a conexão com dataset
 
 procedure TfrmCrud.AbrirConexao;
 begin
+  DataSetProvider1.DataSet.Open;
   ClientDataSet1.Active := true;
   ClientDataSet1.Open;
-  DataSetProvider1.DataSet.Open;
 end;
 
 procedure TfrmCrud.FecharConexao;
 begin
+  DataSetProvider1.DataSet.Close;
   ClientDataSet1.Active := false;
   ClientDataSet1.Close;
-  DataSetProvider1.DataSet.Close;
 end;
 
-procedure tfrmcrud.VarrerBtns;
-var
-  I: Integer;
-begin
-  for I := 0 to ComponentCount -1  do
-    begin
-      if (Components[i] is TSpeedButton) then
-      (Components[i] as TSpeedButton).enabled := false;
-    end;
-end;
+//
+
+// Controla os botões da barra superior
 
 procedure TfrmCrud.CrudBarEnabled_Read;
 begin
@@ -158,31 +120,87 @@ begin
   btn_cancelar.Enabled := true;
 end;
 
+//
+
+procedure TfrmCrud.ControlarBTNeDEL;
+begin
+  { Valida se existe ou não dados na Dataset, assim habilitando
+   ou não as setas e o botão de excluir}
+
+  if ClientDataSet1.RecordCount > 1 then
+  begin
+
+    if ClientDataSet1.Eof = true then
+    begin
+      btn_avançar.Enabled := false;
+      btn_voltar.Enabled := true;
+    end
+
+    else if ClientDataSet1.Bof = true then
+    begin
+      btn_avançar.Enabled := true;
+      btn_voltar.Enabled := false
+    end
+
+    else
+    begin
+      btn_avançar.Enabled := true;
+      btn_voltar.Enabled := true;
+    end;
+
+    begin
+      btn_excluir.Enabled := true;
+    end;
+
+  end
+
+  else
+  begin
+    btn_excluir.Enabled := false;
+  end;
+
+end;
+
+// Repetições para habilitar ou desabilitar componentes
+
+procedure TfrmCrud.VarrerBtns;
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if (Components[I] is TSpeedButton) then
+      (Components[I] as TSpeedButton).Enabled := false;
+  end;
+end;
+
 procedure TfrmCrud.VarrerCampos;
 var
   I: Integer;
 begin
-  for I := 0 to ComponentCount -1  do
-    begin
-      if Components[i] is TDBEdit then
-      (Components[i] as TDBEdit).enabled := false;
-    end;
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if Components[I] is TDBEdit then
+      (Components[I] as TDBEdit).Enabled := false;
+  end;
 end;
 
 procedure TfrmCrud.LiberarCampos;
 var
   I: Integer;
 begin
-  for I := 0 to ComponentCount -1  do
-    begin
-      if Components[i] is TDBEdit then
-      (Components[i] as TDBEdit).enabled := true;
-    end;
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if Components[I] is TDBEdit then
+      (Components[I] as TDBEdit).Enabled := true;
+  end;
 end;
 
 //
 
-// Botões da TopBar
+// -- --
+
+//--  Botões da TopBar --
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
@@ -217,7 +235,8 @@ end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
 begin
-  Application.MessageBox('Você realmente deseja excluir esse registro?', 'Exclusão de registro', MB_YESNO);
+  Application.MessageBox('Você realmente deseja excluir esse registro?',
+    'Exclusão de registro', MB_YESNO);
   DataSourceCRUD.DataSet.Delete;
   ClientDataSet1.ApplyUpdates(-1);
   FecharConexao;
@@ -241,16 +260,16 @@ begin
   CrudBarEnabled_Insert;
 end;
 
-//
+// -- --
 
-// Controle de Form
+// -- Controle de Form --
 
 procedure TfrmCrud.CadastrodeParceirosClick(Sender: TObject);
 begin
   if frmControleParceiros = nil then
   begin
     frmControleParceiros := TfrmControleParceiros.Create(Self);
-    frmcontroleparceiros.Show;
+    frmControleParceiros.Show;
   end;
 end;
 
@@ -263,27 +282,20 @@ begin
   end;
 end;
 
-// Ao inicializar
-
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
   AbrirConexao;
   Caption := MainCaption + Caption;
   CrudBarEnabled_Read;
   VarrerCampos;
-  CrudBarEnabled_Read;
 end;
-//
-
-//
 
 procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FecharConexao;
-  ClientDataSet1.Active := false;
-  ClientDataSet1.Close;
-  DataSetProvider1.DataSet.Close;
 end;
+
+// -- --
 
 procedure TfrmCrud.ClientDataSet1AfterScroll(DataSet: TDataSet);
 begin
