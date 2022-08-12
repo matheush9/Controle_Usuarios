@@ -9,7 +9,9 @@ uses
   uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros},
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uLogin in 'uLogin.pas' {frmLogin},
+  uDmLogin in 'uDmLogin.pas' {DmLogin: TDataModule};
 
 {$R *.res}
 begin
@@ -17,6 +19,7 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Iceberg Classico');
   Application.CreateForm(TDmConexao, DmConexao);
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TDmLogin, DmLogin);
+  Application.CreateForm(TfrmLogin, frmLogin);
   Application.Run;
 end.

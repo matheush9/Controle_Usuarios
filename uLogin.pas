@@ -1,0 +1,90 @@
+unit uLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Mask, IdHashMessageDigest,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmLogin = class(TForm)
+    lb_login: TLabel;
+    dbEdit_login: TDBEdit;
+    DataSource1: TDataSource;
+    lb_senha: TLabel;
+    dbEdit_senha: TDBEdit;
+    btn_confirmar: TButton;
+    btn_sair: TButton;
+    procedure btn_sairClick(Sender: TObject);
+    procedure btn_confirmarClick(Sender: TObject);
+  private
+    { Private declarations }
+    function MD5(const value: string): string;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmLogin: TfrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses uDmLogin, uPrincipal;
+
+procedure TfrmLogin.btn_confirmarClick(Sender: TObject);
+var
+armazenaLogin: string;
+armazenaSenha: string;
+begin
+  // Login
+  armazenaLogin := dbEdit_login.Text;
+
+  // Senha
+  armazenaSenha :=(dbEdit_senha.text);
+
+  // Autenticação
+
+  DmLogin.FDQuery1.Active;
+  DmLogin.FDQuery1.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
+  DmLogin.FDQuery1.ParamByName('LOGIN').AsString := armazenaLogin;
+  DmLogin.FDQuery1.ParamByName('SENHA').AsString := armazenaSenha;
+  DmLogin.FDQuery1.Open;
+
+  if DmLogin.FDQuery1.IsEmpty = false then
+  begin
+    ShowMessage('Autenticado com sucesso!');
+    DmLogin.FDTable1.Active := false;
+    frmPrincipal := TfrmPrincipal.Create(Self);
+    FreeAndNil(DmLogin);
+    FreeAndNil(frmLogin);
+  end
+
+  else if DmLogin.FDQuery1.IsEmpty = true then
+  begin
+    ShowMessage('Login ou senha inválidos!');
+  end;
+end;
+
+procedure TfrmLogin.btn_sairClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+function TfrmLogin.MD5(const value: string): string ;
+var xMD5: TIdHashMessageDigest5;
+
+begin
+  xMD5 := TIdHashMessageDigest5.Create();
+
+  try
+    Result := LowerCase(xMD5.HashStringAsHex(Value));
+  finally
+    XMD5.Free;
+  end;
+
+end;
+
+end.

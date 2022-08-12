@@ -15,6 +15,7 @@ object DmConexao: TDmConexao
     UpdateOptions.CheckRequired = False
     Connected = True
     LoginPrompt = False
+    Transaction = DmLogin.FDTransaction1
     Left = 96
     Top = 40
   end

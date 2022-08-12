@@ -23,6 +23,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses uDmLogin;
+
 {$R *.dfm}
 
 end.
