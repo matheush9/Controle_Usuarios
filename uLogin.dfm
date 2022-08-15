@@ -1,9 +1,11 @@
 object frmLogin: TfrmLogin
   Left = 0
   Top = 0
+  BorderIcons = []
+  BorderStyle = bsSingle
   Caption = 'Login'
-  ClientHeight = 237
-  ClientWidth = 399
+  ClientHeight = 224
+  ClientWidth = 409
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -66,18 +68,18 @@ object frmLogin: TfrmLogin
   end
   object btn_confirmar: TButton
     Left = 88
-    Top = 152
+    Top = 160
     Width = 80
-    Height = 35
+    Height = 40
     Caption = 'Confirmar'
     TabOrder = 2
     OnClick = btn_confirmarClick
   end
   object btn_sair: TButton
     Left = 216
-    Top = 152
+    Top = 160
     Width = 80
-    Height = 35
+    Height = 40
     Caption = 'Sair'
     TabOrder = 3
     OnClick = btn_sairClick

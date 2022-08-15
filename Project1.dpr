@@ -11,7 +11,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   uLogin in 'uLogin.pas' {frmLogin},
-  uDmLogin in 'uDmLogin.pas' {DmLogin: TDataModule};
+  uDmLogin in 'uDmLogin.pas' {DmLogin: TDataModule},
+  uControleLogin in 'uControleLogin.pas' {frmControleLogin};
 
 {$R *.res}
 begin

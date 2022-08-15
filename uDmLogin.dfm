@@ -13,19 +13,24 @@ object DmLogin: TDmLogin
     object FDTable1LOGIN_ID: TIntegerField
       FieldName = 'LOGIN_ID'
       Origin = 'LOGIN_ID'
-      Required = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object FDTable1LOGIN: TStringField
       FieldName = 'LOGIN'
       Origin = 'LOGIN'
       Required = True
-      Size = 40
+      Size = 30
     end
     object FDTable1SENHA: TStringField
       FieldName = 'SENHA'
       Origin = 'SENHA'
       Required = True
       Size = 40
+    end
+    object FDTable1PERMISSAO: TStringField
+      FieldName = 'PERMISSAO'
+      Origin = 'PERMISSAO'
+      Size = 10
     end
   end
   object FDTransaction1: TFDTransaction
@@ -35,7 +40,29 @@ object DmLogin: TDmLogin
   end
   object FDQuery1: TFDQuery
     Connection = DmConexao.FDConnection1
+    SQL.Strings = (
+      'select * from login;')
     Left = 200
     Top = 32
+    object FDQuery1LOGIN: TStringField
+      FieldName = 'LOGIN'
+      Origin = 'LOGIN'
+      Size = 30
+    end
+    object FDQuery1SENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Size = 40
+    end
+    object FDQuery1LOGIN_ID: TIntegerField
+      FieldName = 'LOGIN_ID'
+      Origin = 'LOGIN_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQuery1PERMISSAO: TStringField
+      FieldName = 'PERMISSAO'
+      Origin = 'PERMISSAO'
+      Size = 10
+    end
   end
 end

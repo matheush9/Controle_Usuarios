@@ -43,6 +43,7 @@ type
     btn_voltar: TSpeedButton;
     ClientDataSet1: TClientDataSet;
     DataSetProvider1: TDataSetProvider;
+    ContasUsuarios: TMenuItem;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_excluirClick(Sender: TObject);
@@ -56,6 +57,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ClientDataSet1AfterScroll(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ContasUsuariosClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -79,7 +81,7 @@ implementation
 
 {$R *.dfm}
 
-uses uControleParceiros, uControleUsuarios, uDmUsuarios;
+uses uControleParceiros, uControleUsuarios, uDmUsuarios, uControleLogin;
 
 
 // --  Procedures Auxiliares --
@@ -127,7 +129,7 @@ begin
   { Valida se existe ou não dados na Dataset, assim habilitando
    ou não as setas e o botão de excluir}
 
-  if ClientDataSet1.RecordCount > 1 then
+  if ClientDataSet1.RecordCount > 0 then
   begin
 
     if ClientDataSet1.Eof = true then
@@ -289,6 +291,15 @@ begin
   begin
     frmControleUsuarios := TfrmControleUsuarios.Create(Self);
     frmControleUsuarios.Show;
+  end;
+end;
+
+procedure TfrmCrud.ContasUsuariosClick(Sender: TObject);
+begin
+  if frmControleLogin = nil then
+  begin
+    frmControleLogin := TfrmControleLogin.Create(Self);
+    frmControleLogin.Show;
   end;
 end;
 

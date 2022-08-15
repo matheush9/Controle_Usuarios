@@ -2639,6 +2639,10 @@
     end
     object Sistema1: TMenuItem
       Caption = 'Sistema'
+      object ContasUsuarios: TMenuItem
+        Caption = 'Contas de Usu'#225'rios'
+        OnClick = ContasUsuariosClick
+      end
     end
     object Ajuda1: TMenuItem
       Caption = 'Ajuda'

@@ -13,8 +13,8 @@ type
     Panel1: TPanel;
     Label1: TLabel;
     Image1: TImage;
-    procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +40,7 @@ procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   //inherited;
   frmLogin := TfrmLogin.Create(Self);
-  frmLogin.Showmodal;
+  frmLogin.ShowModal;
 
 end;
 

@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Mask, IdHashMessageDigest,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Mask,
   Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
 
 type
@@ -22,7 +22,6 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
-    function MD5(const value: string): string;
   public
     { Public declarations }
   end;
@@ -34,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmLogin, uPrincipal;
+uses uDmLogin;
 
 procedure TfrmLogin.btn_confirmarClick(Sender: TObject);
 var
@@ -45,7 +44,7 @@ begin
   armazenaLogin := dbEdit_login.Text;
 
   // Senha
-  armazenaSenha :=(dbEdit_senha.text);
+  armazenaSenha := DmLogin.MD5(dbEdit_senha.text);
 
   // Autenticação
 
@@ -82,20 +81,6 @@ end;
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   DmLogin := TDmLogin.Create(Self);
-end;
-
-function TfrmLogin.MD5(const value: string): string ;
-var xMD5: TIdHashMessageDigest5;
-
-begin
-  xMD5 := TIdHashMessageDigest5.Create();
-
-  try
-    Result := LowerCase(xMD5.HashStringAsHex(Value));
-  finally
-    XMD5.Free;
-  end;
-
 end;
 
 end.
