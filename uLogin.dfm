@@ -11,6 +11,9 @@ object frmLogin: TfrmLogin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lb_login: TLabel
@@ -44,7 +47,7 @@ object frmLogin: TfrmLogin
   end
   object dbEdit_login: TDBEdit
     Left = 48
-    Top = 48
+    Top = 49
     Width = 300
     Height = 21
     DataField = 'LOGIN'

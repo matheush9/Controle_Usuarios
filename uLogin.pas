@@ -18,6 +18,8 @@ type
     btn_sair: TButton;
     procedure btn_sairClick(Sender: TObject);
     procedure btn_confirmarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     function MD5(const value: string): string;
@@ -56,10 +58,8 @@ begin
   if DmLogin.FDQuery1.IsEmpty = false then
   begin
     ShowMessage('Autenticado com sucesso!');
-    DmLogin.FDTable1.Active := false;
-    frmPrincipal := TfrmPrincipal.Create(Self);
     FreeAndNil(DmLogin);
-    FreeAndNil(frmLogin);
+    frmLogin.Close;
   end
 
   else if DmLogin.FDQuery1.IsEmpty = true then
@@ -71,6 +71,17 @@ end;
 procedure TfrmLogin.btn_sairClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+
+procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := Cafree;
+end;
+
+procedure TfrmLogin.FormCreate(Sender: TObject);
+begin
+  DmLogin := TDmLogin.Create(Self);
 end;
 
 function TfrmLogin.MD5(const value: string): string ;

@@ -48,6 +48,7 @@ object DmParceiros: TDmParceiros
     end
   end
   object FDTable1: TFDTable
+    Active = True
     IndexFieldNames = 'PARCEIROS_ID'
     Connection = DmConexao.FDConnection1
     TableName = 'PARCEIROS'

@@ -28,6 +28,8 @@ implementation
 
 {$R *.dfm}
 
+uses uLogin;
+
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   //inherited;
@@ -37,6 +39,8 @@ end;
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   //inherited;
+  frmLogin := TfrmLogin.Create(Self);
+  frmLogin.Showmodal;
 
 end;
 

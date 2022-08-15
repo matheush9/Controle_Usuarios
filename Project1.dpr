@@ -19,7 +19,6 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Iceberg Classico');
   Application.CreateForm(TDmConexao, DmConexao);
-  Application.CreateForm(TDmLogin, DmLogin);
-  Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.
