@@ -1,6 +1,5 @@
 inherited frmPrincipal: TfrmPrincipal
   ClientHeight = 485
-  OnShow = FormShow
   ExplicitHeight = 544
   PixelsPerInch = 96
   TextHeight = 13

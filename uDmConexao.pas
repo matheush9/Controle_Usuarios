@@ -10,6 +10,7 @@ uses
 type
   TDmConexao = class(TDataModule)
     FDConnection1: TFDConnection;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -26,5 +27,11 @@ implementation
 uses uDmLogin;
 
 {$R *.dfm}
+
+procedure TDmConexao.DataModuleCreate(Sender: TObject);
+begin
+  FDConnection1.Params.Database := GetCurrentDir + '/DB/PESSOASDB.FDB';
+  FDConnection1.Connected := true;
+end;
 
 end.
