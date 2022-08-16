@@ -24,6 +24,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
 var
@@ -37,9 +38,11 @@ uses uDmLogin;
 
 procedure TfrmLogin.btn_confirmarClick(Sender: TObject);
 var
-armazenaLogin: string;
 armazenaSenha: string;
+armazenaLogin: string;
 begin
+  DmLogin.FDQuery1.Active;
+
   // Login
   armazenaLogin := dbEdit_login.Text;
 
@@ -47,7 +50,6 @@ begin
   armazenaSenha := DmLogin.MD5(dbEdit_senha.text);
 
   // Autenticação
-  DmLogin.FDQuery1.Active;
   DmLogin.FDQuery1.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
   DmLogin.FDQuery1.ParamByName('LOGIN').AsString := armazenaLogin;
   DmLogin.FDQuery1.ParamByName('SENHA').AsString := armazenaSenha;
@@ -59,7 +61,6 @@ begin
   if DmLogin.FDQuery1.IsEmpty = false then
   begin
     ShowMessage('Autenticado com sucesso!');
-    FreeAndNil(DmLogin);
     frmLogin.Close;
   end
 
@@ -67,6 +68,7 @@ begin
   begin
     ShowMessage('Login ou senha inválidos!');
   end;
+
 end;
 
 procedure TfrmLogin.btn_sairClick(Sender: TObject);

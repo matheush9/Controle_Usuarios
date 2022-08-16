@@ -106,9 +106,6 @@ inherited frmControleLogin: TfrmControleLogin
       ExplicitTop = 3
       ExplicitHeight = 45
     end
-    inherited btn_editar: TSpeedButton
-      Enabled = False
-    end
     inherited btn_excluir: TSpeedButton
       Enabled = False
     end
