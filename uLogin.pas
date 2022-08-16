@@ -9,13 +9,13 @@ uses
 
 type
   TfrmLogin = class(TForm)
+    btn_confirmar: TButton;
+    btn_sair: TButton;
     lb_login: TLabel;
     dbEdit_login: TDBEdit;
     DataSource1: TDataSource;
     lb_senha: TLabel;
     dbEdit_senha: TDBEdit;
-    btn_confirmar: TButton;
-    btn_sair: TButton;
     procedure btn_sairClick(Sender: TObject);
     procedure btn_confirmarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -47,12 +47,14 @@ begin
   armazenaSenha := DmLogin.MD5(dbEdit_senha.text);
 
   // Autenticação
-
   DmLogin.FDQuery1.Active;
   DmLogin.FDQuery1.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
   DmLogin.FDQuery1.ParamByName('LOGIN').AsString := armazenaLogin;
   DmLogin.FDQuery1.ParamByName('SENHA').AsString := armazenaSenha;
   DmLogin.FDQuery1.Open;
+
+  //Esconder a quantidade de caracteres da senha
+  dbEdit_senha.Text := EmptyStr;
 
   if DmLogin.FDQuery1.IsEmpty = false then
   begin
@@ -71,7 +73,6 @@ procedure TfrmLogin.btn_sairClick(Sender: TObject);
 begin
   Application.Terminate;
 end;
-
 
 procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

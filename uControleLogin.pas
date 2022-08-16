@@ -40,17 +40,13 @@ uses uDmLogin;
 
 procedure TfrmControleLogin.AbrirConexaoDM;
 begin
-  DmLogin.FDTable1.Active := true;
   DmLogin.FDQuery1.Active := true;
-  DmLogin.FDTable1.Open;
   DmLogin.FDQuery1.Open;
 end;
 
 procedure TfrmControleLogin.FecharConexaoDM;
 begin
-  DmLogin.FDTable1.Active := false;
   DmLogin.FDQuery1.Active := false;
-  DmLogin.FDTable1.Close;
   DmLogin.FDQuery1.Close;
 end;
 

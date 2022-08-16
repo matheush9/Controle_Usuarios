@@ -11,13 +11,8 @@ uses
 
 type
   TDmLogin = class(TDataModule)
-    FDTable1: TFDTable;
     FDTransaction1: TFDTransaction;
-    FDTable1LOGIN_ID: TIntegerField;
-    FDTable1LOGIN: TStringField;
-    FDTable1SENHA: TStringField;
     FDQuery1: TFDQuery;
-    FDTable1PERMISSAO: TStringField;
     FDQuery1LOGIN: TStringField;
     FDQuery1SENHA: TStringField;
     FDQuery1LOGIN_ID: TIntegerField;

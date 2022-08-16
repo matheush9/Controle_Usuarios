@@ -5,8 +5,6 @@ inherited frmControleLogin: TfrmControleLogin
   inherited PageControl1: TPageControl
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
-        ExplicitLeft = -48
-        ExplicitTop = 16
         object lb_login: TLabel
           Left = 32
           Top = 56
@@ -52,7 +50,7 @@ inherited frmControleLogin: TfrmControleLogin
           Left = 32
           Top = 72
           Width = 394
-          Height = 25
+          Height = 21
           DataField = 'LOGIN'
           DataSource = DataSourceCRUD
           TabOrder = 0
@@ -74,7 +72,7 @@ inherited frmControleLogin: TfrmControleLogin
           Left = 32
           Top = 164
           Width = 250
-          Height = 25
+          Height = 21
           PasswordChar = '*'
           TabOrder = 2
           Visible = False
@@ -103,15 +101,17 @@ inherited frmControleLogin: TfrmControleLogin
     end
   end
   inherited CrudBarPanel: TPanel
-    ExplicitLeft = -8
     inherited btn_consultar: TSpeedButton
       ExplicitLeft = 224
       ExplicitTop = 3
       ExplicitHeight = 45
     end
-  end
-  inherited DataSourceCRUD: TDataSource
-    DataSet = DmLogin.FDTable1
+    inherited btn_editar: TSpeedButton
+      Enabled = False
+    end
+    inherited btn_excluir: TSpeedButton
+      Enabled = False
+    end
   end
   inherited DataSetProvider1: TDataSetProvider
     DataSet = DmLogin.FDQuery1

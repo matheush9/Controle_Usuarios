@@ -5,7 +5,6 @@ inherited frmControleUsuarios: TfrmControleUsuarios
   inherited PageControl1: TPageControl
     inherited TabSheet1: TTabSheet
       inherited MainPanel: TPanel
-        ExplicitTop = -3
         object lb_cargo: TLabel
           Left = 5
           Top = 255

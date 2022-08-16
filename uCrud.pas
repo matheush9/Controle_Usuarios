@@ -216,7 +216,7 @@ end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
-  Application.MessageBox('Você realmente deseja cancelar esse registro?',
+  Application.MessageBox('Você realmente deseja cancelar a alteração esse registro?',
   'Cancelar', MB_YESNO);
   DataSourceCRUD.DataSet.Cancel;
   CrudBarEnabled_Read;
