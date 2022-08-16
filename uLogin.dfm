@@ -5,8 +5,8 @@ object frmLogin: TfrmLogin
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Login'
-  ClientHeight = 264
-  ClientWidth = 400
+  ClientHeight = 262
+  ClientWidth = 416
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,13 +18,13 @@ object frmLogin: TfrmLogin
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
-    400
-    264)
+    416
+    262)
   PixelsPerInch = 96
   TextHeight = 13
   object lb_login: TLabel
-    Left = 47
-    Top = 46
+    Left = 53
+    Top = 45
     Width = 37
     Height = 14
     Anchors = []
@@ -36,10 +36,12 @@ object frmLogin: TfrmLogin
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
+    ExplicitLeft = 51
+    ExplicitTop = 43
   end
   object lb_senha: TLabel
-    Left = 47
-    Top = 108
+    Left = 53
+    Top = 105
     Width = 41
     Height = 14
     Anchors = []
@@ -51,30 +53,36 @@ object frmLogin: TfrmLogin
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
+    ExplicitLeft = 51
+    ExplicitTop = 101
   end
   object btn_confirmar: TButton
-    Left = 85
-    Top = 180
+    Left = 95
+    Top = 179
     Width = 80
     Height = 40
     Anchors = []
     Caption = 'Confirmar'
     TabOrder = 2
     OnClick = btn_confirmarClick
+    ExplicitLeft = 92
+    ExplicitTop = 171
   end
   object btn_sair: TButton
-    Left = 210
-    Top = 180
+    Left = 224
+    Top = 179
     Width = 80
     Height = 40
     Anchors = []
     Caption = 'Sair'
     TabOrder = 3
     OnClick = btn_sairClick
+    ExplicitLeft = 218
+    ExplicitTop = 171
   end
   object dbEdit_login: TDBEdit
-    Left = 44
-    Top = 71
+    Left = 57
+    Top = 69
     Width = 300
     Height = 21
     Anchors = []
@@ -82,10 +90,12 @@ object frmLogin: TfrmLogin
     DataField = 'LOGIN'
     DataSource = DataSource1
     TabOrder = 0
+    ExplicitLeft = 52
+    ExplicitTop = 66
   end
   object dbEdit_senha: TDBEdit
-    Left = 44
-    Top = 132
+    Left = 57
+    Top = 128
     Width = 300
     Height = 21
     Anchors = []
@@ -93,6 +103,8 @@ object frmLogin: TfrmLogin
     DataSource = DataSource1
     PasswordChar = '*'
     TabOrder = 1
+    ExplicitLeft = 52
+    ExplicitTop = 123
   end
   object DataSource1: TDataSource
     DataSet = DmLogin.FDQuery1

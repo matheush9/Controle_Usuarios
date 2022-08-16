@@ -42,6 +42,7 @@ end;
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   //inherited;
+  Self.Show;
   frmLogin := TfrmLogin.Create(Self);
   frmLogin.ShowModal;
 

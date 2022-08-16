@@ -34,7 +34,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmLogin;
+uses uDmLogin, uPrincipal;
 
 procedure TfrmLogin.btn_confirmarClick(Sender: TObject);
 var
@@ -61,6 +61,7 @@ begin
   if DmLogin.FDQuery1.IsEmpty = false then
   begin
     ShowMessage('Autenticado com sucesso!');
+    frmPrincipal.Enabled := true;
     frmLogin.Close;
   end
 
@@ -84,6 +85,7 @@ end;
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   DmLogin := TDmLogin.Create(Self);
+  frmPrincipal.Enabled := false;
 end;
 
 end.
