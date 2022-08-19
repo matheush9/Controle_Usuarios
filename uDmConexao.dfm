@@ -6,9 +6,6 @@ object DmConexao: TDmConexao
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Pooled='
-      
-        'Database=C:\Users\Conceito\Desktop\Sistema controle git\Win32\De' +
-        'bug\Assets\DBs\PESSOASDB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'DriverID=FB')

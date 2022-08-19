@@ -127,7 +127,7 @@ end;
 procedure TfrmCrud.ControlarBTNeDEL;
 begin
   { Valida se existe ou não dados na Dataset, assim habilitando
-   ou não as setas e o botão de excluir}
+    ou não as setas e o botão de excluir }
 
   if ClientDataSet1.RecordCount > 0 then
   begin
@@ -202,7 +202,7 @@ end;
 
 // -- --
 
-//--  Botões da TopBar --
+// --  Botões da TopBar --
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
@@ -216,8 +216,9 @@ end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
 begin
-  Application.MessageBox('Você realmente deseja cancelar a alteração esse registro?',
-  'Cancelar', MB_YESNO);
+  Application.MessageBox
+    ('Você realmente deseja cancelar a alteração esse registro?', 'Cancelar',
+    MB_YESNO);
   DataSourceCRUD.DataSet.Cancel;
   CrudBarEnabled_Read;
   ControlarBTNeDEL;
@@ -245,19 +246,23 @@ begin
 end;
 
 procedure TfrmCrud.btn_excluirClick(Sender: TObject);
+var
+Res: integer;
 begin
-  Application.MessageBox('Você realmente deseja excluir esse registro?',
+  Res := Application.MessageBox('Você realmente deseja excluir esse registro?',
     'Exclusão de registro', MB_YESNO);
-  DataSourceCRUD.DataSet.Delete;
-  ClientDataSet1.ApplyUpdates(-1);
-  FecharConexao;
+  if Res = IDYES then
+  begin
+    DataSourceCRUD.DataSet.Delete;
+    ClientDataSet1.ApplyUpdates(-1);
+  end;
 end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
   ClientDataSet1.Post;
   Application.Title := 'Aviso!';
-  Showmessage('Registro Gravado com sucesso!');
+  ShowMessage('Registro Gravado com sucesso!');
   ClientDataSet1.ApplyUpdates(-1);
   CrudBarEnabled_Read;
   FecharConexao;

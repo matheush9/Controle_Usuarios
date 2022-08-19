@@ -88,9 +88,6 @@ procedure TfrmLogin.btn_confirmarClick(Sender: TObject);
 var
   armazenaSenha: string;
 begin
-
-  DmLogin.FDQuery1.Active;
-
   // Login
   armazenaLogin := dbEdit_login.Text;
 
@@ -135,6 +132,7 @@ procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   frmPrincipal.Enabled := false;
   DmLogin := TDmLogin.Create(Self);
+  DmLogin.FDQuery1.Active := true;
 end;
 
 end.

@@ -65,8 +65,6 @@ object frmLogin: TfrmLogin
     Caption = 'Confirmar'
     TabOrder = 2
     OnClick = btn_confirmarClick
-    ExplicitLeft = 92
-    ExplicitTop = 171
   end
   object btn_sair: TButton
     Left = 224
@@ -77,8 +75,6 @@ object frmLogin: TfrmLogin
     Caption = 'Sair'
     TabOrder = 3
     OnClick = btn_sairClick
-    ExplicitLeft = 218
-    ExplicitTop = 171
   end
   object dbEdit_login: TDBEdit
     Left = 57
@@ -90,8 +86,6 @@ object frmLogin: TfrmLogin
     DataField = 'LOGIN'
     DataSource = DataSource1
     TabOrder = 0
-    ExplicitLeft = 52
-    ExplicitTop = 66
   end
   object dbEdit_senha: TDBEdit
     Left = 57
@@ -103,8 +97,6 @@ object frmLogin: TfrmLogin
     DataSource = DataSource1
     PasswordChar = '*'
     TabOrder = 1
-    ExplicitLeft = 52
-    ExplicitTop = 123
   end
   object DataSource1: TDataSource
     DataSet = DmLogin.FDQuery1

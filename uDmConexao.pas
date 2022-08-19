@@ -30,7 +30,7 @@ uses uDmLogin;
 
 procedure TDmConexao.DataModuleCreate(Sender: TObject);
 begin
-  FDConnection1.Params.Database := GetCurrentDir + '/DB/PESSOASDB.FDB';
+  FDConnection1.Params.Database := GetCurrentDir + '\DB\PESSOASDB.FDB';
   FDConnection1.Connected := true;
 end;
 

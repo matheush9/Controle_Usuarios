@@ -8,7 +8,6 @@ object DmLogin: TDmLogin
     Top = 32
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = DmConexao.FDConnection1
     SQL.Strings = (
       'select * from login where login_id = 0;')
