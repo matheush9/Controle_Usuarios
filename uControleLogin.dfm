@@ -1,5 +1,6 @@
 inherited frmControleLogin: TfrmControleLogin
   Caption = 'Controle Logins'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl

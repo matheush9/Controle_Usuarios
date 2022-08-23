@@ -1,5 +1,6 @@
 inherited frmControleParceiros: TfrmControleParceiros
   Caption = 'Controle de Parceiros'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl

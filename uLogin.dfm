@@ -17,6 +17,7 @@ object frmLogin: TfrmLogin
   Position = poDesktopCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   DesignSize = (
     416
     262)

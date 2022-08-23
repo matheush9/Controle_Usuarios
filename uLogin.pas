@@ -22,6 +22,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ControlarPermissao;
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -124,8 +125,8 @@ end;
 
 procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action := cafree;
   FreeAndNil(DmLogin);
+  Action := cafree;
 end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
@@ -133,6 +134,11 @@ begin
   frmPrincipal.Enabled := false;
   DmLogin := TDmLogin.Create(Self);
   DmLogin.FDQuery1.Active := true;
+end;
+
+procedure TfrmLogin.FormDestroy(Sender: TObject);
+begin
+  frmLogin := nil;
 end;
 
 end.

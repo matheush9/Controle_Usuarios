@@ -27,6 +27,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirConexaoDM;
@@ -76,7 +77,7 @@ begin
   //inherited;
   FecharConexaoDM;
   Freeandnil(DmParceiros);
-  FreeAndNil(frmControleParceiros);
+  Action := CaFree;
 end;
 
 procedure TfrmControleParceiros.FormCreate(Sender: TObject);
@@ -87,6 +88,12 @@ begin
     AbrirConexaoDM;
   end;
   inherited;
+end;
+
+procedure TfrmControleParceiros.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  frmControleParceiros := nil;
 end;
 
 end.

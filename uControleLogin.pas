@@ -21,6 +21,7 @@ type
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirConexaoDM;
@@ -56,7 +57,7 @@ begin
   inherited;
   FecharConexaoDM;
   FreeAndNil(DmLogin);
-  FreeAndNil(frmControleLogin);
+  Action := CaFree;
 end;
 
 procedure TfrmControleLogin.FormCreate(Sender: TObject);
@@ -67,6 +68,12 @@ begin
     AbrirConexaoDM;
   end;
   inherited;
+end;
+
+procedure TfrmControleLogin.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  frmControleLogin := nil;
 end;
 
 procedure TfrmControleLogin.btn_cancelarClick(Sender: TObject);
