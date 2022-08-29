@@ -1,5 +1,6 @@
 inherited frmControleUsuarios: TfrmControleUsuarios
   Caption = 'Controle de Usu'#225'rios'
+  FormStyle = fsMDIChild
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
@@ -218,5 +219,7 @@ inherited frmControleUsuarios: TfrmControleUsuarios
   end
   inherited DataSetProvider1: TDataSetProvider
     DataSet = DmUsuarios.FDQuery1
+    Left = 468
+    Top = 381
   end
 end

@@ -13,10 +13,9 @@ type
     btn_confirmar: TButton;
     btn_sair: TButton;
     lb_login: TLabel;
-    dbEdit_login: TDBEdit;
-    DataSource1: TDataSource;
     lb_senha: TLabel;
-    dbEdit_senha: TDBEdit;
+    edit_login: TEdit;
+    edit_senha: TEdit;
     procedure btn_sairClick(Sender: TObject);
     procedure btn_confirmarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -38,7 +37,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmLogin, uPrincipal;
+uses uDmLogin, uMain;
 
 procedure TfrmLogin.ControlarPermissao;
 var
@@ -49,7 +48,7 @@ begin
   armazenaPermissao := DmLogin.FDQuery1.FieldByName('PERMISSAO').Value;
   armazenaLogin := DmLogin.FDQuery1.FieldByName('LOGIN').Value;
 
-  frmPrincipal.StatusBar1.Panels[0].Text := frmPrincipal.StatusBar1.Panels[0]
+  frmMain.StatusBar1.Panels[0].Text := frmMain.StatusBar1.Panels[0]
     .Text + ' ' + armazenaLogin;
 
   if armazenaPermissao = 'ADM' then
@@ -74,13 +73,13 @@ begin
       end;
     1:
       begin
-        frmPrincipal.MainMenu1.Items[0].Items[0].Enabled := false;
+        frmMain.MainMenu1.Items[0].Items[0].Enabled := false;
       end;
 
     2:
       begin
-        frmPrincipal.MainMenu1.Items[2].Enabled := false;
-        frmPrincipal.MainMenu1.Items[0].Items[1].Enabled := false;
+        frmMain.MainMenu1.Items[2].Enabled := false;
+        frmMain.MainMenu1.Items[0].Items[1].Enabled := false;
       end;
   end;
 end;
@@ -90,10 +89,10 @@ var
   armazenaSenha: string;
 begin
   // Login
-  armazenaLogin := dbEdit_login.Text;
+  armazenaLogin := edit_login.Text;
 
   // Senha
-  armazenaSenha := DmLogin.MD5(dbEdit_senha.Text);
+  armazenaSenha := DmLogin.MD5(edit_senha.Text);
 
   // Autenticação
   DmLogin.FDQuery1.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
@@ -101,13 +100,9 @@ begin
   DmLogin.FDQuery1.ParamByName('SENHA').AsString := armazenaSenha;
   DmLogin.FDQuery1.Open;
 
-  // Esconder a quantidade de caracteres da senha
-  dbEdit_senha.Text := EmptyStr;
-
-  if DmLogin.FDQuery1.IsEmpty = false then
+  if not DmLogin.FDQuery1.IsEmpty then
   begin
     ShowMessage('Autenticado com sucesso!');
-    frmPrincipal.Enabled := true;
     ControlarPermissao;
     frmLogin.Close;
   end
@@ -131,7 +126,6 @@ end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
-  frmPrincipal.Enabled := false;
   DmLogin := TDmLogin.Create(Self);
   DmLogin.FDQuery1.Active := true;
 end;

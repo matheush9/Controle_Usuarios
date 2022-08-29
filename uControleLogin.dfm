@@ -1,5 +1,6 @@
 inherited frmControleLogin: TfrmControleLogin
   Caption = 'Controle Logins'
+  FormStyle = fsMDIChild
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13

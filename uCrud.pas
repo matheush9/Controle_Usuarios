@@ -25,13 +25,6 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     DBGrid1: TDBGrid;
-    MainMenu1: TMainMenu;
-    Cadastro1: TMenuItem;
-    CadastrodeParceiros: TMenuItem;
-    CadastrodeUsuarios: TMenuItem;
-    Sistema1: TMenuItem;
-    Ajuda1: TMenuItem;
-    Sobre1: TMenuItem;
     CrudBarPanel: TPanel;
     btn_avançar: TSpeedButton;
     btn_cancelar: TSpeedButton;
@@ -43,7 +36,6 @@ type
     btn_voltar: TSpeedButton;
     ClientDataSet1: TClientDataSet;
     DataSetProvider1: TDataSetProvider;
-    ContasUsuarios: TMenuItem;
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_excluirClick(Sender: TObject);
@@ -51,13 +43,11 @@ type
     procedure btn_avançarClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
     procedure btn_editarClick(Sender: TObject);
-    procedure CadastrodeParceirosClick(Sender: TObject);
-    procedure CadastrodeUsuariosClick(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ClientDataSet1AfterScroll(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure ContasUsuariosClick(Sender: TObject);
+    procedure Sobre1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -75,14 +65,10 @@ type
 
 var
   frmCrud: TfrmCrud;
-  MainCaption: string = 'UNL Inteligente - ';
 
 implementation
 
 {$R *.dfm}
-
-uses uControleParceiros, uControleUsuarios, uDmUsuarios, uControleLogin;
-
 
 // --  Procedures Auxiliares --
 
@@ -198,6 +184,11 @@ begin
   end;
 end;
 
+procedure TfrmCrud.Sobre1Click(Sender: TObject);
+begin
+
+end;
+
 //
 
 // -- --
@@ -281,37 +272,9 @@ end;
 
 // -- Controle de Form --
 
-procedure TfrmCrud.CadastrodeParceirosClick(Sender: TObject);
-begin
-  if frmControleParceiros = nil then
-  begin
-    frmControleParceiros := TfrmControleParceiros.Create(Self);
-    frmControleParceiros.Show;
-  end;
-end;
-
-procedure TfrmCrud.CadastrodeUsuariosClick(Sender: TObject);
-begin
-  if frmControleUsuarios = nil then
-  begin
-    frmControleUsuarios := TfrmControleUsuarios.Create(Self);
-    frmControleUsuarios.Show;
-  end;
-end;
-
-procedure TfrmCrud.ContasUsuariosClick(Sender: TObject);
-begin
-  if frmControleLogin = nil then
-  begin
-    frmControleLogin := TfrmControleLogin.Create(Self);
-    frmControleLogin.Show;
-  end;
-end;
-
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
   AbrirConexao;
-  Caption := MainCaption + Caption;
   CrudBarEnabled_Read;
   VarrerCampos;
 end;

@@ -1,8 +1,7 @@
 ﻿object frmCrud: TfrmCrud
   Left = 0
   Top = 0
-  Caption = 'UNL Inteligente'
-  ClientHeight = 498
+  ClientHeight = 518
   ClientWidth = 555
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -1548,7 +1547,6 @@
     A580E91D4A610E7CE1E7989153195B9A9AE39ACB73437EABDC1A02657921DF28
     7784E6B5F427FE427EC64186FC1D33B998C90C1ED96CD5FD97F0F8FF01EDECE8
     9ABFCCE4BA0000000049454E44AE426082}
-  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   Visible = True
@@ -1561,21 +1559,23 @@
     Left = 0
     Top = 53
     Width = 555
-    Height = 445
+    Height = 465
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 445
     object TabSheet1: TTabSheet
       Caption = 'Dados'
       object MainPanel: TPanel
         Left = 0
         Top = 0
         Width = 547
-        Height = 417
+        Height = 437
         Align = alClient
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
+        ExplicitHeight = 417
       end
     end
     object TabSheet2: TTabSheet
@@ -1585,7 +1585,7 @@
         Left = 0
         Top = 0
         Width = 547
-        Height = 417
+        Height = 437
         Align = alClient
         DataSource = DataSourceCRUD
         TabOrder = 0
@@ -2621,46 +2621,18 @@
     AutoEdit = False
     DataSet = ClientDataSet1
     Left = 464
-    Top = 400
-  end
-  object MainMenu1: TMainMenu
-    Left = 356
-    Top = 399
-    object Cadastro1: TMenuItem
-      Caption = 'Pessoas'
-      object CadastrodeParceiros: TMenuItem
-        Caption = 'Cadastro de Parceiros'
-        OnClick = CadastrodeParceirosClick
-      end
-      object CadastrodeUsuarios: TMenuItem
-        Caption = 'Cadastro de Usu'#225'rios'
-        OnClick = CadastrodeUsuariosClick
-      end
-    end
-    object Sistema1: TMenuItem
-      Caption = 'Sistema'
-      object ContasUsuarios: TMenuItem
-        Caption = 'Contas de Usu'#225'rios'
-        OnClick = ContasUsuariosClick
-      end
-    end
-    object Ajuda1: TMenuItem
-      Caption = 'Ajuda'
-      object Sobre1: TMenuItem
-        Caption = 'Sobre'
-      end
-    end
+    Top = 256
   end
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DataSetProvider1'
     AfterScroll = ClientDataSet1AfterScroll
-    Left = 460
-    Top = 333
+    Left = 468
+    Top = 317
   end
   object DataSetProvider1: TDataSetProvider
-    Left = 356
-    Top = 333
+    Left = 460
+    Top = 189
   end
 end

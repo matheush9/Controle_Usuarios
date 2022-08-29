@@ -130,10 +130,6 @@
             <Form>frmControleParceiros</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uPrincipal.pas">
-            <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="uLogin.pas">
             <Form>frmLogin</Form>
             <FormType>dfm</FormType>
@@ -145,6 +141,10 @@
         </DCCReference>
         <DCCReference Include="uControleLogin.pas">
             <Form>frmControleLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uMain.pas">
+            <Form>FrmMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

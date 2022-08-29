@@ -8,7 +8,7 @@ object DmUsuarios: TDmUsuarios
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
     TableName = 'USUARIOS'
-    Left = 80
+    Left = 88
     Top = 32
   end
   object FDQuery1: TFDQuery

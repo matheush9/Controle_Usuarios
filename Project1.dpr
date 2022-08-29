@@ -7,12 +7,12 @@ uses
   uControleUsuarios in 'uControleUsuarios.pas' {frmControleUsuarios},
   uDmParceiros in 'uDmParceiros.pas' {DmParceiros: TDataModule},
   uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros},
-  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   Vcl.Themes,
   Vcl.Styles,
   uLogin in 'uLogin.pas' {frmLogin},
   uDmLogin in 'uDmLogin.pas' {DmLogin: TDataModule},
-  uControleLogin in 'uControleLogin.pas' {frmControleLogin};
+  uControleLogin in 'uControleLogin.pas' {frmControleLogin},
+  uMain in 'uMain.pas' {FrmMain};
 
 {$R *.res}
 begin
@@ -20,6 +20,6 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Iceberg Classico');
   Application.CreateForm(TDmConexao, DmConexao);
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TFrmMain, FrmMain);
   Application.Run;
 end.

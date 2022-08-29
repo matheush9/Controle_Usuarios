@@ -1,5 +1,6 @@
 inherited frmControleParceiros: TfrmControleParceiros
   Caption = 'Controle de Parceiros'
+  FormStyle = fsMDIChild
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13

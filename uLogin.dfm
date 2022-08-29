@@ -5,8 +5,8 @@ object frmLogin: TfrmLogin
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Login'
-  ClientHeight = 262
-  ClientWidth = 416
+  ClientHeight = 215
+  ClientWidth = 334
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,89 +19,79 @@ object frmLogin: TfrmLogin
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignSize = (
-    416
-    262)
+    334
+    215)
   PixelsPerInch = 96
   TextHeight = 13
   object lb_login: TLabel
-    Left = 53
-    Top = 45
+    Left = 17
+    Top = 19
     Width = 37
     Height = 14
     Anchors = []
     Caption = 'LOGIN'
-    FocusControl = dbEdit_login
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
-    ExplicitLeft = 51
-    ExplicitTop = 43
+    ExplicitLeft = 20
+    ExplicitTop = 20
   end
   object lb_senha: TLabel
-    Left = 53
-    Top = 105
+    Left = 16
+    Top = 79
     Width = 41
     Height = 14
     Anchors = []
     Caption = 'SENHA'
-    FocusControl = dbEdit_senha
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
-    ExplicitLeft = 51
-    ExplicitTop = 101
+    ExplicitLeft = 17
+    ExplicitTop = 81
   end
   object btn_confirmar: TButton
-    Left = 95
-    Top = 179
-    Width = 80
+    Left = 17
+    Top = 142
+    Width = 167
     Height = 40
     Anchors = []
     Caption = 'Confirmar'
-    TabOrder = 2
+    TabOrder = 0
     OnClick = btn_confirmarClick
   end
   object btn_sair: TButton
-    Left = 224
-    Top = 179
-    Width = 80
+    Left = 208
+    Top = 142
+    Width = 106
     Height = 40
     Anchors = []
     Caption = 'Sair'
-    TabOrder = 3
+    TabOrder = 1
     OnClick = btn_sairClick
   end
-  object dbEdit_login: TDBEdit
-    Left = 57
-    Top = 69
-    Width = 300
-    Height = 21
+  object edit_login: TEdit
+    Left = 17
+    Top = 39
+    Width = 297
+    Height = 25
     Anchors = []
-    BevelEdges = [beLeft, beTop]
-    DataField = 'LOGIN'
-    DataSource = DataSource1
-    TabOrder = 0
+    AutoSize = False
+    TabOrder = 2
   end
-  object dbEdit_senha: TDBEdit
-    Left = 57
-    Top = 128
-    Width = 300
-    Height = 21
+  object edit_senha: TEdit
+    Left = 17
+    Top = 99
+    Width = 297
+    Height = 25
     Anchors = []
-    DataField = 'SENHA'
-    DataSource = DataSource1
+    AutoSize = False
     PasswordChar = '*'
-    TabOrder = 1
-  end
-  object DataSource1: TDataSource
-    DataSet = DmLogin.FDQuery1
-    Left = 336
-    Top = 184
+    TabOrder = 3
   end
 end
