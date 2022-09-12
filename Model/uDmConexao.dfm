@@ -8,11 +8,13 @@ object DmConexao: TDmConexao
       'Pooled='
       'User_Name=SYSDBA'
       'Password=masterkey'
+      
+        'Database=C:\Users\Conceito\Downloads\Sistema controle git 1\Sist' +
+        'ema controle git puro\Win32\Debug\DB\PESSOASDB.FDB'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
     LoginPrompt = False
-    Transaction = DmLogin.FDTransaction1
     Left = 96
     Top = 40
   end

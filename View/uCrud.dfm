@@ -1563,7 +1563,6 @@
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 445
     object TabSheet1: TTabSheet
       Caption = 'Dados'
       object MainPanel: TPanel
@@ -1575,7 +1574,6 @@
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 417
       end
     end
     object TabSheet2: TTabSheet
@@ -2619,20 +2617,7 @@
   end
   object DataSourceCRUD: TDataSource
     AutoEdit = False
-    DataSet = ClientDataSet1
-    Left = 464
-    Top = 256
-  end
-  object ClientDataSet1: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'DataSetProvider1'
-    AfterScroll = ClientDataSet1AfterScroll
-    Left = 468
-    Top = 317
-  end
-  object DataSetProvider1: TDataSetProvider
-    Left = 460
-    Top = 189
+    Left = 456
+    Top = 344
   end
 end

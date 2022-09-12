@@ -112,7 +112,4 @@ inherited frmControleLogin: TfrmControleLogin
       Enabled = False
     end
   end
-  inherited DataSetProvider1: TDataSetProvider
-    DataSet = DmLogin.FDQuery1
-  end
 end

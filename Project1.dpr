@@ -1,18 +1,24 @@
 program Project1;
 uses
   Vcl.Forms,
-  uDmUsuarios in 'uDmUsuarios.pas' {DmUsuarios: TDataModule},
-  uDmConexao in 'uDmConexao.pas' {DmConexao: TDataModule},
-  uCrud in 'uCrud.pas' {frmCrud},
-  uControleUsuarios in 'uControleUsuarios.pas' {frmControleUsuarios},
-  uDmParceiros in 'uDmParceiros.pas' {DmParceiros: TDataModule},
-  uControleParceiros in 'uControleParceiros.pas' {frmControleParceiros},
   Vcl.Themes,
   Vcl.Styles,
-  uLogin in 'uLogin.pas' {frmLogin},
-  uDmLogin in 'uDmLogin.pas' {DmLogin: TDataModule},
-  uControleLogin in 'uControleLogin.pas' {frmControleLogin},
-  uMain in 'uMain.pas' {FrmMain};
+  uControleLogin in 'View\uControleLogin.pas' {frmControleLogin},
+  uControleParceiros in 'View\uControleParceiros.pas' {frmControleParceiros},
+  uControleUsuarios in 'View\uControleUsuarios.pas' {frmControleUsuarios},
+  uLogin in 'View\uLogin.pas' {frmLogin},
+  uMain in 'View\uMain.pas' {FrmMain},
+  uCrud.Model in 'Model\uCrud.Model.pas',
+  uControleComponentes in 'Utils\uControleComponentes.pas',
+  uControllerParceiros in 'Controller\uControllerParceiros.pas',
+  uDmConexao in 'Model\uDmConexao.pas' {DmConexao: TDataModule},
+  uCrud in 'View\uCrud.pas' {frmCrud},
+  uControllerUsuarios in 'Controller\uControllerUsuarios.pas',
+  uControllerLogin in 'Controller\uControllerLogin.pas',
+  uController in 'Controller\uController.pas',
+  uLogin.Model in 'Model\uLogin.Model.pas',
+  uParceiros.Model in 'Model\uParceiros.Model.pas',
+  uUsuarios.Model in 'Model\uUsuarios.Model.pas';
 
 {$R *.res}
 begin

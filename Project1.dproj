@@ -103,50 +103,44 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uDmUsuarios.pas">
-            <Form>DmUsuarios</Form>
+        <DCCReference Include="View\uControleLogin.pas">
+            <Form>frmControleLogin</Form>
             <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="uDmConexao.pas">
+        <DCCReference Include="View\uControleParceiros.pas">
+            <Form>frmControleParceiros</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\uControleUsuarios.pas">
+            <Form>frmControleUsuarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\uLogin.pas">
+            <Form>frmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\uMain.pas">
+            <Form>FrmMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Model\uCrud.Model.pas"/>
+        <DCCReference Include="Utils\uControleComponentes.pas"/>
+        <DCCReference Include="Controller\uControllerParceiros.pas"/>
+        <DCCReference Include="Model\uDmConexao.pas">
             <Form>DmConexao</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="uCrud.pas">
+        <DCCReference Include="View\uCrud.pas">
             <Form>frmCrud</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uControleUsuarios.pas">
-            <Form>frmControleUsuarios</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="uDmParceiros.pas">
-            <Form>DmParceiros</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="uControleParceiros.pas">
-            <Form>frmControleParceiros</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="uLogin.pas">
-            <Form>frmLogin</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="uDmLogin.pas">
-            <Form>DmLogin</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="uControleLogin.pas">
-            <Form>frmControleLogin</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="uMain.pas">
-            <Form>FrmMain</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
+        <DCCReference Include="Controller\uControllerUsuarios.pas"/>
+        <DCCReference Include="Controller\uControllerLogin.pas"/>
+        <DCCReference Include="Controller\uController.pas"/>
+        <DCCReference Include="Model\uLogin.Model.pas"/>
+        <DCCReference Include="Model\uParceiros.Model.pas"/>
+        <DCCReference Include="Model\uUsuarios.Model.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

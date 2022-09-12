@@ -2,8 +2,8 @@ object FrmMain: TFrmMain
   Left = 0
   Top = 0
   Caption = 'UNL Inteligente'
-  ClientHeight = 224
-  ClientWidth = 447
+  ClientHeight = 327
+  ClientWidth = 558
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,17 +19,16 @@ object FrmMain: TFrmMain
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 193
-    Width = 447
+    Top = 296
+    Width = 558
     Height = 31
     Panels = <
       item
         Text = 'USU'#193'RIO:'
         Width = 50
       end>
-    ExplicitLeft = -106
-    ExplicitTop = 150
-    ExplicitWidth = 553
+    ExplicitTop = 273
+    ExplicitWidth = 527
   end
   object MainMenu1: TMainMenu
     Left = 36

@@ -36,8 +36,8 @@ implementation
 {$R *.dfm}
 
 uses
-  uLogin, uDmLogin,
-  uControleParceiros, uControleUsuarios, uDmUsuarios, uControleLogin;
+  uLogin, uLogin.Model,
+  uControleParceiros, uControleUsuarios, uControleLogin;
 
 procedure TFrmMain.CadastrodeParceirosClick(Sender: TObject);
 begin
@@ -71,5 +71,6 @@ begin
   frmLogin := TfrmLogin.Create(Self);
   frmLogin.ShowModal;
 end;
+
 
 end.

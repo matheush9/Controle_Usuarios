@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Mask,
-  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, uControllerLogin;
 
 type
   TfrmLogin = class(TForm)
@@ -28,16 +28,29 @@ type
     { Public declarations }
     armazenaPermissao: string;
     armazenaLogin: string;
+    procedure AbrirConexao;
+    procedure FecharConexao;
   end;
 
 var
   frmLogin: TfrmLogin;
+  ControllerLogin: TControllerLogin;
 
 implementation
 
 {$R *.dfm}
 
-uses uDmLogin, uMain;
+uses uMain;
+
+procedure TfrmLogin.AbrirConexao;
+begin
+  ControllerLogin.AbrirConexao;
+end;
+
+procedure TfrmLogin.FecharConexao;
+begin
+  ControllerLogin.FecharConexao;
+end;
 
 procedure TfrmLogin.ControlarPermissao;
 var
@@ -45,8 +58,10 @@ var
 begin
   // Controle de Permissões dos Usuários
 
-  armazenaPermissao := DmLogin.FDQuery1.FieldByName('PERMISSAO').Value;
-  armazenaLogin := DmLogin.FDQuery1.FieldByName('LOGIN').Value;
+  armazenaPermissao := ControllerLogin.LoginModel.Query
+  .FieldByName('PERMISSAO').Value;
+  armazenaLogin := ControllerLogin.LoginModel.Query
+  .FieldByName('LOGIN').Value;
 
   frmMain.StatusBar1.Panels[0].Text := frmMain.StatusBar1.Panels[0]
     .Text + ' ' + armazenaLogin;
@@ -69,7 +84,7 @@ begin
   case Permissao of
     0:
       begin
-        { Permissão completa };
+        { Permissão Total };
       end;
     1:
       begin
@@ -88,26 +103,31 @@ procedure TfrmLogin.btn_confirmarClick(Sender: TObject);
 var
   armazenaSenha: string;
 begin
-  // Login
+  AbrirConexao;
+
+    // Login
   armazenaLogin := edit_login.Text;
 
   // Senha
-  armazenaSenha := DmLogin.MD5(edit_senha.Text);
+  armazenaSenha := ControllerLogin.LoginModel.MD5(edit_senha.Text);
 
   // Autenticação
-  DmLogin.FDQuery1.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
-  DmLogin.FDQuery1.ParamByName('LOGIN').AsString := armazenaLogin;
-  DmLogin.FDQuery1.ParamByName('SENHA').AsString := armazenaSenha;
-  DmLogin.FDQuery1.Open;
+  ControllerLogin.LoginModel.Query.SQL.Text :=
+  'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
+  ControllerLogin.LoginModel.Query.ParamByName('LOGIN').AsString :=
+  armazenaLogin;
+  ControllerLogin.LoginModel.Query.ParamByName('SENHA').AsString :=
+  armazenaSenha;
+  ControllerLogin.LoginModel.Query.Open;
 
-  if not DmLogin.FDQuery1.IsEmpty then
+  if not ControllerLogin.LoginModel.Query.IsEmpty then
   begin
     ShowMessage('Autenticado com sucesso!');
     ControlarPermissao;
     frmLogin.Close;
   end
 
-  else if DmLogin.FDQuery1.IsEmpty = true then
+  else if ControllerLogin.LoginModel.Query.IsEmpty = true then
   begin
     ShowMessage('Login ou senha inválidos!');
   end;
@@ -120,14 +140,14 @@ end;
 
 procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeAndNil(DmLogin);
+  FecharConexao;
+  FreeAndNil(ControllerLogin);
   Action := cafree;
 end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
-  DmLogin := TDmLogin.Create(Self);
-  DmLogin.FDQuery1.Active := true;
+  ControllerLogin := TControllerLogin.Create;
 end;
 
 procedure TfrmLogin.FormDestroy(Sender: TObject);
