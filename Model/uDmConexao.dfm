@@ -9,8 +9,8 @@ object DmConexao: TDmConexao
       'User_Name=SYSDBA'
       'Password=masterkey'
       
-        'Database=C:\Users\Conceito\Downloads\Sistema controle git 1\Sist' +
-        'ema controle git puro\Win32\Debug\DB\PESSOASDB.FDB'
+        'Database=C:\Users\Matheus\Desktop\Sistema controle u\Win32\Debug' +
+        '\DB\PESSOASDB.FDB'
       'DriverID=FB')
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False

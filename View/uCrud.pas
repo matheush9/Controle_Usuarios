@@ -15,8 +15,7 @@ uses
   Data.Bind.DBScope, Data.Bind.Controls, Vcl.ExtCtrls, Vcl.Buttons,
   Vcl.Bind.Navigator, Vcl.DBCtrls, Vcl.Mask, Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Menus,
-  Datasnap.Provider, Datasnap.DBClient, uController, uCrud.Model,
-  uControllerUsuarios, uUsuarios.Model;
+  Datasnap.Provider, Datasnap.DBClient, uController, uICrud;
 
 type
   TfrmCrud = class(TForm)
@@ -51,7 +50,8 @@ type
   public
     { Public declarations }
 
-    ControllerName: TController;
+    Controller: ICrud;
+    SQLText: string;
 
     procedure CrudBarEnabled_Insert;
     procedure CrudBarEnabled_Read;
@@ -72,22 +72,23 @@ uses uControleComponentes;
 
 procedure TfrmCrud.AbrirConexao;
 begin
-  ControllerName.AbrirConexao;
+  Controller := TController.Create;
+  Controller.AbrirConexao;
 end;
 
 procedure TfrmCrud.FecharConexao;
 begin
-  ControllerName.FecharConexao;
+  Controller.FecharConexao;
 end;
 
 procedure TfrmCrud.btn_voltarClick(Sender: TObject);
 begin
-  ControllerName.Voltar;
+  Controller.Voltar;
 end;
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
-  ControllerName.Avançar;
+  Controller.Avançar;
 end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
@@ -96,7 +97,7 @@ begin
     ('Você realmente deseja cancelar a alteração esse registro?', 'Cancelar',
     MB_YESNO);
 
-  ControllerName.Cancelar;
+  Controller.Cancelar;
 
   CrudBarEnabled_Read;
   ControlarBTNeDEL;
@@ -104,12 +105,14 @@ end;
 
 procedure TfrmCrud.btn_consultarClick(Sender: TObject);
 begin
-  ControllerName.Consultar;
+  AbrirConexao;
+  Controller.Consultar(SQLText);
+  ControlarBTNeDEL;
 end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
-  if ControllerName.Editar then
+  if Controller.Editar then
   begin
     Application.Title := 'Aviso!';
     ShowMessage('Não há registro para ser editado');
@@ -117,11 +120,8 @@ begin
   end;
 
   TabSheet1.Show;
-
   AbrirConexao;
-
-  ControllerName.Editar;
-
+  Controller.Editar;
   CrudBarEnabled_Insert;
 end;
 
@@ -133,30 +133,24 @@ begin
     'Exclusão de registro', MB_YESNO);
   if Res = IDYES then
   begin
-    ControllerName.Excluir;
+    Controller.Excluir;
   end;
 end;
 
 procedure TfrmCrud.btn_gravarClick(Sender: TObject);
 begin
-  ControllerName.Gravar;
-
+  Controller.Gravar;
   Application.Title := 'Aviso!';
   ShowMessage('Registro Gravado com sucesso!');
-
   CrudBarEnabled_Read;
-
-  FecharConexao;
+   FecharConexao;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
 begin
   TabSheet1.Show;
-
   AbrirConexao;
-
-  ControllerName.Incluir;
-
+  Controller.Incluir(SQLText);
   CrudBarEnabled_Insert;
 end;
 
@@ -191,7 +185,7 @@ end;
 
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
-  //AbrirConexao;
+  AbrirConexao;
   CrudBarEnabled_Read;
   TControles.EnableComponents(Self, [TDBEdit], false);
 end;

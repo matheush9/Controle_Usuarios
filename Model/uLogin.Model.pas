@@ -6,29 +6,31 @@ uses
   uCrud.Model, System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, IdHashMessageDigest;
+  FireDAC.Comp.DataSet, uICrud, uILogin, FireDAC.Comp.Client, IdHashMessageDigest;
 
 type
-  TLoginModel = class(TBtnsCrud)
+  TLoginModel = class(TBtnsCrud, ICrud)
     private
     public
-
     constructor Create;
 
-    function MD5(const value: string): string;
+    function ToMD5(const value: string): string;
     procedure AbrirConexao;
     procedure FecharConexao;
     procedure Cancelar;
     procedure Avançar;
     procedure Voltar;
-    procedure Consultar;
+    procedure Consultar(SQLText: string);
     function Editar: Boolean;
     procedure Excluir;
     procedure Gravar;
-    procedure Incluir;
+    procedure Incluir(SQLText: string);
+    procedure AutenticarLogin(Login, senha: string);
+    function IsQueryEmpty: boolean;
+    procedure ReceberSenhaCript(Senha: string);
+    function RetornaPermissao: string;
+    function RetornaLogin: string;
   end;
-
-  var Query: TFDQuery;
 
 implementation
 
@@ -38,18 +40,22 @@ uses uDmConexao;
 
 constructor TLoginModel.Create;
 begin
-  Query := TFDQuery.Create(Self);
+  inherited;
 end;
 
 procedure TLoginModel.AbrirConexao;
 begin
-  if not Assigned(Query) then
-  begin
-    Query := TFDQuery.Create(Self);
-  end;
-
-  StoreQry(Query);
   inherited;
+end;
+
+procedure TLoginModel.AutenticarLogin(Login, senha: string);
+begin
+  AbrirConexao;
+  Query.SQL.Text :=
+  'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
+  Query.ParamByName('LOGIN').AsString := Login;
+  Query.ParamByName('SENHA').AsString := senha;
+  Query.Open;
 end;
 
 procedure TLoginModel.Avançar;
@@ -67,11 +73,11 @@ begin
   inherited;
 end;
 
-procedure TLoginModel.Consultar;
+procedure TLoginModel.Consultar(SQLText: string);
 begin
-  Query.SQL.Text := 'SELECT * FROM LOGIN';
-  Query.Open;
-  Query.First;
+//  FQuery.SQL.Text := 'SELECT * FROM LOGIN';
+//  FQuery.Open;
+//  FQuery.First;
 end;
 
 function TLoginModel.Editar: Boolean;
@@ -86,7 +92,7 @@ end;
 
 procedure TLoginModel.FecharConexao;
 begin
-  FreeAndNil(Query);
+  inherited;
 end;
 
 procedure TLoginModel.Gravar;
@@ -94,15 +100,34 @@ begin
   inherited;
 end;
 
-procedure TLoginModel.Incluir;
+procedure TLoginModel.Incluir(SQLText: string);
 begin
-  Query.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN_ID = 0';
-  Query.Open;
-  Query.Append;
+//  FQuery.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN_ID = 0';
+//  FQuery.Open;
+//  FQuery.Append;
 end;
 
-function TLoginModel.MD5(const value: string): string;
+function TLoginModel.IsQueryEmpty: boolean;
 begin
+  Result := Query.IsEmpty;
+end;
+
+function TLoginModel.RetornaLogin: string;
+begin
+  Result := Query.FieldByName('LOGIN').Value;
+end;
+
+function TLoginModel.RetornaPermissao: string;
+begin
+  Result := Query.FieldByName('PERMISSAO').Value;
+end;
+
+procedure TLoginModel.ReceberSenhaCript(Senha: string);
+begin
+  Query.FieldByName('SENHA').Value := Senha;
+end;
+
+function TLoginModel.ToMD5(const value: string): string;
 var xMD5: TIdHashMessageDigest5;
 
 begin
@@ -113,8 +138,6 @@ begin
   finally
     XMD5.Free;
   end;
-end;
-
 end;
 
 end.

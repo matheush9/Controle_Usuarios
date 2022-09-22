@@ -86,6 +86,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_DebugDCUs>false</DCC_DebugDCUs>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -125,7 +126,6 @@
         </DCCReference>
         <DCCReference Include="Model\uCrud.Model.pas"/>
         <DCCReference Include="Utils\uControleComponentes.pas"/>
-        <DCCReference Include="Controller\uControllerParceiros.pas"/>
         <DCCReference Include="Model\uDmConexao.pas">
             <Form>DmConexao</Form>
             <FormType>dfm</FormType>
@@ -135,12 +135,11 @@
             <Form>frmCrud</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Controller\uControllerUsuarios.pas"/>
         <DCCReference Include="Controller\uControllerLogin.pas"/>
         <DCCReference Include="Controller\uController.pas"/>
         <DCCReference Include="Model\uLogin.Model.pas"/>
-        <DCCReference Include="Model\uParceiros.Model.pas"/>
-        <DCCReference Include="Model\uUsuarios.Model.pas"/>
+        <DCCReference Include="Interfaces\uICrud.pas"/>
+        <DCCReference Include="Interfaces\uILogin.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

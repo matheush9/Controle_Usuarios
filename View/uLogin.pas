@@ -24,6 +24,7 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
+    ControllerLogin: TControllerLogin;
   public
     { Public declarations }
     armazenaPermissao: string;
@@ -34,7 +35,6 @@ type
 
 var
   frmLogin: TfrmLogin;
-  ControllerLogin: TControllerLogin;
 
 implementation
 
@@ -56,12 +56,8 @@ procedure TfrmLogin.ControlarPermissao;
 var
   Permissao: integer;
 begin
-  // Controle de Permissões dos Usuários
-
-  armazenaPermissao := ControllerLogin.LoginModel.Query
-  .FieldByName('PERMISSAO').Value;
-  armazenaLogin := ControllerLogin.LoginModel.Query
-  .FieldByName('LOGIN').Value;
+  armazenaPermissao := ControllerLogin.RetornaPermissao;
+  armazenaLogin := ControllerLogin.RetornaLogin;
 
   frmMain.StatusBar1.Panels[0].Text := frmMain.StatusBar1.Panels[0]
     .Text + ' ' + armazenaLogin;
@@ -105,29 +101,20 @@ var
 begin
   AbrirConexao;
 
-    // Login
   armazenaLogin := edit_login.Text;
 
-  // Senha
-  armazenaSenha := ControllerLogin.LoginModel.MD5(edit_senha.Text);
+  armazenaSenha := ControllerLogin.ToMD5(edit_senha.Text);
 
-  // Autenticação
-  ControllerLogin.LoginModel.Query.SQL.Text :=
-  'SELECT * FROM LOGIN WHERE LOGIN = :LOGIN AND SENHA = :SENHA';
-  ControllerLogin.LoginModel.Query.ParamByName('LOGIN').AsString :=
-  armazenaLogin;
-  ControllerLogin.LoginModel.Query.ParamByName('SENHA').AsString :=
-  armazenaSenha;
-  ControllerLogin.LoginModel.Query.Open;
+  ControllerLogin.AutenticarLogin(armazenaLogin, armazenaSenha);
 
-  if not ControllerLogin.LoginModel.Query.IsEmpty then
+  if not ControllerLogin.IsQueryEmpty then
   begin
     ShowMessage('Autenticado com sucesso!');
     ControlarPermissao;
     frmLogin.Close;
   end
 
-  else if ControllerLogin.LoginModel.Query.IsEmpty = true then
+  else if ControllerLogin.IsQueryEmpty = true then
   begin
     ShowMessage('Login ou senha inválidos!');
   end;

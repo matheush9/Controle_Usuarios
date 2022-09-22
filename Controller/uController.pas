@@ -3,25 +3,27 @@ unit uController;
 interface
 
 uses
-  System.Classes, uCrud.Model, uUsuarios.Model, uParceiros.Model;
+  System.Classes, uCrud.Model,
+  FireDAC.comp.Client, uICrud;
 
 type
-TController = class
+  TController = class(TInterfacedObject, ICrud)
   private
-  public
     ModelCrud: TBtnsCrud;
 
+  public
     constructor Create;
     procedure AbrirConexao;
     procedure FecharConexao;
     procedure Cancelar;
     procedure Avançar;
     procedure Voltar;
-    procedure Consultar;
+    procedure Consultar(SQLText: string);
     function Editar: Boolean;
     procedure Excluir;
     procedure Gravar;
-    procedure Incluir;
+    procedure Incluir(SQLText: string);
+    function GetQuery: TFDQuery;
     destructor Destroy; override;
 end;
 
@@ -43,6 +45,8 @@ end;
 
 procedure TController.AbrirConexao;
 begin
+  if not Assigned(ModelCrud) then
+    ModelCrud := TBtnsCrud.Create;
   ModelCrud.AbrirConexao;
 end;
 
@@ -56,14 +60,14 @@ begin
   ModelCrud.Avançar;
 end;
 
-procedure TController.Consultar;
+procedure TController.Consultar(SQLText: string);
 begin
-  ModelCrud.Consultar;
+  ModelCrud.Consultar(SQLText);
 end;
 
 function TController.Editar: Boolean;
 begin
-  ModelCrud.Editar;
+  result := ModelCrud.Editar;
 end;
 
 procedure TController.Excluir;
@@ -73,17 +77,22 @@ end;
 
 procedure TController.FecharConexao;
 begin
-ModelCrud.FecharConexao;
+  ModelCrud.FecharConexao;
+end;
+
+function TController.GetQuery : TFDQuery;
+begin
+  result := ModelCrud.GetQuery;
 end;
 
 procedure TController.Gravar;
 begin
-ModelCrud.Gravar;
+  ModelCrud.Gravar;
 end;
 
-procedure TController.Incluir;
+procedure TController.Incluir(SQLText: string);
 begin
-ModelCrud.Incluir;
+  ModelCrud.Incluir(SQLText);
 end;
 
 procedure TController.Voltar;

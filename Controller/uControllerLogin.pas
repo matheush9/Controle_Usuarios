@@ -3,13 +3,13 @@ unit uControllerLogin;
 interface
 
 uses uLogin.Model, FireDAC.Comp.Client,
-System.Classes, System.SysUtils, uController;
+System.Classes, System.SysUtils, uController, uICrud, uILogin;
 
 type
-TControllerLogin = class(TController)
+TControllerLogin = class(TController, ICrud, ILogin)
   private
+  LoginModel: TLoginModel;
   public
-    LoginModel: TLoginModel;
 
     constructor Create;
     procedure AbrirConexao;
@@ -17,12 +17,18 @@ TControllerLogin = class(TController)
     procedure Cancelar;
     procedure Avançar;
     procedure Voltar;
-    procedure Consultar;
+    procedure Consultar(SQLText: string);
     function Editar: Boolean;
     procedure Excluir;
     procedure Gravar;
-    procedure Incluir;
+    procedure Incluir(SQLText: string);
+    procedure AutenticarLogin(Login, senha: string);
     destructor Destroy; override;
+    function ToMD5(const value: string): string;
+    function IsQueryEmpty: boolean;
+    procedure ReceberSenhaCript(Senha: string);
+    function RetornaPermissao: string;
+    function RetornaLogin: string;
 end;
 
 implementation
@@ -38,24 +44,29 @@ begin
   inherited;
 end;
 
+procedure TControllerLogin.AutenticarLogin(Login, senha: string);
+begin
+  LoginModel.AutenticarLogin(Login, senha);
+end;
+
 procedure TControllerLogin.AbrirConexao;
 begin
-  LoginModel.AbrirConexao;
+  inherited;
 end;
 
 procedure TControllerLogin.Avançar;
 begin
-  LoginModel.Avançar;
+  inherited;
 end;
 
 procedure TControllerLogin.Cancelar;
 begin
-  LoginModel.Cancelar;
+  inherited;
 end;
 
-procedure TControllerLogin.Consultar;
+procedure TControllerLogin.Consultar(SQLText: string);
 begin
-  LoginModel.Consultar;
+  inherited;
 end;
 
 function TControllerLogin.Editar: Boolean;
@@ -65,27 +76,52 @@ end;
 
 procedure TControllerLogin.Excluir;
 begin
-  LoginModel.Excluir;
+  inherited;
 end;
 
 procedure TControllerLogin.FecharConexao;
 begin
-  LoginModel.FecharConexao;
+  inherited;
 end;
 
 procedure TControllerLogin.Gravar;
 begin
-  LoginModel.Gravar;
+  inherited;
 end;
 
-procedure TControllerLogin.Incluir;
+procedure TControllerLogin.Incluir(SQLText : string);
 begin
-  LoginModel.Incluir;
+  LoginModel.Incluir(SQLText);
+end;
+
+function TControllerLogin.IsQueryEmpty: boolean;
+begin
+  result := LoginModel.IsQueryEmpty;
+end;
+
+function TControllerLogin.RetornaLogin: string;
+begin
+  result := LoginModel.RetornaLogin;
+end;
+
+function TControllerLogin.RetornaPermissao: string;
+begin
+  result := LoginModel.RetornaPermissao;
+end;
+
+procedure TControllerLogin.ReceberSenhaCript(Senha: string);
+begin
+  LoginModel.ReceberSenhaCript(senha);
+end;
+
+function TControllerLogin.ToMD5(const value: string): string;
+begin
+  Result := LoginModel.ToMD5(Value);
 end;
 
 procedure TControllerLogin.Voltar;
 begin
-  LoginModel.Voltar;
+  inherited;
 end;
 
 end.

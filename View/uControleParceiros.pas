@@ -6,8 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCrud, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.Menus, Datasnap.Provider, Datasnap.DBClient, uControllerParceiros, uControllerUsuarios,
-  uController;
+  Vcl.Menus, Datasnap.Provider, Datasnap.DBClient, uController;
 
 type
   TfrmControleParceiros = class(TfrmCrud)
@@ -49,7 +48,6 @@ type
   end;
 
 var
-  ControllerParceiros: TControllerParceiros;
   frmControleParceiros: TfrmControleParceiros;
 
 implementation
@@ -61,19 +59,15 @@ uses
 
 procedure TfrmControleParceiros.AbrirConexao;
 begin
-  ControllerParceiros.AbrirConexao;
-  DataSourceCRUD.DataSet := ControllerParceiros.ParceirosModel.Query;
+  //DataSourceCRUD.DataSet := ControllerParceiros.ParceirosModel.Query;
 end;
 
 procedure TfrmControleParceiros.FecharConexao;
 begin
-  ControllerParceiros
-  .FecharConexao;
 end;
 
 procedure TfrmControleParceiros.btn_avançarClick(Sender: TObject);
 begin
-  ControllerParceiros.Avançar;
   ControlarBTNeDEL;
 end;
 
@@ -85,9 +79,6 @@ begin
     ('Você realmente deseja cancelar a alteração esse registro?', 'Cancelar',
     MB_YESNO);
 
-  ControllerParceiros
-  .Cancelar;
-
   CrudBarEnabled_Read;
   ControlarBTNeDEL;
 end;
@@ -95,33 +86,18 @@ end;
 procedure TfrmControleParceiros.btn_consultarClick(Sender: TObject);
 begin
   AbrirConexao;
-
-  ControllerParceiros
-  .Consultar;
-
   ControlarBTNeDEL;
 end;
 
 procedure TfrmControleParceiros.btn_editarClick(Sender: TObject);
 begin
-  if (ControllerParceiros.ParceirosModel.Query = nil) or
-  (ControllerParceiros.ParceirosModel.Query.IsEmpty = true) then
-  begin
-    Application.Title := 'Aviso!';
-    ShowMessage('Não há registro para ser editado');
-    abort;
-  end;
 
   TabSheet1.Show;
-
-  ControllerParceiros
-  .Editar;
 
   CrudBarEnabled_Insert;
 end;
 
 procedure TfrmControleParceiros.btn_excluirClick(Sender: TObject);
-begin
 var
   Res: Integer;
 begin
@@ -131,18 +107,12 @@ begin
     'Exclusão de registro', MB_YESNO);
   if Res = IDYES then
   begin
-    ControllerParceiros
-    .Excluir;
   end;
-end;
 end;
 
 procedure TfrmControleParceiros.btn_gravarClick(Sender: TObject);
 begin
   AbrirConexao;
-
-  ControllerParceiros
-  .Gravar;
 
   Application.Title := 'Aviso!';
   ShowMessage('Registro Gravado com sucesso!');
@@ -158,15 +128,11 @@ begin
 
   AbrirConexao;
 
-  ControllerParceiros
-  .Incluir;
-
   CrudBarEnabled_Insert;
 end;
 
 procedure TfrmControleParceiros.btn_voltarClick(Sender: TObject);
 begin
-  ControllerParceiros.Voltar;
   ControlarBTNeDEL;
 end;
 
@@ -189,13 +155,12 @@ procedure TfrmControleParceiros.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   FecharConexao;
-  FreeAndNil(ControllerParceiros);
   Action := cafree;
 end;
 
 procedure TfrmControleParceiros.FormCreate(Sender: TObject);
 begin
-  ControllerParceiros := TControllerParceiros.Create;
+  //ControllerParceiros := TControllerParceiros.Create;
   inherited;
 end;
 

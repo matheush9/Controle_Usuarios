@@ -10,15 +10,13 @@ uses
   uMain in 'View\uMain.pas' {FrmMain},
   uCrud.Model in 'Model\uCrud.Model.pas',
   uControleComponentes in 'Utils\uControleComponentes.pas',
-  uControllerParceiros in 'Controller\uControllerParceiros.pas',
   uDmConexao in 'Model\uDmConexao.pas' {DmConexao: TDataModule},
   uCrud in 'View\uCrud.pas' {frmCrud},
-  uControllerUsuarios in 'Controller\uControllerUsuarios.pas',
   uControllerLogin in 'Controller\uControllerLogin.pas',
   uController in 'Controller\uController.pas',
   uLogin.Model in 'Model\uLogin.Model.pas',
-  uParceiros.Model in 'Model\uParceiros.Model.pas',
-  uUsuarios.Model in 'Model\uUsuarios.Model.pas';
+  uICrud in 'Interfaces\uICrud.pas',
+  uILogin in 'Interfaces\uILogin.pas';
 
 {$R *.res}
 begin

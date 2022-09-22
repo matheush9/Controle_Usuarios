@@ -6,7 +6,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCrud, Data.DB, Datasnap.Provider,
   Datasnap.DBClient, Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids,
   Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, uLogin,
-  uControllerLogin;
+  uControllerLogin, uController;
 
 type
   TfrmControleLogin = class(TfrmCrud)
@@ -29,18 +29,17 @@ type
     procedure btn_incluirClick(Sender: TObject);
   private
     { Private declarations }
+    ControllerLogin: TControllerLogin;
     procedure AbrirConexao;
     procedure FecharConexao;
   public
     { Public declarations }
-
     procedure ControlarBTNeDEL;
     procedure CrudBarEnabled_Insert;
     procedure CrudBarEnabled_Read;
   end;
 
 var
-  ControllerLogin: TControllerLogin;
   frmControleLogin: TfrmControleLogin;
 
 implementation
@@ -49,18 +48,16 @@ implementation
 
 procedure TfrmControleLogin.AbrirConexao;
 begin
-  ControllerLogin.AbrirConexao;
-  DataSourceCRUD.DataSet := ControllerLogin.LoginModel.Query;
+  inherited;
+  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleLogin.FecharConexao;
 begin
-  ControllerLogin.FecharConexao;
 end;
 
 procedure TfrmControleLogin.btn_avançarClick(Sender: TObject);
 begin
-  ControllerLogin.Avançar;
   ControlarBTNeDEL;
 end;
 
@@ -84,20 +81,11 @@ procedure TfrmControleLogin.btn_consultarClick(Sender: TObject);
 begin
   AbrirConexao;
 
-  ControllerLogin.Consultar;
-
   ControlarBTNeDEL;
 end;
 
 procedure TfrmControleLogin.btn_editarClick(Sender: TObject);
 begin
-  if (ControllerLogin.LoginModel.Query = nil) or
-  (ControllerLogin.LoginModel.Query.IsEmpty = true) then
-  begin
-    Application.Title := 'Aviso!';
-    ShowMessage('Não há registro para ser editado');
-    abort;
-  end;
 
   TabSheet1.Show;
 
@@ -107,7 +95,6 @@ begin
 end;
 
 procedure TfrmControleLogin.btn_excluirClick(Sender: TObject);
-begin
 var
   Res: Integer;
 begin
@@ -120,21 +107,15 @@ begin
     ControllerLogin.Excluir;
   end;
 end;
-end;
 
 procedure TfrmControleLogin.btn_gravarClick(Sender: TObject);
 var SenhaCript: string;
 begin
   AbrirConexao;
 
-  SenhaCript := ControllerLogin.LoginModel.MD5(edit_senha.Text);
-  ControllerLogin
-  .LoginModel
-  .Query
-  .FieldByName('SENHA')
-  .Value := SenhaCript;
+  SenhaCript := ControllerLogin.ToMD5(edit_senha.Text);
 
-  ControllerLogin.Gravar;
+  ControllerLogin.ReceberSenhaCript(SenhaCript);
 
   Application.Title := 'Aviso!';
   ShowMessage('Registro Gravado com sucesso!');
@@ -153,8 +134,6 @@ begin
   TabSheet1.Show;
 
   AbrirConexao;
-
-  ControllerLogin.Incluir;
 
   edit_senha.visible := true;
   lb_senha.visible := true;

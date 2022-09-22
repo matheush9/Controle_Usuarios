@@ -7,8 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCrud, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.Menus, Datasnap.Provider, Datasnap.DBClient, uController, FireDAC.comp.Client,
-  uControllerUsuarios;
+  Vcl.Menus, Datasnap.Provider, Datasnap.DBClient, uController, FireDAC.comp.Client;
 
 type
   TfrmControleUsuarios = class(TfrmCrud)
@@ -28,15 +27,9 @@ type
     lb_uf: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
-    procedure btn_avançarClick(Sender: TObject);
-    procedure btn_voltarClick(Sender: TObject);
-    procedure btn_editarClick(Sender: TObject);
-    procedure btn_excluirClick(Sender: TObject);
-    procedure btn_gravarClick(Sender: TObject);
-    procedure btn_cancelarClick(Sender: TObject);
     procedure btn_incluirClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirConexao;
@@ -50,7 +43,6 @@ type
   end;
 
 var
-  ControllerUsuarios: TControllerUsuarios;
   frmControleUsuarios: TfrmControleUsuarios;
 
 implementation
@@ -59,100 +51,26 @@ implementation
 
 procedure TfrmControleUsuarios.AbrirConexao;
 begin
-  ControllerUsuarios.AbrirConexao;
-  DataSourceCRUD.DataSet := ControllerUsuarios.UsuariosModel.Query;
+  inherited;
 end;
 
 procedure TfrmControleUsuarios.FecharConexao;
 begin
-  ControllerUsuarios.FecharConexao;
-end;
-
-procedure TfrmControleUsuarios.btn_avançarClick(Sender: TObject);
-begin
-  ControllerUsuarios.Avançar;
-  ControlarBTNeDEL;
-end;
-
-procedure TfrmControleUsuarios.btn_cancelarClick(Sender: TObject);
-begin
-  Application.MessageBox
-    ('Você realmente deseja cancelar a alteração esse registro?', 'Cancelar',
-    MB_YESNO);
-
-  ControllerUsuarios.Cancelar;
-
-  CrudBarEnabled_Read;
-  ControlarBTNeDEL;
+  inherited;
 end;
 
 procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
 begin
-  AbrirConexao;
-
-  ControllerUsuarios.Consultar;
-
-  ControlarBTNeDEL;
-end;
-
-procedure TfrmControleUsuarios.btn_editarClick(Sender: TObject);
-begin
-  if (ControllerUsuarios.UsuariosModel.Query = nil) or
-  (ControllerUsuarios.UsuariosModel.Query.IsEmpty = true) then
-  begin
-    Application.Title := 'Aviso!';
-    ShowMessage('Não há registro para ser editado');
-    abort;
-  end;
-
-  TabSheet1.Show;
-
-  ControllerUsuarios.Editar;
-
-  CrudBarEnabled_Insert;
-end;
-
-procedure TfrmControleUsuarios.btn_excluirClick(Sender: TObject);
-begin
-var
-  Res: Integer;
-begin
-  Res := Application.MessageBox('Você realmente deseja excluir esse registro?',
-    'Exclusão de registro', MB_YESNO);
-  if Res = IDYES then
-  begin
-    ControllerUsuarios.Excluir;
-  end;
-end;
-end;
-
-procedure TfrmControleUsuarios.btn_gravarClick(Sender: TObject);
-begin
-  ControllerUsuarios.Gravar;
-
-  Application.Title := 'Aviso!';
-  ShowMessage('Registro Gravado com sucesso!');
-
-  CrudBarEnabled_Read;
-
-  FecharConexao;
+  SQLText := 'SELECT * FROM USUARIOS';
+  inherited;
+  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleUsuarios.btn_incluirClick(Sender: TObject);
 begin
-  TabSheet1.Show;
-
-  AbrirConexao;
-
-  ControllerUsuarios.Incluir;
-
-  CrudBarEnabled_Insert;
-end;
-
-procedure TfrmControleUsuarios.btn_voltarClick(Sender: TObject);
-begin
-  ControllerUsuarios.Voltar;
-  ControlarBTNeDEL;
+  SQLText := 'SELECT * FROM USUARIOS WHERE USUARIOS_ID = 0';
+  inherited;
+  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleUsuarios.ControlarBTNeDEL;
@@ -173,15 +91,13 @@ end;
 procedure TfrmControleUsuarios.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FecharConexao;
-  FreeAndNil(ControllerUsuarios);
   Action := cafree;
 end;
 
 procedure TfrmControleUsuarios.FormCreate(Sender: TObject);
 begin
-  ControllerUsuarios := TControllerUsuarios.Create;
   inherited;
+  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleUsuarios.FormDestroy(Sender: TObject);
