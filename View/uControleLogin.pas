@@ -18,15 +18,9 @@ type
     edit_senha: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure btn_consultarClick(Sender: TObject);
-    procedure btn_avançarClick(Sender: TObject);
-    procedure btn_voltarClick(Sender: TObject);
-    procedure btn_editarClick(Sender: TObject);
-    procedure btn_excluirClick(Sender: TObject);
     procedure btn_gravarClick(Sender: TObject);
-    procedure btn_cancelarClick(Sender: TObject);
     procedure btn_incluirClick(Sender: TObject);
+    procedure btn_consultarClick(Sender: TObject);
   private
     { Private declarations }
     ControllerLogin: TControllerLogin;
@@ -49,101 +43,43 @@ implementation
 procedure TfrmControleLogin.AbrirConexao;
 begin
   inherited;
-  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleLogin.FecharConexao;
 begin
-end;
-
-procedure TfrmControleLogin.btn_avançarClick(Sender: TObject);
-begin
-  ControlarBTNeDEL;
-end;
-
-procedure TfrmControleLogin.btn_cancelarClick(Sender: TObject);
-begin
-  AbrirConexao;
-
-  Application.MessageBox
-    ('Você realmente deseja cancelar a alteração esse registro?', 'Cancelar',
-    MB_YESNO);
-
-  ControllerLogin.Cancelar;
-
-  edit_senha.visible := false;
-  lb_senha.visible := false;
-  CrudBarEnabled_Read;
-  ControlarBTNeDEL;
+  inherited;
 end;
 
 procedure TfrmControleLogin.btn_consultarClick(Sender: TObject);
 begin
-  AbrirConexao;
-
-  ControlarBTNeDEL;
-end;
-
-procedure TfrmControleLogin.btn_editarClick(Sender: TObject);
-begin
-
-  TabSheet1.Show;
-
-  ControllerLogin.Editar;
-
-  CrudBarEnabled_Insert;
-end;
-
-procedure TfrmControleLogin.btn_excluirClick(Sender: TObject);
-var
-  Res: Integer;
-begin
-  AbrirConexao;
-
-  Res := Application.MessageBox('Você realmente deseja excluir esse registro?',
-    'Exclusão de registro', MB_YESNO);
-  if Res = IDYES then
-  begin
-    ControllerLogin.Excluir;
-  end;
+  SQLText := 'SELECT * FROM LOGIN';
+  inherited;
 end;
 
 procedure TfrmControleLogin.btn_gravarClick(Sender: TObject);
 var SenhaCript: string;
 begin
-  AbrirConexao;
+  inherited;
 
-  SenhaCript := ControllerLogin.ToMD5(edit_senha.Text);
-
-  ControllerLogin.ReceberSenhaCript(SenhaCript);
-
-  Application.Title := 'Aviso!';
-  ShowMessage('Registro Gravado com sucesso!');
+  ControllerLogin := TControllerLogin.Create;
+  try
+    SenhaCript := ControllerLogin.ToMD5(edit_senha.Text);
+    ControllerLogin.ReceberSenhaCript(SenhaCript);
+  finally
+    FreeAndNil(ControllerLogin);
+  end;
 
   edit_senha.visible := false;
   lb_senha.visible := false;
   edit_senha.Text := EmptyStr;
-
-  CrudBarEnabled_Read;
-
-  FecharConexao;
 end;
 
 procedure TfrmControleLogin.btn_incluirClick(Sender: TObject);
 begin
-  TabSheet1.Show;
-
-  AbrirConexao;
-
+  SQLText := 'SELECT * FROM LOGIN WHERE LOGIN_ID = 0';
+  inherited;
   edit_senha.visible := true;
   lb_senha.visible := true;
-  CrudBarEnabled_Insert;
-end;
-
-procedure TfrmControleLogin.btn_voltarClick(Sender: TObject);
-begin
-  ControllerLogin.Voltar;
-  ControlarBTNeDEL;
 end;
 
 procedure TfrmControleLogin.ControlarBTNeDEL;
@@ -164,15 +100,8 @@ end;
 procedure TfrmControleLogin.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FecharConexao;
   FreeAndNil(ControllerLogin);
   Action := cafree;
-end;
-
-procedure TfrmControleLogin.FormCreate(Sender: TObject);
-begin
-  ControllerLogin := TControllerLogin.Create;
-  inherited;
 end;
 
 procedure TfrmControleLogin.FormDestroy(Sender: TObject);

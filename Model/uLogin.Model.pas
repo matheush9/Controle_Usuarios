@@ -21,7 +21,7 @@ type
     procedure Avançar;
     procedure Voltar;
     procedure Consultar(SQLText: string);
-    function Editar: Boolean;
+    procedure Editar;
     procedure Excluir;
     procedure Gravar;
     procedure Incluir(SQLText: string);
@@ -80,7 +80,7 @@ begin
 //  FQuery.First;
 end;
 
-function TLoginModel.Editar: Boolean;
+procedure TLoginModel.Editar;
 begin
   inherited;
 end;

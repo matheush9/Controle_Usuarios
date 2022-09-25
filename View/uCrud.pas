@@ -74,6 +74,7 @@ procedure TfrmCrud.AbrirConexao;
 begin
   Controller := TController.Create;
   Controller.AbrirConexao;
+  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmCrud.FecharConexao;
@@ -112,15 +113,15 @@ end;
 
 procedure TfrmCrud.btn_editarClick(Sender: TObject);
 begin
-  if Controller.Editar then
+  if DataSourceCRUD.DataSet.RecordCount < 1 then
   begin
     Application.Title := 'Aviso!';
     ShowMessage('Não há registro para ser editado');
     abort;
   end;
 
+  //AbrirConexao;
   TabSheet1.Show;
-  AbrirConexao;
   Controller.Editar;
   CrudBarEnabled_Insert;
 end;
@@ -143,7 +144,7 @@ begin
   Application.Title := 'Aviso!';
   ShowMessage('Registro Gravado com sucesso!');
   CrudBarEnabled_Read;
-   FecharConexao;
+  FecharConexao;
 end;
 
 procedure TfrmCrud.btn_incluirClick(Sender: TObject);
@@ -153,10 +154,6 @@ begin
   Controller.Incluir(SQLText);
   CrudBarEnabled_Insert;
 end;
-
-//
-
-// Controla os botões da barra superior
 
 procedure TfrmCrud.CrudBarEnabled_Read;
 begin
@@ -171,17 +168,11 @@ begin
   TControles.CrudInInsert(btn_cancelar, btn_gravar);
 end;
 
-//
-
 procedure TfrmCrud.ControlarBTNeDEL;
 begin
   TControles.ControlarSetas(btn_avançar, btn_voltar, DataSourceCRUD);
   TControles.ControlarDel(btn_excluir, DataSourceCRUD);
 end;
-
-// -- --
-
-// -- Controle de Form --
 
 procedure TfrmCrud.FormCreate(Sender: TObject);
 begin
@@ -194,7 +185,5 @@ procedure TfrmCrud.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FecharConexao;
 end;
-
-// -- --
 
 end.

@@ -27,8 +27,6 @@ object FrmMain: TFrmMain
         Text = 'USU'#193'RIO:'
         Width = 50
       end>
-    ExplicitTop = 273
-    ExplicitWidth = 527
   end
   object MainMenu1: TMainMenu
     Left = 36

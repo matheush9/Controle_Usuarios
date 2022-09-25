@@ -11,7 +11,7 @@ type
     procedure Avançar;
     procedure Voltar;
     procedure Consultar(SQLText: string);
-    function Editar: Boolean;
+    procedure Editar;
     procedure Excluir;
     procedure Gravar;
     procedure Incluir(SQLText: string);

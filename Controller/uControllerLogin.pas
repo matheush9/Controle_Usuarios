@@ -71,7 +71,7 @@ end;
 
 function TControllerLogin.Editar: Boolean;
 begin
-  result := LoginModel.Editar;
+  LoginModel.Editar;
 end;
 
 procedure TControllerLogin.Excluir;

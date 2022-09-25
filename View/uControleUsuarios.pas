@@ -29,7 +29,6 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
     procedure btn_incluirClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirConexao;
@@ -63,14 +62,12 @@ procedure TfrmControleUsuarios.btn_consultarClick(Sender: TObject);
 begin
   SQLText := 'SELECT * FROM USUARIOS';
   inherited;
-  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleUsuarios.btn_incluirClick(Sender: TObject);
 begin
   SQLText := 'SELECT * FROM USUARIOS WHERE USUARIOS_ID = 0';
   inherited;
-  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleUsuarios.ControlarBTNeDEL;
@@ -92,12 +89,6 @@ procedure TfrmControleUsuarios.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Action := cafree;
-end;
-
-procedure TfrmControleUsuarios.FormCreate(Sender: TObject);
-begin
-  inherited;
-  DataSourceCRUD.DataSet := TController(Controller).GetQuery;
 end;
 
 procedure TfrmControleUsuarios.FormDestroy(Sender: TObject);

@@ -26,14 +26,7 @@ type
     dbEdit_idade: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
-    procedure btn_avançarClick(Sender: TObject);
-    procedure btn_voltarClick(Sender: TObject);
-    procedure btn_editarClick(Sender: TObject);
-    procedure btn_excluirClick(Sender: TObject);
-    procedure btn_gravarClick(Sender: TObject);
-    procedure btn_cancelarClick(Sender: TObject);
     procedure btn_incluirClick(Sender: TObject);
   private
     { Private declarations }
@@ -52,88 +45,28 @@ var
 
 implementation
 
-uses
-  uCrud.Model;
-
 {$R *.dfm}
 
 procedure TfrmControleParceiros.AbrirConexao;
 begin
-  //DataSourceCRUD.DataSet := ControllerParceiros.ParceirosModel.Query;
+  inherited;
 end;
 
 procedure TfrmControleParceiros.FecharConexao;
 begin
-end;
-
-procedure TfrmControleParceiros.btn_avançarClick(Sender: TObject);
-begin
-  ControlarBTNeDEL;
-end;
-
-procedure TfrmControleParceiros.btn_cancelarClick(Sender: TObject);
-begin
-  AbrirConexao;
-
-  Application.MessageBox
-    ('Você realmente deseja cancelar a alteração esse registro?', 'Cancelar',
-    MB_YESNO);
-
-  CrudBarEnabled_Read;
-  ControlarBTNeDEL;
+  inherited;
 end;
 
 procedure TfrmControleParceiros.btn_consultarClick(Sender: TObject);
 begin
-  AbrirConexao;
-  ControlarBTNeDEL;
-end;
-
-procedure TfrmControleParceiros.btn_editarClick(Sender: TObject);
-begin
-
-  TabSheet1.Show;
-
-  CrudBarEnabled_Insert;
-end;
-
-procedure TfrmControleParceiros.btn_excluirClick(Sender: TObject);
-var
-  Res: Integer;
-begin
-  AbrirConexao;
-
-  Res := Application.MessageBox('Você realmente deseja excluir esse registro?',
-    'Exclusão de registro', MB_YESNO);
-  if Res = IDYES then
-  begin
-  end;
-end;
-
-procedure TfrmControleParceiros.btn_gravarClick(Sender: TObject);
-begin
-  AbrirConexao;
-
-  Application.Title := 'Aviso!';
-  ShowMessage('Registro Gravado com sucesso!');
-
-  CrudBarEnabled_Read;
-
-  FecharConexao;
+  SQLText := 'SELECT * FROM PARCEIROS';
+  inherited;
 end;
 
 procedure TfrmControleParceiros.btn_incluirClick(Sender: TObject);
 begin
-  TabSheet1.Show;
-
-  AbrirConexao;
-
-  CrudBarEnabled_Insert;
-end;
-
-procedure TfrmControleParceiros.btn_voltarClick(Sender: TObject);
-begin
-  ControlarBTNeDEL;
+  SQLText := 'SELECT * FROM PARCEIROS WHERE PARCEIROS_ID = 0';
+  inherited;
 end;
 
 procedure TfrmControleParceiros.ControlarBTNeDEL;
@@ -154,14 +87,7 @@ end;
 procedure TfrmControleParceiros.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FecharConexao;
   Action := cafree;
-end;
-
-procedure TfrmControleParceiros.FormCreate(Sender: TObject);
-begin
-  //ControllerParceiros := TControllerParceiros.Create;
-  inherited;
 end;
 
 procedure TfrmControleParceiros.FormDestroy(Sender: TObject);

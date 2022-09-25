@@ -17,7 +17,7 @@ type
     procedure Avançar;
     procedure Voltar;
     procedure Consultar(SQLText: string);
-    function Editar: Boolean;
+    procedure Editar;
     procedure Excluir;
     procedure Gravar;
     procedure Incluir(SQLText: string);
@@ -80,12 +80,10 @@ begin
   Query.First;
 end;
 
-function TBtnsCrud.Editar: Boolean;
+procedure TBtnsCrud.Editar;
 begin
-  if Query.RecordCount < 1 then
-    Result := true
-  else
-    Query.Edit;
+  Query.Open;
+  Query.Edit;
 end;
 
 procedure TBtnsCrud.Excluir;
