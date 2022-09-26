@@ -85,11 +85,13 @@ end;
 procedure TfrmCrud.btn_voltarClick(Sender: TObject);
 begin
   Controller.Voltar;
+  ControlarBTNeDEL;
 end;
 
 procedure TfrmCrud.btn_avançarClick(Sender: TObject);
 begin
   Controller.Avançar;
+  ControlarBTNeDEL;
 end;
 
 procedure TfrmCrud.btn_cancelarClick(Sender: TObject);
