@@ -75,9 +75,7 @@ end;
 
 procedure TLoginModel.Consultar(SQLText: string);
 begin
-//  FQuery.SQL.Text := 'SELECT * FROM LOGIN';
-//  FQuery.Open;
-//  FQuery.First;
+  inherited;
 end;
 
 procedure TLoginModel.Editar;
@@ -102,9 +100,7 @@ end;
 
 procedure TLoginModel.Incluir(SQLText: string);
 begin
-//  FQuery.SQL.Text := 'SELECT * FROM LOGIN WHERE LOGIN_ID = 0';
-//  FQuery.Open;
-//  FQuery.Append;
+  inherited;
 end;
 
 function TLoginModel.IsQueryEmpty: boolean;

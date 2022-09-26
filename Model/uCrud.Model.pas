@@ -10,7 +10,6 @@ type
   public
     Query: TFDQuery;
     constructor Create;
-    procedure StoreQry(pQuery: TFDQuery);
     procedure AbrirConexao;
     procedure FecharConexao;
     procedure Cancelar;
@@ -31,11 +30,6 @@ implementation
 constructor TBtnsCrud.Create;
 begin
   Query := TFDQuery.Create(Self);
-end;
-
-procedure TBtnsCrud.StoreQry(pQuery: TFDQuery);
-begin
-  Query := pQuery;
 end;
 
 procedure TBtnsCrud.AbrirConexao;

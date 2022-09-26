@@ -18,7 +18,7 @@ TControllerLogin = class(TController, ICrud, ILogin)
     procedure Avançar;
     procedure Voltar;
     procedure Consultar(SQLText: string);
-    function Editar: Boolean;
+    procedure Editar;
     procedure Excluir;
     procedure Gravar;
     procedure Incluir(SQLText: string);
@@ -69,9 +69,9 @@ begin
   inherited;
 end;
 
-function TControllerLogin.Editar: Boolean;
+procedure TControllerLogin.Editar;
 begin
-  LoginModel.Editar;
+  inherited;
 end;
 
 procedure TControllerLogin.Excluir;

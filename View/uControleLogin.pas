@@ -21,6 +21,7 @@ type
     procedure btn_gravarClick(Sender: TObject);
     procedure btn_incluirClick(Sender: TObject);
     procedure btn_consultarClick(Sender: TObject);
+    procedure btn_cancelarClick(Sender: TObject);
   private
     { Private declarations }
     ControllerLogin: TControllerLogin;
@@ -48,6 +49,13 @@ end;
 procedure TfrmControleLogin.FecharConexao;
 begin
   inherited;
+end;
+
+procedure TfrmControleLogin.btn_cancelarClick(Sender: TObject);
+begin
+  inherited;
+  edit_senha.visible := false;
+  lb_senha.visible := false;
 end;
 
 procedure TfrmControleLogin.btn_consultarClick(Sender: TObject);
@@ -100,7 +108,6 @@ end;
 procedure TfrmControleLogin.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FreeAndNil(ControllerLogin);
   Action := cafree;
 end;
 
