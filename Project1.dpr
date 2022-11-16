@@ -16,7 +16,8 @@ uses
   uController in 'Controller\uController.pas',
   uLogin.Model in 'Model\uLogin.Model.pas',
   uICrud in 'Interfaces\uICrud.pas',
-  uILogin in 'Interfaces\uILogin.pas';
+  uILogin in 'Interfaces\uILogin.pas',
+  View.Factory in 'Factory\View.Factory.pas';
 
 {$R *.res}
 begin
