@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls,
-  Datasnap.Provider, Datasnap.DBClient;
+  Datasnap.Provider, Datasnap.DBClient, uCrud;
 
 type
   TFrmMain = class(TForm)
@@ -26,51 +26,61 @@ type
     { Private declarations }
   public
     { Public declarations }
+    function NewFrmCadastro(FrmName: String; Frm: TFrmCrud): TfrmCrud;
   end;
 
 var
   FrmMain: TFrmMain;
+
+  FrmParceiros,
+  FrmControleLogin,
+  FrmUsuarios: TfrmCrud;
+
+  FrmLogin: TForm;
 
 implementation
 
 {$R *.dfm}
 
 uses
-  uLogin, uLogin.Model,
-  uControleParceiros, uControleUsuarios, uControleLogin;
+ View.Factory;
+
+
+function TFrmMain.NewFrmCadastro(FrmName: String; Frm: TFrmCrud): TfrmCrud;
+var
+  FormCreator: TViewFactory;
+begin
+  if not Assigned(Frm) then
+  begin
+    FormCreator := TViewFactory.Create;
+    Result := FormCreator.CriaFrmCadastro(FrmName);
+    Result.Show
+  end
+  else
+    Frm.Show;
+end;
 
 procedure TFrmMain.CadastrodeParceirosClick(Sender: TObject);
 begin
-  if frmControleParceiros = nil then
-  begin
-    frmControleParceiros := TfrmControleParceiros.Create(Self);
-    frmControleParceiros.Show;
-  end;
+  FrmParceiros := NewFrmCadastro('Parceiros', FrmParceiros);
 end;
 
 procedure TFrmMain.CadastrodeUsuariosClick(Sender: TObject);
 begin
-  if frmControleUsuarios = nil then
-  begin
-    frmControleUsuarios := TfrmControleUsuarios.Create(Self);
-    frmControleUsuarios.Show;
-  end;
+  FrmUsuarios := NewFrmCadastro('Usuarios', FrmUsuarios);
 end;
 
 procedure TFrmMain.ContasUsuariosClick(Sender: TObject);
 begin
-  if frmControleLogin = nil then
-  begin
-    frmControleLogin := TfrmControleLogin.Create(Self);
-    frmControleLogin.Show;
-  end;
+  FrmControleLogin := NewFrmCadastro('Login', FrmControleLogin);
 end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
+var
+  FormCreator: TViewFactory;
 begin
-  frmLogin := TfrmLogin.Create(Self);
-  frmLogin.ShowModal;
+  FrmLogin := FormCreator.CriaFrmLogin;
+  FrmLogin.ShowModal;
 end;
-
 
 end.

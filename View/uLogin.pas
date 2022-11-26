@@ -111,7 +111,7 @@ begin
   begin
     ShowMessage('Autenticado com sucesso!');
     ControlarPermissao;
-    frmLogin.Close;
+    Self.Close;
   end
 
   else if ControllerLogin.IsQueryEmpty = true then
